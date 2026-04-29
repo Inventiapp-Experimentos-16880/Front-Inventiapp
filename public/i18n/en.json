@@ -104,6 +104,7 @@
     "provider": "Provider",
     "select": "Select",
     "newProduct": "New product",
+    "editProduct": "Edit product",
     "lot": "Lot",
     "receiptDate": "Receipt date",
     "expirationDate": "Expiration date",

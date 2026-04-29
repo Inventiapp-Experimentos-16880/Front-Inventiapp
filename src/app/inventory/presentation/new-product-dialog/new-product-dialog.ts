@@ -1,11 +1,15 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
 import { InventoryStore } from '../../application/inventory.store';
 import { Product } from '../../domain/model/product.entity';
 import { TranslatePipe } from '@ngx-translate/core';
+
+export interface ProductDialogData {
+  product?: Product;
+}
 
 @Component({
   selector: 'app-new-product-dialog',
@@ -17,15 +21,18 @@ import { TranslatePipe } from '@ngx-translate/core';
 export class NewProductDialogComponent {
   protected readonly store = inject(InventoryStore);
   private dialogRef = inject(MatDialogRef<NewProductDialogComponent>);
+  private readonly data = inject<ProductDialogData | null>(MAT_DIALOG_DATA, { optional: true });
+
+  readonly isEditMode = !!this.data?.product;
 
   form = {
-    name: '',
-    description: '',
-    categoryId: '',
-    providerId: '',
-    minStock: 0,
-    unitPrice: '' as string | number,
-    isActive: true
+    name: this.data?.product?.name ?? '',
+    description: this.data?.product?.description ?? '',
+    categoryId: this.data?.product?.categoryId ?? '',
+    providerId: this.data?.product?.providerId ?? '',
+    minStock: this.data?.product?.minStock ?? 0,
+    unitPrice: this.data?.product?.unitPrice ?? ('' as string | number),
+    isActive: this.data?.product?.isActive ?? true
   };
 
 
@@ -44,9 +51,10 @@ export class NewProductDialogComponent {
 
   save() {
     const unitPrice = Number(String(this.form.unitPrice).replace(',', '.'));
+    const productId = this.data?.product?.id ?? '';
 
     const product = new Product({
-      id: '', // El backend asignará el ID
+      id: productId, // En creación el backend asigna ID; en edición se conserva
       name: this.form.name.trim(),
       description: this.form.description.trim(),
       categoryId: this.form.categoryId,
@@ -56,7 +64,12 @@ export class NewProductDialogComponent {
       isActive: this.form.isActive
     });
 
-    this.store.addProduct(product);
+    if (this.isEditMode) {
+      this.store.updateProduct(product);
+    } else {
+      this.store.addProduct(product);
+    }
+
     this.dialogRef.close(true);
   }
 }
