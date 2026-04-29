@@ -80,4 +80,9 @@ export class SalesStore {
     });
   }
 
+  refresh() {
+    this.loadProducts();
+    this.loadBatches();
+    this.loadKits();
+  }
 }

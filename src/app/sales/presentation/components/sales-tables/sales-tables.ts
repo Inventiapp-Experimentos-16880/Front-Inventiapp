@@ -54,6 +54,11 @@ export class SalesTables {
 
   searchTerm = signal<string>('');
 
+  ngOnInit() {
+    // Cargar productos, batches y kits al iniciar el componente
+    this.store.refresh()
+  };
+
   get availableKits() {
     // All kits from backend are considered active (no isEnabled field)
     return this.inventoryStore.kits();
