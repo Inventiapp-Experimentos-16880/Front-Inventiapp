@@ -104,6 +104,7 @@
     "provider": "Proveedor",
     "select": "Seleccionar",
     "newProduct": "Nuevo producto",
+    "editProduct": "Editar producto",
     "newCategory": "Nueva categoría",
     "description": "Descripción",
     "categoryNamePlaceholder": "Ej: Lácteos",
@@ -168,6 +169,7 @@
   "sales": {
     "title": "Gestión de Ventas",
     "subtitle": "Administra tus ventas y transacciones",
+    "search": "Buscar productos",
     "filter": "Filtro",
     "emptyState": {
       "title": "Ventas",

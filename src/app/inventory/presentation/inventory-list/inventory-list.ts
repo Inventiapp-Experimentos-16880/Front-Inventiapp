@@ -18,7 +18,7 @@ import { RestockingDialogComponent } from '../restocking-dialog/restocking-dialo
 import { NewKitDialogComponent } from '../new-kit-dialog/new-kit-dialog';
 import { Kit } from '../../domain/model/kit.entity';
 import { ProductInfoDialogComponent, ProductInfoData } from '../product-info-dialog/product-info-dialog';
-import { NewProductDialogComponent } from '../new-product-dialog/new-product-dialog';
+import { NewProductDialogComponent, ProductDialogData } from '../new-product-dialog/new-product-dialog';
 import { NewCategoryDialogComponent } from '../new-category-dialog/new-category-dialog';
 import { InventoryStore } from '../../application/inventory.store';
 
@@ -71,6 +71,11 @@ export class InventoryListComponent {
 
   pageIndex = signal<number>(0);
   pageSize = signal<number>(10);
+
+
+  ngOnInit() {
+    this.store.refresh()
+  }
 
   get activeFilters(): Array<{type: string, value: string, label: string}> {
     const filters: Array<{type: string, value: string, label: string}> = [];
@@ -362,8 +367,20 @@ export class InventoryListComponent {
   }
 
   editProduct(product: ProductRow): void {
-    // TODO: Implementar edición de producto
-    console.log('Editar producto:', product);
+    const productToEdit = this.store.products().find(p => p.id === product.id);
+    if (!productToEdit) {
+      return;
+    }
+
+    const dialogData: ProductDialogData = { product: productToEdit };
+
+    this.dialog.open(NewProductDialogComponent, {
+      width: '750px',
+      maxWidth: '90vw',
+      panelClass: 'new-product-dialog',
+      disableClose: false,
+      data: dialogData
+    });
   }
 
   deleteProduct(product: ProductRow): void {

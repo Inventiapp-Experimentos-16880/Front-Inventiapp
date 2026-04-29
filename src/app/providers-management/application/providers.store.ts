@@ -14,12 +14,49 @@ export class ProvidersStore {
   private readonly providersSignal = signal<Provider[]>([]);
   private readonly loadingSignal = signal<boolean>(false);
   private readonly errorSignal = signal<string | null>(null);
+  private readonly searchTermSignal = signal<string>('');
 
   readonly providers = this.providersSignal.asReadonly();
   readonly loading = this.loadingSignal.asReadonly();
   readonly error = this.errorSignal.asReadonly();
+  readonly searchTerm = this.searchTermSignal.asReadonly();
 
   readonly hasProviders = computed(() => this.providers().length > 0);
+
+  /**
+   * Filtered providers based on search term
+   */
+  readonly filteredProviders = computed(() => {
+    const allProviders = this.providers();
+    const search = this.searchTermSignal().toLowerCase().trim();
+
+    if (!search) {
+      return allProviders;
+    }
+
+    return allProviders.filter(provider =>
+      provider.firstName.toLowerCase().includes(search) ||
+      provider.lastName.toLowerCase().includes(search) ||
+      provider.email?.toLowerCase().includes(search) ||
+      provider.phoneNumber?.toLowerCase().includes(search) ||
+      provider.ruc?.toLowerCase().includes(search)
+    );
+  });
+
+  /**
+   * Sets the search term for filtering providers.
+   * @param term - The search term.
+   */
+  setSearchTerm(term: string): void {
+    this.searchTermSignal.set(term);
+  }
+
+  /**
+   * Clears the search term.
+   */
+  clearSearchTerm(): void {
+    this.searchTermSignal.set('');
+  }
 
   constructor(private providersApi: ProvidersApi) {
     this.loadProviders();

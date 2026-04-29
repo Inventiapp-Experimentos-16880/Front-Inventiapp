@@ -4,7 +4,12 @@
   <div class="filter-section">
     <mat-form-field appearance="outline" class="search-field">
       <mat-icon matPrefix>search</mat-icon>
-      <input matInput placeholder="Bolsa Papitas" value="Bolsa Papitas">
+      <input
+        matInput
+        type="text"
+        [value]="searchTerm()"
+        [placeholder]="'sales.search' | translate"
+        (input)="onSearchChange($any($event.target).value)" />
     </mat-form-field>
 
     <button mat-stroked-button class="btn-filter">
@@ -27,7 +32,7 @@
             <span class="actions-header"></span>
           </div>
           <div class="table-body">
-            <div class="row" *ngFor="let p of products()">
+            <div class="row" *ngFor="let p of filteredProducts()">
               <span class="prod-name">{{ p.name }}</span>
               <span>s/. {{ p.price | number:'1.2-2' }}</span>
               <span>{{ p.stock }}</span>
