@@ -162,6 +162,7 @@
   "sales": {
     "title": "Sales Management",
     "subtitle": "Manage your sales and transactions",
+    "search": "Search products",
     "filter": "Filter",
     "emptyState": {
       "title": "Sales",

@@ -52,6 +52,8 @@ export class SalesTables {
   private readonly snackBar = inject(MatSnackBar);
   private cdr = inject(ChangeDetectorRef);
 
+  searchTerm = signal<string>('');
+
   get availableKits() {
     // All kits from backend are considered active (no isEnabled field)
     return this.inventoryStore.kits();
@@ -74,6 +76,20 @@ export class SalesTables {
       price: (p.unitPrice ?? 0),
       stock: stockByProduct.get(p.id) ?? 0
     }));
+  });
+
+  // Filtered products based on search term
+  filteredProducts = computed(() => {
+    const allProducts = this.products();
+    const search = this.searchTerm().toLowerCase().trim();
+
+    if (!search) {
+      return allProducts;
+    }
+
+    return allProducts.filter(p =>
+      p.name.toLowerCase().includes(search)
+    );
   });
 
   // Obtener stock disponible de un producto
@@ -271,6 +287,10 @@ export class SalesTables {
     this.cartItems = this.cartItems.filter(i => i !== item);
   }
 
+  onSearchChange(value: string): void {
+    this.searchTerm.set(value);
+  }
+
   cancelOrder(): void {
     this.cartItems = [];
   }
@@ -334,7 +354,7 @@ export class SalesTables {
 
     // Enviar la venta al backend
     this.salesApi.createSale(saleData).subscribe({
-      next: (response) => {
+        next: (_response) => {
         this.snackBar.open('Venta guardada exitosamente', 'Cerrar', {
           duration: 3000,
           horizontalPosition: 'center',

@@ -1,5 +1,5 @@
 <section class="table-providers-container" tabindex="0">
-  <table mat-table [dataSource]="store.providers()" class="mat-table" matSort>
+  <table mat-table [dataSource]="store.filteredProviders()" class="mat-table" matSort>
 
     <ng-container matColumnDef="firstName">
       <th mat-header-cell *matHeaderCellDef>

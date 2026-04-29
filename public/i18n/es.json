@@ -168,6 +168,7 @@
   "sales": {
     "title": "Gestión de Ventas",
     "subtitle": "Administra tus ventas y transacciones",
+    "search": "Buscar productos",
     "filter": "Filtro",
     "emptyState": {
       "title": "Ventas",
