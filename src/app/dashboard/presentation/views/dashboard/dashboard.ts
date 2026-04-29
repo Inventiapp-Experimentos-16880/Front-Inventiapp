@@ -53,6 +53,7 @@ export class DashboardComponent {
   async ngOnInit() {
     await this.authStore.waitForInitialization();
     this.authInitialized.set(true);
+    this.dashboardStore.refresh()
   }
   public barChartType: ChartType = 'bar';
   public barChartData = computed<ChartData<'bar'>>(() => {
