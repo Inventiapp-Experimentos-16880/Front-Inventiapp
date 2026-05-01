@@ -11,11 +11,6 @@
         [placeholder]="'sales.search' | translate"
         (input)="onSearchChange($any($event.target).value)" />
     </mat-form-field>
-
-    <button mat-stroked-button class="btn-filter">
-      <mat-icon>filter_list</mat-icon>
-      {{ 'sales.filter' | translate }}
-    </button>
   </div>
 
   <div class="content-grid">

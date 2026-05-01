@@ -57,6 +57,7 @@ export class SalesTables {
   ngOnInit() {
     // Cargar productos, batches y kits al iniciar el componente
     this.store.refresh()
+    this.inventoryStore.refresh();
   };
 
   get availableKits() {
@@ -69,11 +70,10 @@ export class SalesTables {
     const products = this.store.products();
     const batches = this.store.batches();
 
-    const stockByProduct = new Map<string, number>();
-    for (const b of batches) {
-      const current = stockByProduct.get(b.productId) ?? 0;
-      stockByProduct.set(b.productId, current + (b.quantity ?? 0));
-    }
+    // Usar el stock calculado en InventoryStore (excluye batches vencidos)
+    const stockByProduct = new Map<string, number>(
+      this.inventoryStore.stock().map(s => [s.productId, s.currentStock])
+    );
 
     return products.map(p => ({
       id: p.id,
@@ -369,6 +369,7 @@ export class SalesTables {
         this.cartItems = [];
         // Recargar batches para actualizar el stock
         this.store.loadBatches();
+        this.inventoryStore.refresh();
         this.cdr.detectChanges();
       },
       error: (error) => {
