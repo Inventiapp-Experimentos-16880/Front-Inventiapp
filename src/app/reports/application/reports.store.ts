@@ -219,11 +219,13 @@ export class ReportsStore {
     const providerMap = new Map(providers.map(p => [p.id, `${p.firstName} ${p.lastName}`]));
     const categoryMap = new Map(categories.map(c => [c.id, c.name]));
 
-    // Calculate stock from batches: sum all quantities by product
-    const stockByProduct = new Map<string, number>();
+    // Calculate stock from batches:
+    // don't sum all quantities, keep them separate bc we want to know the stock from each batch
+    const stockByBatch = new Map<string, number>();
     batches.forEach(batch => {
-      const currentStock = stockByProduct.get(batch.productId) || 0;
-      stockByProduct.set(batch.productId, currentStock + batch.quantity);
+      const key = `${batch.productId}-${batch.id}`;
+      // Si batch.id es único, basta con set(batch.quantity)
+      stockByBatch.set(key, (stockByBatch.get(key) || 0) + batch.quantity);
     });
 
     // Get all batches with expiration dates, grouped by product
@@ -243,32 +245,28 @@ export class ReportsStore {
       batchesByProduct.set(batch.productId, productBatches);
     });
 
-    // Get all products with expiration dates from batches
     const expiringProducts = products
       .filter(product => {
         const productBatches = batchesByProduct.get(product.id);
         return productBatches && productBatches.length > 0;
       })
-      .map(product => {
+      .flatMap(product => {
         const productBatches = batchesByProduct.get(product.id)!;
-        // Use the batch with the earliest expiration date
-        const earliestBatch = productBatches.reduce((earliest, current) => {
-          const earliestDate = new Date(earliest.expirationDate);
-          const currentDate = new Date(current.expirationDate);
-          return currentDate < earliestDate ? current : earliest;
-        });
 
-        const currentStock = stockByProduct.get(product.id) || 0;
+        // Crear un reporte para CADA batch (no solo el más antiguo)
+        return productBatches.map(batch => {
+          const currentStock = stockByBatch.get(product.id + '-' + batch.id) || 0;
 
-        return new ExpiringProductReport({
-          id: `expiring-${product.id}-${earliestBatch.id}`,
-          productId: product.id,
-          productName: product.name,
-          categoryName: categoryMap.get(product.categoryId) || '-',
-          expirationDate: earliestBatch.expirationDate,
-          currentStock: currentStock,
-          lot: `L-${earliestBatch.id}`,
-          providerName: providerMap.get(product.providerId)
+          return new ExpiringProductReport({
+            id: `expiring-${product.id}-${batch.id}`,
+            productId: product.id,
+            productName: product.name,
+            categoryName: categoryMap.get(product.categoryId) || '-',
+            expirationDate: batch.expirationDate,
+            currentStock: currentStock,
+            lot: `L-${batch.id}`,
+            providerName: providerMap.get(product.providerId)
+          });
         });
       })
       .sort((a, b) => {

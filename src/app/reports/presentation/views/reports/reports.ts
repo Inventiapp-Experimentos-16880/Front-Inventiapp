@@ -425,10 +425,22 @@ export class ReportsComponent implements OnInit {
   }
 
   exportSalesReport(): void {
-    if (this.store.hasSalesReport()) {
-      // TODO: Implementar exportación de ventas si es necesario
-      console.log('Exportar ventas:', this.store.salesReport());
+    const sales = this.store.salesReport();
+    if (!sales || sales.length === 0) {
+      return;
     }
+
+    // Construir mapa productId -> productName usando la cache (si falta, poner fallback)
+    const productNameMap: Record<number, string> = {};
+    sales.forEach(sale => {
+      (sale.details || []).forEach(d => {
+        if (!productNameMap[d.productId]) {
+          productNameMap[d.productId] = this.productNameCache.get(d.productId) || `Producto #${d.productId}`;
+        }
+      });
+    });
+
+    this.excelExportService.exportSalesReport(sales, productNameMap, 'reporte-ventas');
   }
 
   /**
