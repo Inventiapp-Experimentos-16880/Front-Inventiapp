@@ -122,13 +122,10 @@ export class InventoryListComponent {
     const products = this.store.products();
     const categories = this.store.categories();
 
-    // Calculate stock by product: sum all quantities from batches
-    const stockByProduct = new Map<string, number>();
-    batches.forEach(batch => {
-      const currentStock = stockByProduct.get(batch.productId) || 0;
-      stockByProduct.set(batch.productId, currentStock + batch.quantity);
-    });
-
+// usar stock calculado en el store (excluye batches vencidos)
+    const stockByProduct = new Map<string, number>(
+      this.store.stock().map(s => [s.productId, s.currentStock])
+    );
     // Get latest batch info by product (most recent reception date)
     const latestBatchByProduct = new Map<string, { lot: string; receptionDate: string; expirationDate: string }>();
     batches.forEach(batch => {

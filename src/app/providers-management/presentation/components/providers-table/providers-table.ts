@@ -46,6 +46,10 @@ export class ProvidersTable {
 
   displayedColumns: string[] = ['firstName', 'phoneNumber', 'email', 'ruc', 'actions'];
 
+  ngOnInit() {
+    this.store.loadProviders();
+  }
+
   onEdit(p: Provider) {
     const ref = this.dialog.open(ProviderFormDialog, {
       width: '600px',
