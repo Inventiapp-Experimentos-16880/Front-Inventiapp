@@ -18,7 +18,7 @@ import { RestockingDialogComponent } from '../restocking-dialog/restocking-dialo
 import { NewKitDialogComponent } from '../new-kit-dialog/new-kit-dialog';
 import { Kit } from '../../domain/model/kit.entity';
 import { ProductInfoDialogComponent, ProductInfoData } from '../product-info-dialog/product-info-dialog';
-import { NewProductDialogComponent } from '../new-product-dialog/new-product-dialog';
+import { NewProductDialogComponent, ProductDialogData } from '../new-product-dialog/new-product-dialog';
 import { NewCategoryDialogComponent } from '../new-category-dialog/new-category-dialog';
 import { InventoryStore } from '../../application/inventory.store';
 
@@ -72,6 +72,11 @@ export class InventoryListComponent {
   pageIndex = signal<number>(0);
   pageSize = signal<number>(10);
 
+
+  ngOnInit() {
+    this.store.refresh()
+  }
+
   get activeFilters(): Array<{type: string, value: string, label: string}> {
     const filters: Array<{type: string, value: string, label: string}> = [];
 
@@ -117,13 +122,10 @@ export class InventoryListComponent {
     const products = this.store.products();
     const categories = this.store.categories();
 
-    // Calculate stock by product: sum all quantities from batches
-    const stockByProduct = new Map<string, number>();
-    batches.forEach(batch => {
-      const currentStock = stockByProduct.get(batch.productId) || 0;
-      stockByProduct.set(batch.productId, currentStock + batch.quantity);
-    });
-
+// usar stock calculado en el store (excluye batches vencidos)
+    const stockByProduct = new Map<string, number>(
+      this.store.stock().map(s => [s.productId, s.currentStock])
+    );
     // Get latest batch info by product (most recent reception date)
     const latestBatchByProduct = new Map<string, { lot: string; receptionDate: string; expirationDate: string }>();
     batches.forEach(batch => {
@@ -362,8 +364,20 @@ export class InventoryListComponent {
   }
 
   editProduct(product: ProductRow): void {
-    // TODO: Implementar edición de producto
-    console.log('Editar producto:', product);
+    const productToEdit = this.store.products().find(p => p.id === product.id);
+    if (!productToEdit) {
+      return;
+    }
+
+    const dialogData: ProductDialogData = { product: productToEdit };
+
+    this.dialog.open(NewProductDialogComponent, {
+      width: '750px',
+      maxWidth: '90vw',
+      panelClass: 'new-product-dialog',
+      disableClose: false,
+      data: dialogData
+    });
   }
 
   deleteProduct(product: ProductRow): void {

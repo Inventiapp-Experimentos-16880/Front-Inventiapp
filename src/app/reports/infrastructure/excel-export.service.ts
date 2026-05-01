@@ -4,6 +4,7 @@ import { ProviderReport } from '../domain/model/provider-report.entity';
 import { StockReport } from '../domain/model/stock-report.entity';
 import { ExpiringProductReport } from '../domain/model/expiring-product-report.entity';
 import { LowStockReport } from '../domain/model/low-stock-report.entity';
+import {SaleResponse} from '../../sales/infrastructure/sales-api-endpoint';
 
 /**
  * Service for exporting reports to Excel format with advanced formatting.
@@ -419,6 +420,135 @@ export class ExcelExportService {
     await this.saveWorkbook(workbook, filename);
   }
 
+  /**
+   * Exports sales report to Excel with two sheets:
+   *  - "Ventas": resumen por venta (id, fecha, total, lista corta de productos)
+   *  - "Detalles": cada fila es un detalle de venta (saleId, productId, productName, qty, unitPrice, totalPrice)
+   * @param sales - Array de SaleResponse
+   * @param productNameMap - Opcional: mapa { productId: productName } para mostrar nombres en lugar de ids
+   * @param filename - Nombre base del archivo (sin extensión)
+   */
+  async exportSalesReport(
+    sales: SaleResponse[],
+    productNameMap: Record<number, string> = {},
+    filename: string = 'reporte-ventas'
+  ): Promise<void> {
+    const workbook = new ExcelJS.Workbook();
+
+    // ---- Hoja resumen: Ventas ----
+    const sheetSummary = workbook.addWorksheet('Ventas');
+    const headerStyle = this.getHeaderStyle();
+    const titleStyle = this.getTitleStyle();
+
+    sheetSummary.mergeCells('A1:D1');
+    const titleRow = sheetSummary.getRow(1);
+    titleRow.getCell(1).value = 'REPORTE DE VENTAS';
+    titleRow.getCell(1).style = titleStyle;
+    titleRow.height = 30;
+
+    sheetSummary.mergeCells('A2:D2');
+    const dateRow = sheetSummary.getRow(2);
+    dateRow.getCell(1).value = `Fecha de generación: ${this.getFormattedDateTime()}`;
+    dateRow.getCell(1).style = { font: { size: 10, italic: true } };
+    dateRow.height = 20;
+
+    sheetSummary.mergeCells('A3:D3');
+    const summaryRow = sheetSummary.getRow(3);
+    summaryRow.getCell(1).value = `Total ventas: ${sales.length} | Monto total: ${sales.reduce((s, v) => s + (v.totalAmount || 0), 0).toFixed(2)}`;
+    summaryRow.getCell(1).style = { font: { size: 11, bold: true } };
+    summaryRow.height = 20;
+
+    const headers = ['Venta ID', 'Fecha', 'Total (S/)', 'Productos (resumen)'];
+    const headerRow = sheetSummary.getRow(4);
+    headers.forEach((h, i) => {
+      const c = headerRow.getCell(i + 1);
+      c.value = h;
+      c.style = headerStyle;
+    });
+    headerRow.height = 25;
+
+    sales.forEach((sale, idx) => {
+      const r = sheetSummary.getRow(5 + idx);
+      r.getCell(1).value = sale.id;
+      r.getCell(2).value = (sale.createdAt) ? new Date(sale.createdAt).toLocaleString('es-PE') : '-';
+      r.getCell(3).value = sale.totalAmount ?? 0;
+      r.getCell(3).numFmt = '#,##0.00';
+
+      // Productos resumen: "Nombre (xQ) ; Nombre2 (xQ2)"
+      const productsText = (sale.details || []).map(d => {
+        const name = productNameMap[d.productId] || `Producto #${d.productId}`;
+        return `${name} (x${d.quantity})`;
+      }).join('; ') || '-';
+      r.getCell(4).value = productsText;
+      r.getCell(4).style = { alignment: { horizontal: 'left', vertical: 'top', wrapText: true } };
+
+      // Alternar color de filas
+      if (idx % 2 === 0) {
+        r.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF9FAFB' } };
+      }
+    });
+
+    sheetSummary.getColumn(1).width = 12;
+    sheetSummary.getColumn(2).width = 22;
+    sheetSummary.getColumn(3).width = 15;
+    sheetSummary.getColumn(4).width = 60;
+
+    this.addBorders(sheetSummary, 4, 4 + sales.length, 1, 4);
+
+    // ---- Hoja detalles: cada detalle de venta ----
+    const sheetDetails = workbook.addWorksheet('Detalles');
+    sheetDetails.mergeCells('A1:F1');
+    const titleRowD = sheetDetails.getRow(1);
+    titleRowD.getCell(1).value = 'DETALLES DE VENTAS';
+    titleRowD.getCell(1).style = titleStyle;
+    titleRowD.height = 30;
+
+    sheetDetails.mergeCells('A2:F2');
+    const dateRowD = sheetDetails.getRow(2);
+    dateRowD.getCell(1).value = `Fecha de generación: ${this.getFormattedDateTime()}`;
+    dateRowD.getCell(1).style = { font: { size: 10, italic: true } };
+    dateRowD.height = 20;
+
+    const detailHeaders = ['Venta ID', 'Producto ID', 'Producto', 'Cantidad', 'Precio Unitario', 'Total'];
+    const headerRowD = sheetDetails.getRow(4);
+    detailHeaders.forEach((h, i) => {
+      const c = headerRowD.getCell(i + 1);
+      c.value = h;
+      c.style = headerStyle;
+    });
+    headerRowD.height = 25;
+
+    let detailRowIdx = 0;
+    sales.forEach(sale => {
+      (sale.details || []).forEach(detail => {
+        const row = sheetDetails.getRow(5 + detailRowIdx);
+        row.getCell(1).value = sale.id;
+        row.getCell(2).value = detail.productId;
+        row.getCell(3).value = productNameMap[detail.productId] || `Producto #${detail.productId}`;
+        row.getCell(4).value = detail.quantity;
+        row.getCell(5).value = detail.unitPrice ?? 0;
+        row.getCell(5).numFmt = '#,##0.00';
+        row.getCell(6).value = detail.totalPrice ?? ( (detail.unitPrice ?? 0) * (detail.quantity ?? 0) );
+        row.getCell(6).numFmt = '#,##0.00';
+
+        if (detailRowIdx % 2 === 0) {
+          row.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF9FAFB' } };
+        }
+        detailRowIdx++;
+      });
+    });
+
+    sheetDetails.getColumn(1).width = 12;
+    sheetDetails.getColumn(2).width = 12;
+    sheetDetails.getColumn(3).width = 40;
+    sheetDetails.getColumn(4).width = 12;
+    sheetDetails.getColumn(5).width = 15;
+    sheetDetails.getColumn(6).width = 15;
+
+    this.addBorders(sheetDetails, 4, 4 + detailRowIdx, 1, 6);
+
+    await this.saveWorkbook(workbook, filename);
+  }
   /**
    * Gets header style for Excel cells.
    */

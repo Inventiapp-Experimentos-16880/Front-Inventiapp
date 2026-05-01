@@ -64,9 +64,9 @@
                       }
                     </mat-select>
                   </mat-form-field>
-                  @if (selectedCategoryFilter) {
+                    @if (selectedCategoryFilter) {
                     <button mat-stroked-button (click)="clearCategoryFilter()" class="clear-filter-btn">
-                      {{ t('reports.clearFilter') }}
+                      {{ t('reports.expiring.clearFilter') }}
                     </button>
                   }
                 </div>

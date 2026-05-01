@@ -52,6 +52,14 @@ export class SalesTables {
   private readonly snackBar = inject(MatSnackBar);
   private cdr = inject(ChangeDetectorRef);
 
+  searchTerm = signal<string>('');
+
+  ngOnInit() {
+    // Cargar productos, batches y kits al iniciar el componente
+    this.store.refresh()
+    this.inventoryStore.refresh();
+  };
+
   get availableKits() {
     // All kits from backend are considered active (no isEnabled field)
     return this.inventoryStore.kits();
@@ -62,11 +70,10 @@ export class SalesTables {
     const products = this.store.products();
     const batches = this.store.batches();
 
-    const stockByProduct = new Map<string, number>();
-    for (const b of batches) {
-      const current = stockByProduct.get(b.productId) ?? 0;
-      stockByProduct.set(b.productId, current + (b.quantity ?? 0));
-    }
+    // Usar el stock calculado en InventoryStore (excluye batches vencidos)
+    const stockByProduct = new Map<string, number>(
+      this.inventoryStore.stock().map(s => [s.productId, s.currentStock])
+    );
 
     return products.map(p => ({
       id: p.id,
@@ -74,6 +81,20 @@ export class SalesTables {
       price: (p.unitPrice ?? 0),
       stock: stockByProduct.get(p.id) ?? 0
     }));
+  });
+
+  // Filtered products based on search term
+  filteredProducts = computed(() => {
+    const allProducts = this.products();
+    const search = this.searchTerm().toLowerCase().trim();
+
+    if (!search) {
+      return allProducts;
+    }
+
+    return allProducts.filter(p =>
+      p.name.toLowerCase().includes(search)
+    );
   });
 
   // Obtener stock disponible de un producto
@@ -271,6 +292,10 @@ export class SalesTables {
     this.cartItems = this.cartItems.filter(i => i !== item);
   }
 
+  onSearchChange(value: string): void {
+    this.searchTerm.set(value);
+  }
+
   cancelOrder(): void {
     this.cartItems = [];
   }
@@ -334,7 +359,7 @@ export class SalesTables {
 
     // Enviar la venta al backend
     this.salesApi.createSale(saleData).subscribe({
-      next: (response) => {
+        next: (_response) => {
         this.snackBar.open('Venta guardada exitosamente', 'Cerrar', {
           duration: 3000,
           horizontalPosition: 'center',
@@ -344,6 +369,7 @@ export class SalesTables {
         this.cartItems = [];
         // Recargar batches para actualizar el stock
         this.store.loadBatches();
+        this.inventoryStore.refresh();
         this.cdr.detectChanges();
       },
       error: (error) => {

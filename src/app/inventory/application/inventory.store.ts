@@ -16,9 +16,51 @@ import { BatchApi } from '../infrastructure/batch-api';
 export interface StockInfo {
   productId: string;
   currentStock: number;
+  totalStock?: number;
+  expiredStock?: number;
   lastUpdated: string;
 }
 
+export const parseDateTimeString = (s?: string): Date | null => {
+  if (!s) return null;
+  const str = s.trim();
+  if (!str) return null;
+
+  // ISO con 'T' y zona
+  if (/\d{4}-\d{2}-\d{2}T/.test(str)) {
+    const d = new Date(str);
+    return isNaN(d.getTime()) ? null : d;
+  }
+
+  // Formato "YYYY-MM-DD HH:MM:SS(.ffffff)"
+  const parts = str.split(' ');
+  const datePart = parts[0];
+  const timePart = parts[1] || '00:00:00';
+
+  const dateSegments = datePart.split('-').map(n => Number(n));
+  if (dateSegments.length !== 3 || dateSegments.some(isNaN)) return null;
+  const [year, month, day] = dateSegments;
+
+  const timeSegments = timePart.split(':');
+  if (timeSegments.length < 2) return null;
+  const hour = Number(timeSegments[0]) || 0;
+  const minute = Number(timeSegments[1]) || 0;
+
+  let second = 0;
+  let millisecond = 0;
+  if (timeSegments.length >= 3) {
+    const secFrag = timeSegments[2];
+    const [secStr, fracStr] = secFrag.split('.');
+    second = Number(secStr) || 0;
+    if (fracStr) {
+      const msStr = (fracStr + '000').slice(0, 3);
+      millisecond = Number(msStr) || 0;
+    }
+  }
+
+  const d = new Date(year, month - 1, day, hour, minute, second, millisecond);
+  return isNaN(d.getTime()) ? null : d;
+};
 /**
  * Store for managing inventory state and operations.
  * @remarks
@@ -50,31 +92,98 @@ export class InventoryStore {
    */
   readonly stock = computed<StockInfo[]>(() => {
     const batches = this.batches();
-    const stockMap = new Map<string, { quantity: number; lastDate: string }>();
+
+    const stockMap = new Map<
+      string,
+      {
+        total: number;
+        expired: number;
+        lastDateNonExpired: string | null;
+        lastDateAny: string | null;
+      }
+    >();
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    // Extrae YYYY-MM-DD desde varios formatos y devuelve Date en local en esa fecha (medianoche)
+    const parseDateOnly = (s?: string): Date | null => {
+      if (!s) return null;
+      const str = s.trim();
+      if (!str) return null;
+
+      // Si es ISO con 'T', tomar la parte antes de 'T'
+      let datePart = str;
+      if (str.includes('T')) {
+        datePart = str.split('T')[0];
+      } else if (str.includes(' ')) {
+        // Si viene "YYYY-MM-DD HH:MM:SS..." tomar la primera parte
+        datePart = str.split(' ')[0];
+      }
+
+      const parts = datePart.split('-');
+      if (parts.length !== 3) return null;
+      const year = Number(parts[0]);
+      const month = Number(parts[1]);
+      const day = Number(parts[2]);
+      if ([year, month, day].some(isNaN)) return null;
+
+      // Construir fecha local en medianoche con esos componentes (ignora hora/zona)
+      return new Date(year, month - 1, day, 0, 0, 0, 0);
+    };
+
+    const safeMaxDateStr = (a: string | null, b: string | null): string | null => {
+      if (!a) return b;
+      if (!b) return a;
+      return a > b ? a : b;
+    };
 
     batches.forEach(batch => {
       const productId = String(batch.productId);
-      const existing = stockMap.get(productId);
-      const batchDate = batch.receptionDate || new Date().toISOString();
+      const entry = stockMap.get(productId) || {
+        total: 0,
+        expired: 0,
+        lastDateNonExpired: null as string | null,
+        lastDateAny: null as string | null
+      };
 
-      if (existing) {
-        existing.quantity += batch.quantity;
-        if (batchDate > existing.lastDate) {
-          existing.lastDate = batchDate;
+      entry.total += batch.quantity;
+
+      const batchRec = batch.receptionDate || new Date().toISOString();
+      entry.lastDateAny = safeMaxDateStr(entry.lastDateAny, batchRec);
+
+      let isExpired = false;
+      const expStr = batch.expirationDate;
+      if (expStr && expStr.trim() !== '') {
+        const expDateOnly = parseDateOnly(expStr);
+        if (expDateOnly) {
+          // comparar solo por día: si expDate < today => vencido
+          if (expDateOnly.getTime() < today.getTime()) {
+            isExpired = true;
+          }
         }
-      } else {
-        stockMap.set(productId, {
-          quantity: batch.quantity,
-          lastDate: batchDate
-        });
+        // si expDateOnly es null (fecha inválida) aquí la tratamos como NO vencida.
+        // Si prefieres excluir fechas inválidas, pon: if (!expDateOnly) isExpired = true;
       }
+
+      if (isExpired) {
+        entry.expired += batch.quantity;
+      } else {
+        entry.lastDateNonExpired = safeMaxDateStr(entry.lastDateNonExpired, batchRec);
+      }
+
+      stockMap.set(productId, entry);
     });
 
-    return Array.from(stockMap.entries()).map(([productId, data]) => ({
-      productId,
-      currentStock: data.quantity,
-      lastUpdated: data.lastDate.split('T')[0]
-    }));
+    return Array.from(stockMap.entries()).map(([productId, data]) => {
+      const current = Math.max(0, data.total - data.expired);
+      const lastDate = data.lastDateNonExpired || data.lastDateAny || new Date().toISOString();
+      return {
+        productId,
+        currentStock: current,
+        lastUpdated: lastDate.split('T')[0]
+      } as StockInfo;
+    });
   });
 
   readonly hasProducts = computed(() => this.products().length > 0);

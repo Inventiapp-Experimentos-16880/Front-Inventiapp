@@ -104,6 +104,7 @@
     "provider": "Provider",
     "select": "Select",
     "newProduct": "New product",
+    "editProduct": "Edit product",
     "lot": "Lot",
     "receiptDate": "Receipt date",
     "expirationDate": "Expiration date",
@@ -162,6 +163,7 @@
   "sales": {
     "title": "Sales Management",
     "subtitle": "Manage your sales and transactions",
+    "search": "Search products",
     "filter": "Filter",
     "emptyState": {
       "title": "Sales",

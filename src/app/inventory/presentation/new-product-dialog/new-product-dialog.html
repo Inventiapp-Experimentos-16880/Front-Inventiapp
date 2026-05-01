@@ -1,4 +1,4 @@
-<h3 class="dlg-title">{{ 'inventory.newProduct' | translate }}</h3>
+<h3 class="dlg-title">{{ (isEditMode ? 'inventory.editProduct' : 'inventory.newProduct') | translate }}</h3>
 
 <div class="form-grid">
   <label>{{ 'inventory.name' | translate }}</label>
@@ -37,5 +37,7 @@
 
 <div class="actions">
   <button class="btn ghost" (click)="cancel()">{{ 'global.cancel' | translate }}</button>
-  <button class="btn primary" [disabled]="!isValid" (click)="save()">{{ 'global.save' | translate }}</button>
+  <button class="btn primary" [disabled]="!isValid" (click)="save()">
+    {{ (isEditMode ? 'common.saveChanges' : 'global.save') | translate }}
+  </button>
 </div>

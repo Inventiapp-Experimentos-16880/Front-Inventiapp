@@ -237,7 +237,10 @@ export class AuthStore {
   logout(): void {
     this.tokenService.removeToken();
     this.userSignal.set(null);
-    this.router.navigate(['/auth/login']);
+    this.router.navigate(['/auth/login']).then(r => {
+    }).catch(err => {
+      console.error('Navigation error:', err);
+    });
   }
 
   /**
@@ -268,11 +271,11 @@ export class AuthStore {
   hasPermission(permission: string): boolean {
     const user = this.user();
     if (!user) return false;
-    
+
     if (user.isAdmin()) {
       return true;
     }
-    
+
     return user.hasPermission(permission);
   }
 
@@ -285,11 +288,11 @@ export class AuthStore {
   hasAnyPermission(permissions: string[]): boolean {
     const user = this.user();
     if (!user) return false;
-    
+
     if (user.isAdmin()) {
       return true;
     }
-    
+
     return permissions.some(permission => user.hasPermission(permission));
   }
 

@@ -5,7 +5,7 @@ import {MatInput} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import {TranslatePipe} from '@ngx-translate/core';
-import {MatButton, MatFabButton} from '@angular/material/button';
+import {MatFabButton} from '@angular/material/button';
 import {ProviderFormDialog} from '../provider-form-dialog/provider-form-dialog';
 import {MatDialog} from '@angular/material/dialog';
 import {Provider} from '../../../../inventory/domain/model/provider.entity';
@@ -29,7 +29,13 @@ export class ProvidersToolbar {
   protected readonly store = inject(ProvidersStore);
   private readonly dialog = inject(MatDialog);
 
-  searchTerm = '';
+  get searchTerm(): string {
+    return this.store.searchTerm();
+  }
+
+  set searchTerm(value: string) {
+    this.store.setSearchTerm(value);
+  }
 
   onCreate() {
     const ref = this.dialog.open(ProviderFormDialog, {
