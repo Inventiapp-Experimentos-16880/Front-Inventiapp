@@ -2,10 +2,12 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { InventoryStore } from '../../application/inventory.store';
 import { Product } from '../../domain/model/product.entity';
 import { TranslatePipe } from '@ngx-translate/core';
+import {MatError} from '@angular/material/input';
 
 export interface ProductDialogData {
   product?: Product;
@@ -22,6 +24,7 @@ export class NewProductDialogComponent {
   protected readonly store = inject(InventoryStore);
   private dialogRef = inject(MatDialogRef<NewProductDialogComponent>);
   private readonly data = inject<ProductDialogData | null>(MAT_DIALOG_DATA, { optional: true });
+  private readonly snackBar = inject(MatSnackBar);
 
   readonly isEditMode = !!this.data?.product;
 
@@ -35,22 +38,51 @@ export class NewProductDialogComponent {
     isActive: this.data?.product?.isActive ?? true
   };
 
+  // Flag para controlar error de minStock (decimales o negativo)
+  minStockInvalid = false;
 
   get isValid(): boolean {
     const price = Number(String(this.form.unitPrice).replace(',', '.'));
+    const minStockNum = Number(this.form.minStock);
+    const minStockIsInteger = Number.isFinite(minStockNum) && Number.isInteger(minStockNum) && minStockNum >= 0;
+
     return (
       this.form.name.trim().length > 0 &&
       !!this.form.categoryId &&
       !!this.form.providerId &&
-      Number(this.form.minStock) >= 0 &&
+      minStockIsInteger &&
+      !this.minStockInvalid &&
       !isNaN(price) && price >= 0
     );
+  }
+
+  // Called from template on ngModelChange for minStock
+  onMinStockChange(value: any) {
+    if (value === null || value === undefined || value === '') {
+      this.minStockInvalid = false;
+      return;
+    }
+    const n = Number(value);
+    this.minStockInvalid = !Number.isFinite(n) || !Number.isInteger(n) || n < 0;
   }
 
   cancel() { this.dialogRef.close(false); }
 
   save() {
     const unitPrice = Number(String(this.form.unitPrice).replace(',', '.'));
+
+    // Validar minStock como entero no negativo antes de construir el producto
+    const minStockNum = Number(this.form.minStock);
+    if (!Number.isFinite(minStockNum) || !Number.isInteger(minStockNum) || minStockNum < 0) {
+      this.minStockInvalid = true;
+      this.snackBar.open('Stock mínimo inválido. Debe ser un número entero no negativo.', 'Cerrar', {
+        duration: 3000,
+        horizontalPosition: 'center',
+        verticalPosition: 'top'
+      });
+      return;
+    }
+
     const productId = this.data?.product?.id ?? '';
 
     const product = new Product({
@@ -59,7 +91,7 @@ export class NewProductDialogComponent {
       description: this.form.description.trim(),
       categoryId: this.form.categoryId,
       providerId: String(this.form.providerId),
-      minStock: Number(this.form.minStock),
+      minStock: Math.floor(minStockNum),
       unitPrice,
       isActive: this.form.isActive
     });
