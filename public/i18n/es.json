@@ -194,7 +194,12 @@
     "noKitsAvailable": "No hay kits disponibles",
     "total": "Total",
     "kit": "Kit",
-    "emptyCart": "El borrador está vacío. Agrega productos o kits para comenzar."
+    "emptyCart": "El borrador está vacío. Agrega productos o kits para comenzar.",
+    "noStockAvailable": "No hay stock disponible para {{product}}",
+    "stockInsufficient": "Stock insuficiente. Solo hay {{stock}} unidades disponibles de {{product}}",
+    "saleSaved": "Venta guardada exitosamente",
+    "saleSaveError": "Error al guardar la venta. Por favor, intente nuevamente",
+    "userNotIdentified": "Error: No se pudo identificar al usuario"
   },
   "auth": {
     "login": {
@@ -349,7 +354,10 @@
     "save": "Guardar",
     "saveChanges": "Guardar Cambios",
     "delete": "Eliminar",
-    "loading": "Cargando..."
+    "loading": "Cargando...",
+    "validationNumber": "Ingresa un número entero positivo",
+    "validationExpirationDate": "Ingrese un una fecha de expiración válida que sea igual o posterior a la fecha de recepción",
+    "validateNumberCart": "Hay cantidades inválidas en el carrito. Corrija antes de guardar"
   },
   "notFound": {
     "title": "Página No Encontrada",
