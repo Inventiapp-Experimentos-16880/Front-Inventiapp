@@ -5,6 +5,7 @@ import { LoginCredentials } from '../domain/model/login-credentials';
 import { RegisterData } from '../domain/model/register-data';
 import { AuthApi } from '../infrastructure/auth-api';
 import { JwtTokenService } from '../infrastructure/jwt-token';
+import {firstValueFrom} from 'rxjs';
 
 /**
  * Store for managing authentication state and operations.
@@ -52,18 +53,18 @@ export class AuthStore {
           const userId = String(decoded.sub);
           const email = decoded.email || '';
           const roles = decoded.roles || [];
+          const ownerId = decoded.ownerId ?? undefined;
 
           this.userSignal.set(new User({
             id: userId,
             email: email,
             roles: Array.isArray(roles) ? roles : [],
             permissions: [],
-            token: this.tokenService.getToken() || undefined
+            token: this.tokenService.getToken() || undefined,
+            ownerId
           }));
 
-          this.loadUserPermissions(userId).then(() => {
-          });
-
+          this.loadUserPermissions(userId).then(() => { });
           this.initializedSignal.set(true);
           resolve();
         } else {
@@ -143,13 +144,15 @@ export class AuthStore {
           const userId = String(decoded.sub || response.id);
           const email = decoded.email || response.email;
           const roles = decoded.roles || [];
+          const ownerId = decoded.ownerId !== undefined ? decoded.ownerId : undefined;
 
           this.userSignal.set(new User({
             id: userId,
             email: email,
             roles: Array.isArray(roles) ? roles : [],
             permissions: [],
-            token: response.token
+            token: response.token,
+            ownerId
           }));
 
           await this.loadUserPermissions(userId);
@@ -159,7 +162,7 @@ export class AuthStore {
             email: response.email,
             roles: [],
             permissions: [],
-            token: response.token
+            token: response.token,
           }));
         }
 
@@ -192,30 +195,50 @@ export class AuthStore {
 
     this.authApi.signUp(data).subscribe({
       next: async (response) => {
+        // Guardamos el token recibido inicialmente
         this.tokenService.setToken(response.token);
 
-        const decoded = this.tokenService.decodeToken();
+        // Decodificamos para comprobar si trae ownerId
+        let decoded = this.tokenService.decodeToken();
+
+        // Si el token NO trae ownerId, hacemos un sign-in inmediato para obtener token actualizado
+        if (!decoded?.ownerId) {
+          try {
+            const credentials = new LoginCredentials({ email: data.email, password: data.password });
+            const signInResp = await firstValueFrom(this.authApi.signIn(credentials));
+            this.tokenService.setToken(signInResp.token);
+            decoded = this.tokenService.decodeToken();
+          } catch (signinErr) {
+            console.error('Error refreshing token after signup:', signinErr);
+            // Si el re-login falla, continuar con el token original pero mostrar advertencia
+          }
+        }
+
+        // Ahora inicializamos userSignal usando el token decodificado si existe
         if (decoded) {
           const userId = String(decoded.sub || response.id);
           const email = decoded.email || response.email;
           const roles = decoded.roles || [];
+          const ownerId = decoded.ownerId ?? undefined;
 
           this.userSignal.set(new User({
             id: userId,
             email: email,
             roles: Array.isArray(roles) ? roles : [],
             permissions: [],
-            token: response.token
+            token: this.tokenService.getToken() || undefined,
+            ownerId
           }));
 
           await this.loadUserPermissions(userId);
         } else {
+          // Fallback si no se pudo decodificar token
           this.userSignal.set(new User({
             id: String(response.id),
             email: response.email,
             roles: ['ROLE_ADMIN'],
             permissions: [],
-            token: response.token
+            token: this.tokenService.getToken() || undefined
           }));
         }
 
