@@ -59,6 +59,9 @@
     "title": "Welcome to StockTrack",
     "subtitle": "Inventory management system"
   },
+  "kits": {
+    "validationQuantityInteger": "Quantity must be an integer"
+  },
   "inventory": {
     "title": "Inventory Management",
     "subtitle": "Manage your products and stock",
@@ -68,6 +71,7 @@
       "message": "Soon you will be able to manage all your products here"
     },
     "header": "Inventory",
+    "invalidPrice": "Invalid price. Please enter a valid positive number.",
     "products": "Products",
     "name": "Name",
     "unitPrice": "Unit price",

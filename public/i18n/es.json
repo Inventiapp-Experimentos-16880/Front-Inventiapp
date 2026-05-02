@@ -59,6 +59,9 @@
     "title": "Bienvenido a StockTrack",
     "subtitle": "Sistema de gestión de inventario"
   },
+  "kits": {
+    "validationQuantityInteger": "La cantidad debe ser un número entero positivo"
+  },
   "inventory": {
     "title": "Gestión de Inventario",
     "subtitle": "Administra tus productos y stock",
@@ -68,6 +71,7 @@
       "message": "Próximamente podrás gestionar todos tus productos aquí"
     },
     "header": "Inventario",
+    "invalidPrice": "Precio inválido",
     "products": "Productos",
     "name": "Nombre",
     "unitPrice": "Precio unitario",
