@@ -6,7 +6,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {TranslatePipe} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {MatFormField} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
 import {MatTooltipModule} from '@angular/material/tooltip';
@@ -50,6 +50,7 @@ export class SalesTables {
   private readonly salesApi = inject(SalesApi);
   private readonly authStore = inject(AuthStore);
   private readonly snackBar = inject(MatSnackBar);
+  private readonly translate = inject(TranslateService);
   private cdr = inject(ChangeDetectorRef);
 
   searchTerm = signal<string>('');
@@ -126,13 +127,15 @@ export class SalesTables {
 
   cartItems: CartItem[] = [];
 
+  cartValidationError = false;
+
   get totalAmount(): number {
     return this.cartItems.reduce((s, i) => s + i.total, 0);
   }
 
   getProductName(productId: string): string {
     const product = this.store.products().find(p => p.id === productId);
-    return product?.name || 'Producto no encontrado';
+    return product?.name || this.translate.instant('inventory.product') + ' #' + productId;
   }
 
   getTotalKitPrice(kit: Kit): number {
@@ -150,7 +153,7 @@ export class SalesTables {
     // Validar stock disponible
     const availableStock = this.getAvailableStock(product.id);
     if (availableStock <= 0) {
-      this.snackBar.open(`No hay stock disponible para ${product.name}`, 'Cerrar', {
+      this.snackBar.open(this.translate.instant('sales.noStockAvailable', { product: product.name }), this.translate.instant('global.cancel'), {
         duration: 3000,
         horizontalPosition: 'center',
         verticalPosition: 'top'
@@ -174,7 +177,7 @@ export class SalesTables {
           // Si ya existe, aumentar la cantidad (con validación de stock)
           const newQuantity = existingItem.quantity + 1;
           if (newQuantity > product.stock) {
-            this.snackBar.open(`Stock insuficiente. Solo hay ${product.stock} unidades disponibles de ${product.name}`, 'Cerrar', {
+            this.snackBar.open(this.translate.instant('sales.stockInsufficient', { product: product.name, stock: product.stock }), this.translate.instant('global.cancel'), {
               duration: 3000,
               horizontalPosition: 'center',
               verticalPosition: 'top'
@@ -206,7 +209,7 @@ export class SalesTables {
         if (existingItem) {
           const newQuantity = existingItem.quantity + 1;
           if (newQuantity > product.stock) {
-            this.snackBar.open(`Stock insuficiente. Solo hay ${product.stock} unidades disponibles de ${product.name}`, 'Cerrar', {
+            this.snackBar.open(this.translate.instant('sales.stockInsufficient', { product: product.name, stock: product.stock }), this.translate.instant('global.cancel'), {
               duration: 3000,
               horizontalPosition: 'center',
               verticalPosition: 'top'
@@ -255,19 +258,32 @@ export class SalesTables {
   }
 
   updateQuantity(item: CartItem, newQuantity: number): void {
+    // Validar que sea número finito y entero
+    if (!Number.isFinite(newQuantity) || !Number.isInteger(newQuantity)) {
+      this.snackBar.open(this.translate.instant('common.validationNumber'), this.translate.instant('global.cancel'), {
+        duration: 3000,
+        horizontalPosition: 'center',
+        verticalPosition: 'top'
+      });
+      // Restaurar la vista con el valor previo del modelo
+      this.cartItems = [...this.cartItems];
+      this.cdr.detectChanges();
+      return;
+    }
+
     if (newQuantity <= 0) {
+      // Si baja a 0 o negativo, eliminar el ítem
       this.deleteItem(item);
       return;
     }
 
-    // Asegurar que la cantidad sea un número válido
-    const quantity = Math.max(1, Math.floor(newQuantity));
+    const quantity = newQuantity;
 
     // Validar stock si es un producto
     if (item.type === 'product' && item.productId) {
       const product = this.products().find(p => p.id === item.productId);
       if (product && quantity > product.stock) {
-        this.snackBar.open(`Stock insuficiente. Solo hay ${product.stock} unidades disponibles de ${product.name}`, 'Cerrar', {
+        this.snackBar.open(this.translate.instant('sales.stockInsufficient', { product: product.name, stock: product.stock }), this.translate.instant('global.cancel'), {
           duration: 3000,
           horizontalPosition: 'center',
           verticalPosition: 'top'
@@ -275,6 +291,9 @@ export class SalesTables {
         // Ajustar a la cantidad máxima disponible
         item.quantity = product.stock;
         item.total = item.unitPrice * product.stock;
+        this.cartValidationError = false;
+        item.quantity = quantity;
+        item.total = item.unitPrice * quantity;
         this.cartItems = [...this.cartItems];
         this.cdr.detectChanges();
         return;
@@ -288,8 +307,29 @@ export class SalesTables {
     this.cdr.detectChanges();
   }
 
+  onCartQuantityChange(item: CartItem, rawValue: any): void {
+    const n = Number(rawValue);
+
+    if (!Number.isFinite(n) || !Number.isInteger(n) || n <= 0) {
+      this.cartValidationError = true;
+
+      this.snackBar.open(this.translate.instant('common.validationNumber'), this.translate.instant('global.cancel'), {
+        duration: 2500,
+        horizontalPosition: 'center',
+        verticalPosition: 'top'
+      });
+      this.cartItems = [...this.cartItems];
+      this.cdr.detectChanges();
+      return;
+    }
+
+    this.cartValidationError = false;
+    this.updateQuantity(item, n);
+  }
+
   deleteItem(item: CartItem): void {
     this.cartItems = this.cartItems.filter(i => i !== item);
+    this.cartValidationError = false;
   }
 
   onSearchChange(value: string): void {
@@ -300,9 +340,25 @@ export class SalesTables {
     this.cartItems = [];
   }
 
+  get hasInvalidQuantities(): boolean {
+    return this.cartValidationError || this.cartItems.some(item =>
+      !Number.isFinite(item.quantity) ||
+      !Number.isInteger(item.quantity) ||
+      item.quantity <= 0
+    );
+  }
+
   saveOrder(): void {
     if (this.cartItems.length === 0) {
-      this.snackBar.open('El borrador está vacío', 'Cerrar', {
+      this.snackBar.open(this.translate.instant('sales.emptyCart'), this.translate.instant('global.cancel'), {
+        duration: 3000,
+        horizontalPosition: 'center',
+        verticalPosition: 'top'
+      });
+      return;
+    }
+    if (this.hasInvalidQuantities) {
+      this.snackBar.open(this.translate.instant('common.validateNumberCart'), this.translate.instant('global.cancel'), {
         duration: 3000,
         horizontalPosition: 'center',
         verticalPosition: 'top'
@@ -315,7 +371,7 @@ export class SalesTables {
       if (item.type === 'product' && item.productId) {
         const product = this.products().find(p => p.id === item.productId);
         if (product && item.quantity > product.stock) {
-          this.snackBar.open(`Stock insuficiente para ${item.name}. Solo hay ${product.stock} unidades disponibles`, 'Cerrar', {
+          this.snackBar.open(this.translate.instant('sales.stockInsufficient', { product: item.name, stock: product.stock }), this.translate.instant('global.cancel'), {
             duration: 4000,
             horizontalPosition: 'center',
             verticalPosition: 'top'
@@ -328,7 +384,7 @@ export class SalesTables {
     // Obtener el usuario actual
     const currentUser = this.authStore.currentUser();
     if (!currentUser || !currentUser.id) {
-      this.snackBar.open('Error: No se pudo identificar al usuario', 'Cerrar', {
+      this.snackBar.open(this.translate.instant('sales.userNotIdentified'), this.translate.instant('global.cancel'), {
         duration: 3000,
         horizontalPosition: 'center',
         verticalPosition: 'top'
@@ -359,8 +415,8 @@ export class SalesTables {
 
     // Enviar la venta al backend
     this.salesApi.createSale(saleData).subscribe({
-        next: (_response) => {
-        this.snackBar.open('Venta guardada exitosamente', 'Cerrar', {
+      next: (_response) => {
+        this.snackBar.open(this.translate.instant('sales.saleSaved'), this.translate.instant('global.cancel'), {
           duration: 3000,
           horizontalPosition: 'center',
           verticalPosition: 'top'
@@ -374,7 +430,7 @@ export class SalesTables {
       },
       error: (error) => {
         console.error('Error al guardar la venta:', error);
-        this.snackBar.open('Error al guardar la venta. Por favor, intente nuevamente', 'Cerrar', {
+        this.snackBar.open(this.translate.instant('sales.saleSaveError'), this.translate.instant('global.cancel'), {
           duration: 4000,
           horizontalPosition: 'center',
           verticalPosition: 'top'
