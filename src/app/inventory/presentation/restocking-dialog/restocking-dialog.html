@@ -51,13 +51,20 @@
             <input
               matInput
               type="number"
-              min="0"
+              min="1"
+              step="1"
+              inputmode="numeric"
+              pattern="^[0-9]+$"
               [(ngModel)]="quantity"
-              (ngModelChange)="onQuantityChange()"
-              class="quantity-input">
+              (ngModelChange)="onQuantityChange($event)"
+              class="quantity-input"
+            >
             <button mat-icon-button type="button" (click)="incrementQuantity()">
               <mat-icon>expand_less</mat-icon>
             </button>
+          </div>
+          <div class="error" *ngIf="quantityInvalid">
+            {{'common.validationNumber'|translate}}
           </div>
         </mat-form-field>
 
@@ -77,7 +84,7 @@
 
     <div *ngIf="loading" class="loading-container">
       <mat-spinner diameter="50"></mat-spinner>
-      <p>Guardando...</p>
+      <p>{{'common.loading'|translate}}</p>
     </div>
 
     <div *ngIf="error && !loading" class="error-container">
@@ -93,7 +100,7 @@
     <button
       mat-raised-button
       color="primary"
-      [disabled]="!canSave || loading"
+      [disabled]="!canSave"
       (click)="onSave()">
       {{ 'global.save' | translate }}
     </button>

@@ -44,11 +44,11 @@ export class ProvidersTable {
   private readonly providersApi = inject(ProvidersApi);
   private readonly dialog = inject(MatDialog);
 
-  displayedColumns: string[] = ['firstName', 'phoneNumber', 'email', 'ruc', 'actions'];
-
   ngOnInit() {
     this.store.loadProviders();
   }
+
+  displayedColumns: string[] = ['firstName', 'phoneNumber', 'email', 'ruc', 'actions'];
 
   onEdit(p: Provider) {
     const ref = this.dialog.open(ProviderFormDialog, {

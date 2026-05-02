@@ -59,6 +59,9 @@
     "title": "Welcome to StockTrack",
     "subtitle": "Inventory management system"
   },
+  "kits": {
+    "validationQuantityInteger": "Quantity must be an integer"
+  },
   "inventory": {
     "title": "Inventory Management",
     "subtitle": "Manage your products and stock",
@@ -68,6 +71,7 @@
       "message": "Soon you will be able to manage all your products here"
     },
     "header": "Inventory",
+    "invalidPrice": "Invalid price. Please enter a valid positive number.",
     "products": "Products",
     "name": "Name",
     "unitPrice": "Unit price",
@@ -105,6 +109,8 @@
     "select": "Select",
     "newProduct": "New product",
     "editProduct": "Edit product",
+    "isActive": "Status",
+    "activeProduct": "Product is active",
     "lot": "Lot",
     "receiptDate": "Receipt date",
     "expirationDate": "Expiration date",
@@ -188,7 +194,12 @@
     "noKitsAvailable": "No kits available",
     "total": "Total",
     "kit": "Kit",
-    "emptyCart": "The draft is empty. Add products or kits to get started."
+    "emptyCart": "The draft is empty. Add products or kits to get started.",
+    "noStockAvailable": "No stock available for {{product}}",
+    "stockInsufficient": "Insufficient stock. Only {{stock}} units available for {{product}}",
+    "saleSaved": "Sale saved successfully",
+    "saleSaveError": "Error saving the sale. Please try again",
+    "userNotIdentified": "Error: Could not identify user"
   },
   "auth": {
     "login": {
@@ -344,7 +355,10 @@
     "save": "Save",
     "saveChanges": "Save Changes",
     "delete": "Delete",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "validationNumber": "Please enter a valid positive number",
+    "validationExpirationDate": "Expiration date must be equivalent or later than today",
+    "validateNumberCart": "Invalid number in cart. Please enter a valid number."
   },
   "notFound": {
     "title": "Page Not Found",
