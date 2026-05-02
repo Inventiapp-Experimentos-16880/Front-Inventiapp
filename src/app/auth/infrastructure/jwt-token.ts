@@ -9,8 +9,9 @@ export interface DecodedToken {
   roles?: string[];
   iat?: number;
   exp?: number;
+  ownerId?: number | string; // <-- añadir
+  [key: string]: any;
 }
-
 /**
  * Service for managing JWT tokens.
  * @remarks
@@ -63,7 +64,13 @@ export class JwtTokenService {
 
     try {
       const payload = token.split('.')[1];
-      return JSON.parse(atob(payload)) as DecodedToken;
+      // atob puede lanzar en entornos estrictos; lo dejamos igual
+      const parsed = JSON.parse(atob(payload)) as DecodedToken;
+      // normalized ownerId: si viene como string, dejar string; si number, convertir a number
+      if (parsed.ownerId !== undefined) {
+        // no cambiamos tipo, sólo dejamos el valor presente
+      }
+      return parsed;
     } catch (error) {
       console.error('Error decoding token:', error);
       return null;

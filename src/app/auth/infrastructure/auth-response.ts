@@ -19,6 +19,7 @@ export interface SignInResponse {
   id: number;
   email: string;
   token: string;
+  ownerId?: number; // opcional: el id del owner si el backend lo devuelve
 }
 
 /**
@@ -29,6 +30,7 @@ export interface SignUpResponse {
   id: number;
   email: string;
   token: string;
+  ownerId?: number; // opcional
 }
 
 /**
