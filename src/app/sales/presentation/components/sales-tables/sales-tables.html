@@ -117,8 +117,11 @@
                 <input
                   type="number"
                   [ngModel]="item.quantity"
-                  (ngModelChange)="updateQuantity(item, $event)"
+                  (ngModelChange)="onCartQuantityChange(item, $event)"
                   min="1"
+                  step="1"
+                  inputmode="numeric"
+                  pattern="^[0-9]+$"
                   class="quantity-input">
                 <button mat-icon-button (click)="updateQuantity(item, item.quantity + 1)" [matTooltip]="'Aumentar cantidad'">
                   <mat-icon>add</mat-icon>
@@ -139,7 +142,9 @@
             <button mat-stroked-button color="warn" class="btn-cancel"
                     (click)="cancelOrder()">{{ 'sales.table.cancel' | translate }}
             </button>
-            <button mat-flat-button class="btn-save" (click)="saveOrder()">{{ 'sales.table.save' | translate }}</button>
+            <button mat-flat-button class="btn-save" [disabled]="hasInvalidQuantities || cartItems.length === 0" (click)="saveOrder()">
+              {{ 'sales.table.save' | translate }}
+            </button>
           </div>
         </div>
       </mat-card>
