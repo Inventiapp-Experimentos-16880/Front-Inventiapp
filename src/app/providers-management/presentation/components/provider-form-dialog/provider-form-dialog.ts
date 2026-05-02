@@ -94,7 +94,10 @@ export class ProviderFormDialog implements OnInit {
       this.api.createProvider(payload).subscribe({
         next: (created: any) => this.ref.close(created ?? payload),
         error: (error) => {
+          // Mejor log para debug: muestra status, statusText y body
           console.error('Error creating provider:', error);
+          console.error('HTTP status:', error?.status, error?.statusText);
+          console.error('HTTP body:', error?.error);
           this.saving = false;
         },
         complete: () => this.saving = false

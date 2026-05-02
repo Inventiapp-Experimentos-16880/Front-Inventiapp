@@ -13,20 +13,27 @@ export class User implements BaseEntity {
    * @param user - An object containing the user properties.
    * @returns A new instance of User.
    */
+  // añadir en constructor param
   constructor(user: {
     id: string;
     email: string;
     roles?: string[];
     permissions?: string[];
     token?: string;
+    ownerId?: string | number;
   }) {
     this._id = user.id;
     this._email = user.email;
     this._roles = user.roles || ['ROLE_ADMIN'];
     this._permissions = user.permissions || [];
     this._token = user.token;
+    this._ownerId = user.ownerId !== undefined ? String(user.ownerId) : undefined;
   }
 
+// declarar campo y getter/setter
+  private _ownerId?: string;
+  get ownerId(): string | undefined { return this._ownerId; }
+  set ownerId(v: string | undefined) { this._ownerId = v; }
   /**
    * The unique identifier for the user.
    */

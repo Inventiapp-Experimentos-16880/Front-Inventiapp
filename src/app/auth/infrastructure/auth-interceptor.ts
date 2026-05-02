@@ -20,12 +20,12 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   // Add token to request if available and not expired
   if (token && !tokenService.isTokenExpired()) {
     const clonedRequest = req.clone({
-      setHeaders: {
-        Authorization: `Bearer ${token}`
-      }
+      setHeaders: { Authorization: `Bearer ${token}` }
     });
     return next(clonedRequest);
   }
 
+// Depuración temporal: ver qué peticiones salen sin token
+  console.warn('[auth-interceptor] no token for request:', req.url);
   return next(req);
 };
