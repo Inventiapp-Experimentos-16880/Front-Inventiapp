@@ -155,6 +155,12 @@ export class RestockingDialogComponent implements OnInit {
     return this.fechaVencimiento! < this.fechaRecepcion!;
   }
 
+  isExpirationNowReception(): boolean {
+    if (!this.isValidDate(this.fechaRecepcion) || !this.isValidDate(this.fechaVencimiento)) return false;
+    return this.fechaVencimiento!.getTime() === this.fechaRecepcion!.getTime()
+  }
+
+
   get canSave(): boolean {
     const productOk = !!this.selectedProductId;
     const quantityOk = Number.isFinite(this.quantity) && Number.isInteger(this.quantity) && this.quantity > 0 && !this.quantityInvalid;

@@ -17,6 +17,10 @@ export class ProvidersApi extends BaseApi {
     return this.providersEndpoint.getAll();
   }
 
+  getProvidersForReport() {
+    return this.providersEndpoint.getAllForReport();
+  }
+
   getProviderById(id: number) {
     return this.providersEndpoint.getById(id);
   }

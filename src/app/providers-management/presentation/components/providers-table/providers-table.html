@@ -15,7 +15,7 @@
         {{ 'providers-view.providers-table.phone' | translate }}
       </th>
       <td mat-cell *matCellDef="let p">
-        {{ p.phoneNumber ?? '-'}}
+        {{ p.phoneNumber ? (p.phoneNumber | slice:0:9) : '-' }}
       </td>
     </ng-container>
 
