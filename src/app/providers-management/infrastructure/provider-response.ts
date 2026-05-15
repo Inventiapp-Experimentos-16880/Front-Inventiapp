@@ -8,6 +8,7 @@ export interface ProviderResource extends BaseResource {
   phone?: string;
   email: string;
   ruc: string;
+  isDeleted: boolean;
 }
 
 export interface ProviderResponse extends BaseResponse{

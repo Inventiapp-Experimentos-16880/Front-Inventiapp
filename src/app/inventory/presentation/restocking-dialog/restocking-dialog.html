@@ -80,6 +80,12 @@
         <mat-icon color="warn">error</mat-icon>
         <span>La fecha de vencimiento no puede ser anterior a la fecha de recepción</span>
       </div>
+
+      <div class="error-message" *ngIf="isExpirationNowReception()">
+        <mat-icon color="warn">error</mat-icon>
+        <span>La fecha de vencimiento no puede ser igual a la fecha de recepción</span>
+      </div>
+
     </div>
 
     <div *ngIf="loading" class="loading-container">

@@ -17,6 +17,7 @@ import {MatIconButton} from '@angular/material/button';
 import {MatDialog} from '@angular/material/dialog';
 import {ProviderFormDialog} from '../provider-form-dialog/provider-form-dialog';
 import {ProvidersStore} from '../../../application/providers.store';
+import {SlicePipe} from '@angular/common';
 
 @Component({
   selector: 'app-providers-table',
@@ -34,7 +35,8 @@ import {ProvidersStore} from '../../../application/providers.store';
     MatHeaderRowDef,
     MatRowDef,
     MatIconModule,
-    MatIconButton
+    MatIconButton,
+    SlicePipe
   ],
   templateUrl: './providers-table.html',
   styleUrl: './providers-table.css'

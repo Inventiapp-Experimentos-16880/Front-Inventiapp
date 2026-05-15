@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  platformProviderApiBaseUrl: 'https://backend-stocktrack-production.up.railway.app/api/v1',
+  platformProviderApiBaseUrl: 'http://localhost:8080/api/v1',
   platformProviderProductsEndpointPath: '/products',
   platformProviderProvidersEndpointPath: '/providers',
   platformProviderBatchesEndpointPath: '/batches',
@@ -11,5 +11,6 @@ export const environment = {
   platformProviderDashboardEndpointPath: '/dashboard',
   platformProviderAuthEndpointPath: '/authentication',
   platformProviderAuthSignInEndpointPath: '/authentication/sign-in',
-  platformProviderAuthSignUpEndpointPath: '/authentication/sign-up'
+  platformProviderAuthSignUpEndpointPath: '/authentication/sign-up',
+  platformProviderReportsEndpointPath: '/reports'
 }
