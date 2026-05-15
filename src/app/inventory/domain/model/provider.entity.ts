@@ -7,7 +7,7 @@ import { BaseEntity } from '../../../shared/infrastructure/base-entity';
 export class Provider implements BaseEntity {
   /**
    * Creates a new Provider instance.
-   * @param provider - An object containing id, firstName, lastName, phoneNumber, email and ruc.
+   * @param provider - An object containing id, firstName, lastName, phoneNumber, email, ruc and isDeleted.
    * @returns A new instance of Provider.
    */
   constructor(provider: {
@@ -17,6 +17,7 @@ export class Provider implements BaseEntity {
     phoneNumber: string;
     email: string;
     ruc: string;
+    isDeleted?: boolean; // 1. Añadimos al constructor como opcional
   }) {
     this._id = provider.id;
     this._firstName = provider.firstName;
@@ -24,6 +25,7 @@ export class Provider implements BaseEntity {
     this._phoneNumber = provider.phoneNumber;
     this._email = provider.email;
     this._ruc = provider.ruc;
+    this._isDeleted = provider.isDeleted ?? false; // 2. Inicializamos con valor por defecto
   }
 
   /** The unique identifier for the provider. */
@@ -55,4 +57,9 @@ export class Provider implements BaseEntity {
   private _ruc: string;
   get ruc(): string { return this._ruc; }
   set ruc(value: string) { this._ruc = value; }
+
+  /** 3. Estado de borrado lógico (Soft Delete) */
+  private _isDeleted: boolean;
+  get isDeleted(): boolean { return this._isDeleted; }
+  set isDeleted(value: boolean) { this._isDeleted = value; }
 }
