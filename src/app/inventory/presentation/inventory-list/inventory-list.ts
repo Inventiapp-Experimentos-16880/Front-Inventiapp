@@ -21,6 +21,7 @@ import { ProductInfoDialogComponent, ProductInfoData } from '../product-info-dia
 import { NewProductDialogComponent, ProductDialogData } from '../new-product-dialog/new-product-dialog';
 import { NewCategoryDialogComponent } from '../new-category-dialog/new-category-dialog';
 import { InventoryStore } from '../../application/inventory.store';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 type ProductRow = {
   id: string,
@@ -63,6 +64,7 @@ export class InventoryListComponent {
   protected readonly store = inject(InventoryStore);
   private translate = inject(TranslateService);
   private dialog = inject(MatDialog);
+  private snackBar = inject(MatSnackBar);
 
   searchTerm = signal<string>('');
   selectedCategory = signal<string>('');
@@ -381,9 +383,25 @@ export class InventoryListComponent {
   }
 
   deleteProduct(product: ProductRow): void {
-    // TODO: Implementar eliminación de producto con confirmación
+    // 1. Regla de negocio: Si tiene stock, no se puede "borrar"
+    if (product.currentStock > 0) {
+      this.snackBar.open(
+        `No se puede eliminar "${product.name}" porque aún tiene ${product.currentStock} unidades en stock.`,
+        'Cerrar',
+        { duration: 5000, panelClass: 'error-snackbar' }
+      );
+      return;
+    }
+
+    // 2. Si el stock es 0, pedimos confirmación (puedes usar un confirm simple o tu ConfirmDialog)
     if (confirm(this.t('inventory.confirmDelete').replace('{name}', product.name))) {
-      console.log('Eliminar producto:', product);
+
+      // 3. Llamamos al store para el Soft Delete
+      this.store.removeProduct(product.id);
+
+      this.snackBar.open(`${product.name} ha sido marcado como inactivo.`, 'Cerrar', {
+        duration: 3000
+      });
     }
   }
 }

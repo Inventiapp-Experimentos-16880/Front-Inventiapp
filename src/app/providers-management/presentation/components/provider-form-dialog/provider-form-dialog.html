@@ -36,13 +36,13 @@
 
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>{{ 'providers-view.form-dialog.phone-number' | translate }}</mat-label>
-        <input matInput formControlName="phoneNumber" placeholder="Ej: 987654321"/>
+        <input matInput formControlName="phoneNumber" maxlength="9" placeholder="Ej: 987654321"/>
         <mat-icon matPrefix>phone</mat-icon>
         <mat-error *ngIf="form.get('phoneNumber')?.hasError('required')">
           {{ 'providers-view.form-dialog.phone-number-required' | translate }}
         </mat-error>
         <mat-error *ngIf="form.get('phoneNumber')?.hasError('pattern')">
-          {{ 'providers-view.form-dialog.phone-number-invalid' | translate }}
+          El teléfono debe empezar con 9 y tener 9 dígitos.
         </mat-error>
       </mat-form-field>
 
@@ -62,13 +62,16 @@
         <mat-label>{{ 'providers-view.form-dialog.ruc' | translate }}</mat-label>
         <input matInput formControlName="ruc" maxlength="11" placeholder="Ej: 20123456789"/>
         <mat-icon matPrefix>badge</mat-icon>
+
         <mat-error *ngIf="form.get('ruc')?.hasError('required')">
-          {{ 'providers-view.form-dialog.ruc-required' | translate }}
+          El RUC es obligatorio
         </mat-error>
-        <mat-error *ngIf="form.get('ruc')?.hasError('pattern')">
-          {{ 'providers-view.form-dialog.ruc-invalid' | translate }}
+
+        <mat-error *ngIf="form.get('ruc')?.hasError('allSameDigits') || form.get('ruc')?.hasError('invalidRuc')">
+          El número de RUC no es válido o es falso.
         </mat-error>
       </mat-form-field>
+
     </div>
   </mat-dialog-content>
 

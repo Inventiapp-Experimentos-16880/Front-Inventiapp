@@ -11,12 +11,29 @@ export class ProviderAssembler implements BaseAssembler<Provider, ProviderResour
       lastName: resource.lastName,
       phoneNumber: resource.phone,
       email: resource.email,
-      ruc: resource.ruc
+      ruc: resource.ruc,
+      isDeleted: resource.isDeleted ?? false
     } as any);
   }
 
-  toEntitiesFromResponse(response: ProviderResponse): Provider[] {
-    return response.providers.map(provider => this.toEntityFromResource(provider as ProviderResource));
+  // En provider.assembler.ts
+
+  toEntitiesFromResponse(response: any): Provider[] {
+    // 1. Si la respuesta es un array directo
+    if (Array.isArray(response)) {
+      // Tipamos 'resource' como ProviderResource
+      return response.map((resource: ProviderResource) => this.toEntityFromResource(resource));
+    }
+
+    // 2. Si la respuesta viene envuelta en el objeto { providers: [...] }
+    if (response && response.providers && Array.isArray(response.providers)) {
+      // Tipamos 'resource' aquí también
+      return response.providers.map((resource: ProviderResource) => this.toEntityFromResource(resource));
+    }
+
+    // 3. Fallback
+    console.warn('ProviderAssembler: Formato de respuesta no reconocido o vacío', response);
+    return [];
   }
 
   toResourceFromEntity(entity: Provider): ProviderResource {
@@ -26,7 +43,8 @@ export class ProviderAssembler implements BaseAssembler<Provider, ProviderResour
       lastName: entity.lastName,
       phoneNumber: entity.phoneNumber,
       email: entity.email,
-      ruc: entity.ruc
+      ruc: entity.ruc,
+      isDeleted: entity.isDeleted
     } as ProviderResource;
   }
 }

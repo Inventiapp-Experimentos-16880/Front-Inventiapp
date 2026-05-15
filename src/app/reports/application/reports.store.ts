@@ -65,7 +65,7 @@ export class ReportsStore {
     // Load all necessary data in parallel using forkJoin
     forkJoin({
       products: this.productsApi.getProducts(),
-      providers: this.providersApi.getProviders(),
+      providers: this.providersApi.getProvidersForReport(),
       categories: this.categoryApi.getAll(),
       batches: this.batchApi.getBatches(),
       sales: this.salesApi.getAllSales()
@@ -151,7 +151,8 @@ export class ReportsStore {
         ruc: provider.ruc,
         productCount: providerProducts.length,
         productNames: providerProducts,
-        categoryNames: Array.from(providerCategorySet)
+        categoryNames: Array.from(providerCategorySet),
+        isDeleted: provider.isDeleted // <--- AÑADE ESTA LÍNEA
       });
     });
 

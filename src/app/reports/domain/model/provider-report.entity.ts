@@ -16,6 +16,7 @@ export class ProviderReport implements BaseEntity {
     productCount?: number;
     productNames?: string[];
     categoryNames?: string[];
+    isDeleted?: boolean;
   }) {
     this._id = provider.id;
     this._firstName = provider.firstName;
@@ -26,6 +27,7 @@ export class ProviderReport implements BaseEntity {
     this._productCount = provider.productCount ?? 0;
     this._productNames = provider.productNames ?? [];
     this._categoryNames = provider.categoryNames ?? [];
+    this._isDeleted = provider.isDeleted ?? false;
   }
 
   private _id: string;
@@ -64,6 +66,10 @@ export class ProviderReport implements BaseEntity {
   get categoryNames(): string[] { return this._categoryNames; }
   set categoryNames(value: string[]) { this._categoryNames = value; }
 
+  private _isDeleted: boolean;
+  get isDeleted(): boolean { return this._isDeleted; }
+  set isDeleted(value: boolean) { this._isDeleted = value; }
+
   get fullName(): string {
     return `${this._firstName} ${this._lastName}`;
   }
@@ -75,4 +81,3 @@ export class ProviderReport implements BaseEntity {
     return this._productNames.join(', ');
   }
 }
-
