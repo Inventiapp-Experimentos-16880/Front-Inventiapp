@@ -356,7 +356,7 @@
     "saveChanges": "Save Changes",
     "delete": "Delete",
     "loading": "Loading...",
-    "validationNumber": "Please enter a valid positive number",
+    "validationNumber": "Please enter a valid positive number and less than 100",
     "validationExpirationDate": "Expiration date must be equivalent or later than today",
     "validateNumberCart": "Invalid number in cart. Please enter a valid number."
   },

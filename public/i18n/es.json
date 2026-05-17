@@ -359,7 +359,7 @@
     "saveChanges": "Guardar Cambios",
     "delete": "Eliminar",
     "loading": "Cargando...",
-    "validationNumber": "Ingresa un número entero positivo",
+    "validationNumber": "Ingresa un número entero positivo y menor a 100",
     "validationExpirationDate": "Ingrese un una fecha de expiración válida que sea igual o posterior a la fecha de recepción",
     "validateNumberCart": "Hay cantidades inválidas en el carrito. Corrija antes de guardar"
   },
