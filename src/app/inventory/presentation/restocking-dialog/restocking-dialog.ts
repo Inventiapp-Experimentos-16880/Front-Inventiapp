@@ -101,6 +101,17 @@ export class RestockingDialogComponent implements OnInit {
       return;
     }
 
+    // Validar que no exceda 100
+    if (this.quantity > 100) {
+      this.quantityInvalid = true;
+      this.snackBar.open('La cantidad no puede exceder 100.', 'Cerrar', {
+        duration: 3000,
+        horizontalPosition: 'center',
+        verticalPosition: 'top'
+      });
+      return;
+    }
+
     const batch = new Batch({
       id: '', // Backend will assign the ID
       productId: this.selectedProductId,
@@ -114,9 +125,11 @@ export class RestockingDialogComponent implements OnInit {
   }
 
   incrementQuantity(): void {
-    // increment preserves integer
-    this.quantity = Number.isFinite(this.quantity) ? this.quantity + 1 : 1;
-    this.quantityInvalid = false;
+    // increment preserves integer, but not more than 100
+    if (this.quantity < 100) {
+      this.quantity = Number.isFinite(this.quantity) ? this.quantity + 1 : 1;
+      this.quantityInvalid = false;
+    }
   }
 
   decrementQuantity(): void {
@@ -139,8 +152,8 @@ export class RestockingDialogComponent implements OnInit {
     }
 
     const n = Number(v);
-    // Valid if finite integer and > 0
-    this.quantityInvalid = !Number.isFinite(n) || !Number.isInteger(n) || n <= 0;
+    // Valid if finite integer, > 0, and <= 100
+    this.quantityInvalid = !Number.isFinite(n) || !Number.isInteger(n) || n <= 0 || n > 100;
 
     // Keep the numeric value (do not auto-floor) so user can correct
     this.quantity = Number.isFinite(n) ? n : 0;
@@ -163,7 +176,7 @@ export class RestockingDialogComponent implements OnInit {
 
   get canSave(): boolean {
     const productOk = !!this.selectedProductId;
-    const quantityOk = Number.isFinite(this.quantity) && Number.isInteger(this.quantity) && this.quantity > 0 && !this.quantityInvalid;
+    const quantityOk = Number.isFinite(this.quantity) && Number.isInteger(this.quantity) && this.quantity > 0 && this.quantity <= 100 && !this.quantityInvalid;
     const recOk = this.isValidDate(this.fechaRecepcion);
     const expOk = this.isValidDate(this.fechaVencimiento);
     const orderOk = !this.isExpirationBeforeReception();
