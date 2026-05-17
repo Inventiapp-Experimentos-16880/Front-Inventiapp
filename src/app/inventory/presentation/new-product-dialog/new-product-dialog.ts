@@ -44,7 +44,7 @@ export class NewProductDialogComponent {
   get isValid(): boolean {
     const price = Number(String(this.form.unitPrice).replace(',', '.'));
     const minStockNum = Number(this.form.minStock);
-    const minStockIsInteger = Number.isFinite(minStockNum) && Number.isInteger(minStockNum) && minStockNum >= 0;
+    const minStockIsInteger = Number.isFinite(minStockNum) && Number.isInteger(minStockNum) && minStockNum >= 0 && minStockNum <= 100;
 
     return (
       this.form.name.trim().length > 0 &&
@@ -63,7 +63,8 @@ export class NewProductDialogComponent {
       return;
     }
     const n = Number(value);
-    this.minStockInvalid = !Number.isFinite(n) || !Number.isInteger(n) || n < 0;
+    // Valid minStock: integer between 0 and 50 (inclusive)
+    this.minStockInvalid = !Number.isFinite(n) || !Number.isInteger(n) || n < 0 || n > 100;
   }
 
   cancel() { this.dialogRef.close(false); }
@@ -73,9 +74,9 @@ export class NewProductDialogComponent {
 
     // Validar minStock como entero no negativo antes de construir el producto
     const minStockNum = Number(this.form.minStock);
-    if (!Number.isFinite(minStockNum) || !Number.isInteger(minStockNum) || minStockNum < 0) {
+    if (!Number.isFinite(minStockNum) || !Number.isInteger(minStockNum) || minStockNum < 0 || minStockNum > 100) {
       this.minStockInvalid = true;
-      this.snackBar.open('Stock mínimo inválido. Debe ser un número entero no negativo.', 'Cerrar', {
+      this.snackBar.open('Stock mínimo inválido. Debe ser un número entero entre 0 y 100.', 'Cerrar', {
         duration: 3000,
         horizontalPosition: 'center',
         verticalPosition: 'top'
