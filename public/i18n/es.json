@@ -128,7 +128,20 @@
     "kits": "Kits",
     "price": "Precio",
     "kitProductUnitPrice": "Precio unitario",
-    "kitProductTotal": "Total"
+    "kitProductTotal": "Total",
+    "batchHistory": {
+      "viewHistory": "Ver historial de movimientos",
+      "title": "Historial de movimientos",
+      "lot": "Lote",
+      "type": "Tipo",
+      "quantity": "Cantidad",
+      "date": "Fecha",
+      "entrada": "Entrada",
+      "salida": "Salida",
+      "noBatches": "Este producto no tiene lotes registrados",
+      "noMovements": "Este lote no tiene movimientos registrados",
+      "loadError": "No se pudo cargar el historial de movimientos"
+    }
   },
   "providers-view": {
     "providers": "Proveedores",

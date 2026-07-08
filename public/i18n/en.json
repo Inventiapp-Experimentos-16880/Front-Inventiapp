@@ -123,7 +123,20 @@
     "kits": "Kits",
     "price": "Price",
     "kitProductUnitPrice": "Unit price",
-    "kitProductTotal": "Total"
+    "kitProductTotal": "Total",
+    "batchHistory": {
+      "viewHistory": "View movement history",
+      "title": "Movement history",
+      "lot": "Lot",
+      "type": "Type",
+      "quantity": "Quantity",
+      "date": "Date",
+      "entrada": "Entry",
+      "salida": "Exit",
+      "noBatches": "This product has no registered lots",
+      "noMovements": "This lot has no registered movements",
+      "loadError": "The movement history could not be loaded"
+    }
   },
   "providers-view": {
     "providers": "Providers",
