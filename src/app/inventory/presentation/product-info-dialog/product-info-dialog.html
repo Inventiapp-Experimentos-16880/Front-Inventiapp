@@ -27,5 +27,8 @@
 </div>
 
 <div class="actions">
+  @if (data.productId) {
+    <button class="btn-history" (click)="openBatchHistory()">{{ 'inventory.batchHistory.viewHistory' | translate }}</button>
+  }
   <button mat-dialog-close class="btn-ghost">{{ 'global.exit' | translate }}</button>
 </div>

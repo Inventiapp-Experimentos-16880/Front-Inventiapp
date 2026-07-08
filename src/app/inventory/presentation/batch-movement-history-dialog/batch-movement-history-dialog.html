@@ -1,0 +1,53 @@
+<h3 class="dlg-title">{{ 'inventory.batchHistory.title' | translate }} — {{ data.productName }}</h3>
+
+@if (loadingBatches()) {
+  <div class="state-row">
+    <mat-spinner diameter="32"></mat-spinner>
+  </div>
+} @else if (loadError()) {
+  <p class="empty-state">{{ 'inventory.batchHistory.loadError' | translate }}</p>
+} @else if (batchPanels().length === 0) {
+  <p class="empty-state">{{ 'inventory.batchHistory.noBatches' | translate }}</p>
+} @else {
+  <mat-accordion class="batch-accordion">
+    @for (panel of batchPanels(); track panel.batch.id) {
+      <mat-expansion-panel (opened)="onPanelOpened(panel)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{ 'inventory.batchHistory.lot' | translate }} #{{ panel.batch.id }}</mat-panel-title>
+          <mat-panel-description>{{ panel.batch.receptionDate | date:'dd/MM/yyyy' }}</mat-panel-description>
+        </mat-expansion-panel-header>
+
+        @if (panel.loading) {
+          <div class="state-row">
+            <mat-spinner diameter="24"></mat-spinner>
+          </div>
+        } @else if (panel.error) {
+          <p class="empty-state">{{ 'inventory.batchHistory.loadError' | translate }}</p>
+        } @else if (panel.movements && panel.movements.length === 0) {
+          <p class="empty-state">{{ 'inventory.batchHistory.noMovements' | translate }}</p>
+        } @else if (panel.movements) {
+          <div class="movement-timeline">
+            <div class="movement-row movement-header">
+              <span>{{ 'inventory.batchHistory.type' | translate }}</span>
+              <span>{{ 'inventory.batchHistory.quantity' | translate }}</span>
+              <span>{{ 'inventory.batchHistory.date' | translate }}</span>
+            </div>
+            @for (movement of panel.movements; track movement.id) {
+              <div class="movement-row">
+                <span class="movement-type" [class.entrada]="movement.type === 'ENTRADA'" [class.salida]="movement.type === 'SALIDA'">
+                  {{ (movement.type === 'ENTRADA' ? 'inventory.batchHistory.entrada' : 'inventory.batchHistory.salida') | translate }}
+                </span>
+                <span>{{ movement.quantity }}</span>
+                <span>{{ movement.occurredAt | date:'dd/MM/yyyy HH:mm' }}</span>
+              </div>
+            }
+          </div>
+        }
+      </mat-expansion-panel>
+    }
+  </mat-accordion>
+}
+
+<div class="actions">
+  <button mat-dialog-close class="btn-ghost">{{ 'global.exit' | translate }}</button>
+</div>
