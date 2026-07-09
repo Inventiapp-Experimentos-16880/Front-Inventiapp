@@ -19,10 +19,11 @@ export abstract class BaseApiEndpoint<
 
   /**
    * Retrieves all entities from the API
+   * @param params Optional query parameters
    * @returns An Observable for an array of entities
    */
-  getAll(): Observable<TEntity[]> {
-    return this.http.get<TResponse | TResource[]>(this.endpointUrl).pipe(
+  getAll(params?: { [key: string]: any }): Observable<TEntity[]> {
+    return this.http.get<TResponse | TResource[]>(this.endpointUrl, { params }).pipe(
       map(response => {
         if (Array.isArray(response)) {
           return response.map(resource => this.assembler.toEntityFromResource(resource));

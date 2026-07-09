@@ -485,6 +485,26 @@ export class InventoryStore {
   }
 
   /**
+   * Searches products by name.
+   * @param name - The product name search query.
+   */
+  searchProducts(name: string): void {
+    this.loadingSignal.set(true);
+    this.errorSignal.set(null);
+
+    this.productsApi.getProducts(name).subscribe({
+      next: (products: Product[]) => {
+        this.productsSignal.set(products);
+        this.loadingSignal.set(false);
+      },
+      error: (err: any) => {
+        this.errorSignal.set(this.formatError(err, 'Error searching products'));
+        this.loadingSignal.set(false);
+      }
+    });
+  }
+
+  /**
    * Refreshes inventory data.
    */
   refresh(): void {
