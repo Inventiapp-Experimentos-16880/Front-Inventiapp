@@ -30,7 +30,7 @@
       </button>
     </div>
   } @else {
-    <mat-tab-group class="reports-tabs">
+    <mat-tab-group class="reports-tabs" [selectedIndex]="selectedTabIndex">
       <mat-tab [label]="t('reports.tabs.providers')">
         <div class="tab-content">
           <mat-card class="report-card">

@@ -321,6 +321,7 @@ export class InventoryListComponent {
   openProductInfo(p: ProductRow) {
     const data: ProductInfoData = {
       title: p.name,
+      productId: p.id,
       category: p.categoryName,
       currentStock: p.currentStock,
       minStock: p.minStock,

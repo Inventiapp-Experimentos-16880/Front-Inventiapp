@@ -128,7 +128,27 @@
     "kits": "Kits",
     "price": "Precio",
     "kitProductUnitPrice": "Precio unitario",
-    "kitProductTotal": "Total"
+    "kitProductTotal": "Total",
+    "batchHistory": {
+      "viewHistory": "Ver historial de movimientos",
+      "title": "Historial de movimientos",
+      "lot": "Lote",
+      "type": "Tipo",
+      "quantity": "Cantidad",
+      "date": "Fecha",
+      "entrada": "Entrada",
+      "salida": "Salida",
+      "noMovements": "Este producto no tiene movimientos registrados",
+      "loadError": "No se pudo cargar el historial de movimientos",
+      "viewOnExpiring": "Ver lote en el reporte de Próximos a vencer",
+      "from": "Desde",
+      "to": "Hasta",
+      "allTypes": "Todos",
+      "allLots": "Todos",
+      "clearFilters": "Limpiar filtros",
+      "noFilteredMovements": "Ningún movimiento coincide con los filtros",
+      "filteredCount": "{{count}} de {{total}} movimientos"
+    }
   },
   "providers-view": {
     "providers": "Proveedores",
