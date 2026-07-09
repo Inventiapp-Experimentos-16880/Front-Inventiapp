@@ -1,51 +1,100 @@
 <h3 class="dlg-title">{{ 'inventory.batchHistory.title' | translate }} — {{ data.productName }}</h3>
 
-@if (loadingBatches()) {
+@if (loading()) {
   <div class="state-row">
     <mat-spinner diameter="32"></mat-spinner>
   </div>
 } @else if (loadError()) {
   <p class="empty-state">{{ 'inventory.batchHistory.loadError' | translate }}</p>
-} @else if (batchPanels().length === 0) {
-  <p class="empty-state">{{ 'inventory.batchHistory.noBatches' | translate }}</p>
+} @else if (movements().length === 0) {
+  <p class="empty-state">{{ 'inventory.batchHistory.noMovements' | translate }}</p>
 } @else {
-  <mat-accordion class="batch-accordion">
-    @for (panel of batchPanels(); track panel.batch.id) {
-      <mat-expansion-panel (opened)="onPanelOpened(panel)">
-        <mat-expansion-panel-header>
-          <mat-panel-title>{{ 'inventory.batchHistory.lot' | translate }} #{{ panel.batch.id }}</mat-panel-title>
-          <mat-panel-description>{{ panel.batch.receptionDate | date:'dd/MM/yyyy' }}</mat-panel-description>
-        </mat-expansion-panel-header>
+  <div class="filters-bar">
+    <mat-form-field appearance="outline" class="filter-field filter-date">
+      <mat-label>{{ 'inventory.batchHistory.from' | translate }}</mat-label>
+      <input matInput [matDatepicker]="pickerFrom" [ngModel]="dateFrom()" (ngModelChange)="dateFrom.set($event)">
+      <mat-datepicker-toggle matIconSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+      <mat-datepicker #pickerFrom></mat-datepicker>
+    </mat-form-field>
 
-        @if (panel.loading) {
-          <div class="state-row">
-            <mat-spinner diameter="24"></mat-spinner>
-          </div>
-        } @else if (panel.error) {
-          <p class="empty-state">{{ 'inventory.batchHistory.loadError' | translate }}</p>
-        } @else if (panel.movements && panel.movements.length === 0) {
-          <p class="empty-state">{{ 'inventory.batchHistory.noMovements' | translate }}</p>
-        } @else if (panel.movements) {
-          <div class="movement-timeline">
-            <div class="movement-row movement-header">
-              <span>{{ 'inventory.batchHistory.type' | translate }}</span>
-              <span>{{ 'inventory.batchHistory.quantity' | translate }}</span>
-              <span>{{ 'inventory.batchHistory.date' | translate }}</span>
-            </div>
-            @for (movement of panel.movements; track movement.id) {
-              <div class="movement-row">
-                <span class="movement-type" [class.entrada]="movement.type === 'ENTRADA'" [class.salida]="movement.type === 'SALIDA'">
-                  {{ (movement.type === 'ENTRADA' ? 'inventory.batchHistory.entrada' : 'inventory.batchHistory.salida') | translate }}
-                </span>
-                <span>{{ movement.quantity }}</span>
-                <span>{{ movement.occurredAt | date:'dd/MM/yyyy HH:mm' }}</span>
-              </div>
-            }
-          </div>
+    <mat-form-field appearance="outline" class="filter-field filter-date">
+      <mat-label>{{ 'inventory.batchHistory.to' | translate }}</mat-label>
+      <input matInput [matDatepicker]="pickerTo" [ngModel]="dateTo()" (ngModelChange)="dateTo.set($event)">
+      <mat-datepicker-toggle matIconSuffix [for]="pickerTo"></mat-datepicker-toggle>
+      <mat-datepicker #pickerTo></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="filter-field">
+      <mat-label>{{ 'inventory.batchHistory.type' | translate }}</mat-label>
+      <mat-select [ngModel]="typeFilter()" (ngModelChange)="typeFilter.set($event)">
+        <mat-option value="ALL">{{ 'inventory.batchHistory.allTypes' | translate }}</mat-option>
+        <mat-option value="ENTRADA">{{ 'inventory.batchHistory.entrada' | translate }}</mat-option>
+        <mat-option value="SALIDA">{{ 'inventory.batchHistory.salida' | translate }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="filter-field">
+      <mat-label>{{ 'inventory.batchHistory.lot' | translate }}</mat-label>
+      <mat-select [ngModel]="batchFilter()" (ngModelChange)="batchFilter.set($event)">
+        <mat-option value="ALL">{{ 'inventory.batchHistory.allLots' | translate }}</mat-option>
+        @for (batchId of availableBatches(); track batchId) {
+          <mat-option [value]="batchId">{{ batchLabel(batchId) }}</mat-option>
         }
-      </mat-expansion-panel>
+      </mat-select>
+    </mat-form-field>
+
+    @if (hasActiveFilters()) {
+      <button mat-stroked-button class="clear-filters-btn" (click)="clearFilters()">
+        {{ 'inventory.batchHistory.clearFilters' | translate }}
+      </button>
     }
-  </mat-accordion>
+  </div>
+
+  <p class="filters-summary">
+    {{ 'inventory.batchHistory.filteredCount' | translate: { count: filteredMovements().length, total: movements().length } }}
+  </p>
+
+  @if (filteredMovements().length === 0) {
+    <p class="empty-state">{{ 'inventory.batchHistory.noFilteredMovements' | translate }}</p>
+  } @else {
+    <div class="movements-table-wrapper">
+      <table mat-table [dataSource]="filteredMovements()" class="movements-table">
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef>{{ 'inventory.batchHistory.type' | translate }}</th>
+          <td mat-cell *matCellDef="let movement">
+            <mat-chip class="movement-type-chip" [class.entrada]="movement.type === 'ENTRADA'" [class.salida]="movement.type === 'SALIDA'" disableRipple>
+              {{ (movement.type === 'ENTRADA' ? 'inventory.batchHistory.entrada' : 'inventory.batchHistory.salida') | translate }}
+            </mat-chip>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="quantity">
+          <th mat-header-cell *matHeaderCellDef>{{ 'inventory.batchHistory.quantity' | translate }}</th>
+          <td mat-cell *matCellDef="let movement">{{ movement.quantity }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef>{{ 'inventory.batchHistory.date' | translate }}</th>
+          <td mat-cell *matCellDef="let movement">{{ movement.occurredAt | date:'dd/MM/yyyy HH:mm' }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="lot">
+          <th mat-header-cell *matHeaderCellDef>{{ 'inventory.batchHistory.lot' | translate }}</th>
+          <td mat-cell *matCellDef="let movement">
+            <mat-chip
+              class="lot-chip"
+              [matTooltip]="'inventory.batchHistory.viewOnExpiring' | translate"
+              (click)="goToExpiringReport()">
+              {{ batchLabel(movement.batchId) }}
+            </mat-chip>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  }
 }
 
 <div class="actions">

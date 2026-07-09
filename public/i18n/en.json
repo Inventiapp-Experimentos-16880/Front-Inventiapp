@@ -133,9 +133,16 @@
       "date": "Date",
       "entrada": "Entry",
       "salida": "Exit",
-      "noBatches": "This product has no registered lots",
-      "noMovements": "This lot has no registered movements",
-      "loadError": "The movement history could not be loaded"
+      "noMovements": "This product has no registered movements",
+      "loadError": "The movement history could not be loaded",
+      "viewOnExpiring": "View lot in the Expiring report",
+      "from": "From",
+      "to": "To",
+      "allTypes": "All",
+      "allLots": "All",
+      "clearFilters": "Clear filters",
+      "noFilteredMovements": "No movement matches the filters",
+      "filteredCount": "{{count}} of {{total}} movements"
     }
   },
   "providers-view": {
