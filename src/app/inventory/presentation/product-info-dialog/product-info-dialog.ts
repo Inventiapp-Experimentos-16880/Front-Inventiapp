@@ -32,7 +32,7 @@ export class ProductInfoDialogComponent {
   openBatchHistory(): void {
     if (!this.data.productId) return;
     this.dialog.open(BatchMovementHistoryDialogComponent, {
-      width: '560px',
+      width: '640px',
       maxWidth: '90vw',
       panelClass: 'batch-movement-history-dialog',
       data: { productId: this.data.productId, productName: this.data.title }
