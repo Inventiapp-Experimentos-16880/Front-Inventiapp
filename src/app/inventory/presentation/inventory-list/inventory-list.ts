@@ -74,6 +74,8 @@ export class InventoryListComponent {
   pageIndex = signal<number>(0);
   pageSize = signal<number>(10);
 
+  private searchTimeout: any;
+
 
   ngOnInit() {
     this.store.refresh()
@@ -163,13 +165,6 @@ export class InventoryListComponent {
 
     let filtered = allProducts;
 
-    const search = this.searchTerm().toLowerCase().trim();
-    if (search) {
-      filtered = filtered.filter(p =>
-        p.name.toLowerCase().includes(search)
-      );
-    }
-
     const category = this.selectedCategory();
     if (category) {
       filtered = filtered.filter(p => p.categoryId === category);
@@ -212,6 +207,14 @@ export class InventoryListComponent {
   onSearchChange(value: string): void {
     this.pageIndex.set(0);
     this.searchTerm.set(value);
+
+    if (this.searchTimeout) {
+      clearTimeout(this.searchTimeout);
+    }
+
+    this.searchTimeout = setTimeout(() => {
+      this.store.searchProducts(value);
+    }, 300);
   }
 
   onCategoryChange(value: string): void {

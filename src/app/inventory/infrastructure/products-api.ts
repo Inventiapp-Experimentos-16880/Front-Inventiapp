@@ -13,8 +13,9 @@ export class ProductsApi extends BaseApi {
     this.productsEndpoint = new ProductsApiEndpoint(http);
   }
 
-  getProducts(){
-    return this.productsEndpoint.getAll();
+  getProducts(name?: string){
+    const params = name ? { name } : undefined;
+    return this.productsEndpoint.getAll(params);
   }
 
   getProductById(id: number) {
