@@ -60,6 +60,10 @@ export const routes: Routes = [
         component: SettingsComponent
       },
       {
+        path: 'subscriptions',
+        loadChildren: () => import('./subscriptions/presentation/subscriptions.routes').then(m => m.subscriptionsRoutes)
+      },
+      {
         path: 'proveedores',
         component: ProviderComponent,
         canActivate: [permissionGuard],

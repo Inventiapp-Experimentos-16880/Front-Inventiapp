@@ -2,7 +2,11 @@
   "global": {
     "cancel": "Cancel",
     "save": "Save",
-    "exit": "Exit"
+    "exit": "Exit",
+    "unlimited": "Unlimited"
+  },
+  "app": {
+    "title": "StockTrack"
   },
   "settings": {
     "title": "Settings",
@@ -12,7 +16,9 @@
       "email": "Email",
       "role": "Role",
       "admin": "Administrator",
-      "user": "User"
+      "user": "User",
+      "planType": "Plan Type",
+      "freePlan": "Free Plan"
     },
     "language": {
       "title": "Language",
@@ -22,6 +28,11 @@
       "title": "Application Information",
       "version": "Version",
       "name": "Name"
+    },
+    "subscription": {
+      "title": "Subscription Plan",
+      "description": "Manage your payment plans and usage limits in your account.",
+      "manageBtn": "Manage Subscription"
     }
   },
   "sidebar": {
@@ -259,7 +270,6 @@
   "dashboard": {
     "title": "Dashboard",
     "greeting": "Good morning",
-
     "notifications": {
       "title": "Notifications",
       "button": "Open notifications",
@@ -290,7 +300,6 @@
       "lowStock": "Product running out"
     }
   },
-
   "personal": {
     "title": "Staff Administration"
   },
@@ -499,6 +508,47 @@
         "products": "Product Details"
       }
     }
+  },
+  "subscriptions": {
+    "plans": {
+      "backToSettings": "Back to Settings",
+      "title": "Pricing & Tiers",
+      "subtitle": "Choose the right plan for your business needs. Upgrade or cancel anytime.",
+      "titleOnboarding": "Choose your Initial Plan",
+      "subtitleOnboarding": "To get started with Inventiapp, select the subscription plan that best fits your business.",
+      "loading": "Retrieving plan details...",
+      "popular": "Recommended",
+      "month": "mo",
+      "year": "yr",
+      "limitRecipes": "Up to {{count}} Products",
+      "limitKits": "Up to {{count}} Kits",
+      "limitDevices": "Up to {{count}} Providers",
+      "realtimeAnalytics": "Batch Control & Expiration Dates",
+      "alertNotifications": "Low Stock Alerts & Reports",
+      "choosePlan": "Subscribe",
+      "currentPlan": "Your Current Plan",
+      "redirecting": "Redirecting to Checkout...",
+      "retry": "Try Again",
+      "continueFree": "Continue with free plan",
+      "descriptions": {
+        "starter": "Ideal for small shops and restaurants. Track basic recipe ingredients, kits, and smart scales.",
+        "pro": "Perfect for growing businesses. Advanced inventory management, complex recipes, production kits, and real-time scales.",
+        "enterprise": "Unlimited access and priority support. Designed for large warehouses, multiple locations, and high-volume operations."
+      }
+    },
+    "success": {
+      "title": "Payment Successful!",
+      "message": "Thank you for subscribing. Your account tier limits have been upgraded immediately.",
+      "redirectNotice": "You will be redirected to the login screen shortly...",
+      "redirectNoticeSettings": "You will be redirected to the settings screen shortly...",
+      "continueButton": "Go to Login",
+      "continueButtonSettings": "Back to Settings"
+    },
+    "cancel": {
+      "title": "Payment Canceled",
+      "message": "The checkout process was canceled. No charges were made to your card.",
+      "tryAgainButton": "View Plans & Try Again",
+      "backButton": "Cancel & Return to Settings"
+    }
   }
 }
-

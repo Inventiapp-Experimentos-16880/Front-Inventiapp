@@ -1,0 +1,101 @@
+<div class="pricing-container" [class.onboarding-mode]="isOnboarding">
+  <!-- Back Header -->
+  <div class="pricing-header">
+    <button *ngIf="!isOnboarding" class="back-btn" (click)="goBack()">
+      <span class="material-icons">arrow_back</span>
+      <span>{{ 'subscriptions.plans.backToSettings' | translate }}</span>
+    </button>
+    <h1 class="pricing-title">{{ (isOnboarding ? 'subscriptions.plans.titleOnboarding' : 'subscriptions.plans.title') | translate }}</h1>
+    <p class="pricing-subtitle">{{ (isOnboarding ? 'subscriptions.plans.subtitleOnboarding' : 'subscriptions.plans.subtitle') | translate }}</p>
+  </div>
+
+  <!-- Loading State: only show when plans are still loading -->
+  <div *ngIf="store.plansLoading()" class="loading-state">
+    <div class="spinner"></div>
+    <p>{{ 'subscriptions.plans.loading' | translate }}</p>
+  </div>
+
+  <!-- Error State: only show when the plans request itself failed -->
+  <div *ngIf="!store.plansLoading() && store.plansError()" class="error-state">
+    <span class="material-icons error-icon">error_outline</span>
+    <p>{{ store.plansError() }}</p>
+    <button class="retry-btn" (click)="store.loadPlans()">
+      {{ 'subscriptions.plans.retry' | translate }}
+    </button>
+  </div>
+
+  <!-- Pricing Cards Grid -->
+  <div *ngIf="!store.plansLoading() && !store.plansError()" class="pricing-grid">
+    <div
+      *ngFor="let plan of store.plans()"
+      class="pricing-card"
+      [class.pricing-card--pro]="plan.name === 'Pro'"
+    >
+      <div *ngIf="plan.name === 'Pro'" class="featured-badge">
+        {{ 'subscriptions.plans.popular' | translate }}
+      </div>
+
+      <div class="card-header">
+        <h2 class="plan-name">{{ plan.name }}</h2>
+        <p class="plan-desc">{{ 'subscriptions.plans.descriptions.' + plan.name.toLowerCase() | translate }}</p>
+      </div>
+
+      <div class="plan-price-block">
+        <span class="price-symbol">$</span>
+        <span class="plan-price">{{ plan.price }}</span>
+        <span class="plan-interval">/{{ 'subscriptions.plans.' + plan.billingInterval | translate }}</span>
+      </div>
+
+      <ul class="plan-features">
+        <li>
+          <span class="material-icons feature-check">check</span>
+          <span>{{ 'subscriptions.plans.limitRecipes' | translate: { count: plan.maxRecipes === -1 ? ('global.unlimited' | translate) : plan.maxRecipes } }}</span>
+        </li>
+        <li>
+          <span class="material-icons feature-check">check</span>
+          <span>{{ 'subscriptions.plans.limitKits' | translate: { count: plan.maxKits === -1 ? ('global.unlimited' | translate) : plan.maxKits } }}</span>
+        </li>
+        <li>
+          <span class="material-icons feature-check">check</span>
+          <span>{{ 'subscriptions.plans.limitDevices' | translate: { count: plan.maxDevices === -1 ? ('global.unlimited' | translate) : plan.maxDevices } }}</span>
+        </li>
+        <li>
+          <span class="material-icons feature-check">check</span>
+          <span>{{ 'subscriptions.plans.realtimeAnalytics' | translate }}</span>
+        </li>
+        <li>
+          <span class="material-icons feature-check">check</span>
+          <span>{{ 'subscriptions.plans.alertNotifications' | translate }}</span>
+        </li>
+      </ul>
+
+      <div class="card-action">
+        <button
+          class="btn-subscribe"
+          [disabled]="store.saving() || store.activeSubscription()?.planId === plan.id"
+          (click)="selectPlan(plan.id)"
+        >
+          <span *ngIf="store.saving() && store.activeSubscription()?.planId !== plan.id" class="btn-spinner"></span>
+          <span *ngIf="store.activeSubscription()?.planId === plan.id">
+            {{ 'subscriptions.plans.currentPlan' | translate }}
+          </span>
+          <span *ngIf="store.activeSubscription()?.planId !== plan.id && !store.saving()">
+            {{ 'subscriptions.plans.choosePlan' | translate }}
+          </span>
+          <span *ngIf="store.activeSubscription()?.planId !== plan.id && store.saving()">
+            {{ 'subscriptions.plans.redirecting' | translate }}
+          </span>
+        </button>
+        <!-- Show checkout error beneath the button that triggered it -->
+        <p *ngIf="store.error()" class="checkout-error">{{ store.error() }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Continue with Free Plan Option: only show in onboarding mode -->
+  <div *ngIf="isOnboarding" class="free-plan-container">
+    <button class="btn-free-plan" (click)="continueWithFreePlan()">
+      {{ 'subscriptions.plans.continueFree' | translate }}
+    </button>
+  </div>
+</div>
