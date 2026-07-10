@@ -28,6 +28,7 @@
 .actions{
   display:flex;
   justify-content:center;
+  gap:12px;
   margin-top:18px;
 }
 .btn-ghost{
@@ -39,3 +40,13 @@
   font-weight:600;
 }
 .btn-ghost:hover{ background:#fff5f5; }
+
+.btn-history{
+  background:#fff;
+  color:#1f1f1f;
+  border:1.6px solid #ccc;
+  border-radius:999px;
+  padding:10px 24px;
+  font-weight:600;
+}
+.btn-history:hover{ background:#f5f5f5; }

@@ -1,0 +1,51 @@
+<div class="page-wrapper">
+  <!-- Top brand bar -->
+  <div class="top-brand">
+    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M4.5 30C3.675 30 2.96875 29.7062 2.38125 29.1187C1.79375 28.5312 1.5 27.825 1.5 27V10.0875C1.05 9.8125 0.6875 9.45625 0.4125 9.01875C0.1375 8.58125 0 8.075 0 7.5V3C0 2.175 0.29375 1.46875 0.88125 0.88125C1.46875 0.29375 2.175 0 3 0H27C27.825 0 28.5312 0.29375 29.1187 0.88125C29.7062 1.46875 30 2.175 30 3V7.5C30 8.075 29.8625 8.58125 29.5875 9.01875C29.3125 9.45625 28.95 9.8125 28.5 10.0875V27C28.5 27.825 28.2062 28.5312 27.6187 29.1187C27.0312 29.7062 26.325 30 25.5 30H4.5ZM4.5 10.5V27H25.5V10.5H4.5ZM3 7.5H27V3H3V7.5ZM10.5 18H19.5V15H10.5V18Z"
+        fill="#ffa22a"
+      />
+    </svg>
+    <span class="brand-name">Inventiapp</span>
+  </div>
+
+  <div class="success-card">
+    <!-- Animated checkmark -->
+    <div class="checkmark-wrapper">
+      <div class="checkmark-ring"></div>
+      <span class="material-icons checkmark-icon">check_circle</span>
+    </div>
+
+    <h1 class="success-title">{{ 'subscriptions.success.title' | translate }}</h1>
+    <p class="success-message">{{ 'subscriptions.success.message' | translate }}</p>
+
+    <!-- Divider -->
+    <div class="success-divider"></div>
+
+    <!-- Confirmation info row -->
+    <div class="confirmation-row">
+      <span class="material-icons confirmation-icon">verified</span>
+      <span class="confirmation-text">Your subscription is now active and your account limits have been updated.</span>
+    </div>
+
+    <p class="redirect-notice">
+      {{ (isOnboarding ? 'subscriptions.success.redirectNotice' : 'subscriptions.success.redirectNoticeSettings') | translate }}
+    </p>
+
+    <button class="continue-btn" id="success-continue-btn" (click)="continueToApp()">
+      {{ (isOnboarding ? 'subscriptions.success.continueButton' : 'subscriptions.success.continueButtonSettings') | translate }}
+      <span class="material-icons btn-icon">arrow_forward</span>
+    </button>
+  </div>
+
+  <footer class="page-footer">
+    <div class="footer-content">
+      <span>© 2026 INVENTIAPP</span>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </nav>
+    </div>
+  </footer>
+</div>

@@ -24,6 +24,12 @@
           <span class="info-label">{{ t('settings.userInfo.role') }}</span>
           <span class="info-value">{{ currentUser()?.isAdmin() ? t('settings.userInfo.admin') : t('settings.userInfo.user') }}</span>
         </div>
+        <div class="info-item">
+          <span class="info-label">{{ t('settings.userInfo.planType') }}</span>
+          <span class="info-value">
+            {{ (subStore.activeSubscription()?.status?.toUpperCase() === 'ACTIVE' ? subStore.activeSubscription()?.planName : t('settings.userInfo.freePlan')) }}
+          </span>
+        </div>
       </mat-card-content>
     </mat-card>
 
@@ -38,6 +44,23 @@
         <p class="section-description">{{ t('settings.language.description') }}</p>
         <div class="language-section">
           <app-language-switcher></app-language-switcher>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="settings-card">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon aria-hidden="true">credit_card</mat-icon>
+          {{ t('settings.subscription.title') }}
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="section-description">{{ t('settings.subscription.description') }}</p>
+        <div style="margin-top: 16px;">
+          <button mat-stroked-button class="btn-manage-subscription" (click)="navigateToPlans()">
+            {{ t('settings.subscription.manageBtn') }}
+          </button>
         </div>
       </mat-card-content>
     </mat-card>

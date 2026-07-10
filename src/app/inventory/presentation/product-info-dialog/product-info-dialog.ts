@@ -1,10 +1,12 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogModule, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import {TranslatePipe} from '@ngx-translate/core';
+import { BatchMovementHistoryDialogComponent } from '../batch-movement-history-dialog/batch-movement-history-dialog';
 
 export interface ProductInfoData {
   title: string;
+  productId?: string;
   category?: string;
   currentStock: number;
   minStock: number;
@@ -23,5 +25,17 @@ export interface ProductInfoData {
   styleUrls: ['./product-info-dialog.css'],
 })
 export class ProductInfoDialogComponent {
+  private readonly dialog = inject(MatDialog);
+
   constructor(@Inject(MAT_DIALOG_DATA) public data: ProductInfoData) {}
+
+  openBatchHistory(): void {
+    if (!this.data.productId) return;
+    this.dialog.open(BatchMovementHistoryDialogComponent, {
+      width: '640px',
+      maxWidth: '90vw',
+      panelClass: 'batch-movement-history-dialog',
+      data: { productId: this.data.productId, productName: this.data.title }
+    });
+  }
 }

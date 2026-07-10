@@ -243,7 +243,7 @@ export class AuthStore {
         }
 
         this.loadingSignal.set(false);
-        this.router.navigate(['/dashboard']).catch(err => {
+        this.router.navigate(['/subscriptions/plans'], { queryParams: { onboarding: 'true' } }).catch(err => {
           console.error('Navigation error:', err);
         });
       },

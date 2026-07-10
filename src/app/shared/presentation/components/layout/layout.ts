@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, filter } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from '../sidebar/sidebar';
 import { MobileNavComponent } from '../mobile-nav/mobile-nav';
@@ -22,8 +22,10 @@ import { TopbarComponent } from '../topbar/topbar';
 })
 export class Layout implements OnInit, OnDestroy {
   private breakpointObserver = inject(BreakpointObserver);
+  private router = inject(Router);
   private destroy$ = new Subject<void>();
   isMobile = false;
+  isOnboarding = false;
 
   ngOnInit() {
     this.breakpointObserver
@@ -32,6 +34,21 @@ export class Layout implements OnInit, OnDestroy {
       .subscribe(result => {
         this.isMobile = result.matches;
       });
+
+    // Detect onboarding query parameter to hide sidebar/topbar
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+      takeUntil(this.destroy$)
+    ).subscribe(() => {
+      this.checkOnboarding();
+    });
+
+    this.checkOnboarding();
+  }
+
+  private checkOnboarding(): void {
+    const urlTree = this.router.parseUrl(this.router.url);
+    this.isOnboarding = urlTree.queryParams['onboarding'] === 'true';
   }
 
   ngOnDestroy() {

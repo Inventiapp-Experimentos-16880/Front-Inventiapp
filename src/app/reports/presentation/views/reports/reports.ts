@@ -13,6 +13,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { ActivatedRoute } from '@angular/router';
 import { forkJoin, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { ReportsStore } from '../../../application/reports.store';
@@ -60,6 +61,18 @@ export class ReportsComponent implements OnInit {
   private readonly excelExportService = inject(ExcelExportService);
   private readonly productsApi = inject(ProductsApi);
   private readonly kitsApi = inject(KitApi);
+  private readonly activatedRoute = inject(ActivatedRoute);
+
+  // Maps a `tab` query param value to its mat-tab index, so other views can deep-link here.
+  private static readonly TAB_INDEX_BY_KEY: Record<string, number> = {
+    providers: 0,
+    stock: 1,
+    expiring: 2,
+    lowStock: 3,
+    sales: 4
+  };
+
+  protected selectedTabIndex = 0;
 
   // Cache para nombres de productos y kits
   private productNameCache = new Map<number, string>();
@@ -148,6 +161,11 @@ export class ReportsComponent implements OnInit {
     // Initialize filtered products with all products initially
     this.updateFilteredExpiringProducts();
     this.updateFilteredProvidersReport();
+
+    const tabKey = this.activatedRoute.snapshot.queryParamMap.get('tab');
+    if (tabKey && tabKey in ReportsComponent.TAB_INDEX_BY_KEY) {
+      this.selectedTabIndex = ReportsComponent.TAB_INDEX_BY_KEY[tabKey];
+    }
 
     // Pre-cargar nombres cuando las ventas estén disponibles
     effect(() => {
