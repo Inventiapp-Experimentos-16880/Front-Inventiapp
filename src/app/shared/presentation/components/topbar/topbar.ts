@@ -61,6 +61,8 @@ export class TopbarComponent {
       this.pageTitle = 'settings.title';
     } else if (url.includes('/perfil')) {
       this.pageTitle = 'personal.title';
+    } else if (url.includes('/subscriptions')) {
+      this.pageTitle = 'subscriptions.plans.title';
     } else {
       this.pageTitle = 'app.title';
     }

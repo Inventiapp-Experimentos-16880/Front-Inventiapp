@@ -2,7 +2,11 @@
   "global": {
     "cancel": "Cancelar",
     "save": "Guardar",
-    "exit": "Salir"
+    "exit": "Salir",
+    "unlimited": "Ilimitados"
+  },
+  "app": {
+    "title": "StockTrack"
   },
   "settings": {
     "title": "Configuración",
@@ -12,7 +16,9 @@
       "email": "Correo electrónico",
       "role": "Rol",
       "admin": "Administrador",
-      "user": "Usuario"
+      "user": "Usuario",
+      "planType": "Tipo de plan",
+      "freePlan": "Plan Gratuito"
     },
     "language": {
       "title": "Idioma",
@@ -22,6 +28,11 @@
       "title": "Información de la Aplicación",
       "version": "Versión",
       "name": "Nombre"
+    },
+    "subscription": {
+      "title": "Plan de Suscripción",
+      "description": "Administra tus planes de pago y límites de uso en tu cuenta.",
+      "manageBtn": "Gestionar Suscripción"
     }
   },
   "sidebar": {
@@ -481,6 +492,47 @@
         "products": "Detalles de Productos"
       }
     }
+  },
+  "subscriptions": {
+    "plans": {
+      "backToSettings": "Volver a Ajustes",
+      "title": "Precios y Planes",
+      "subtitle": "Elige el plan adecuado para las necesidades de tu negocio. Sube de categoría o cancela en cualquier momento.",
+      "titleOnboarding": "Elige tu Plan Inicial",
+      "subtitleOnboarding": "Para comenzar a usar Inventiapp, selecciona el plan de suscripción que mejor se adapte a tu negocio.",
+      "loading": "Recuperando detalles del plan...",
+      "popular": "Recomendado",
+      "month": "mes",
+      "year": "año",
+      "limitRecipes": "Hasta {{count}} Productos",
+      "limitKits": "Hasta {{count}} Kits",
+      "limitDevices": "Hasta {{count}} Proveedores",
+      "realtimeAnalytics": "Control de Lotes y Vencimientos",
+      "alertNotifications": "Alertas de Stock Bajo y Reportes",
+      "choosePlan": "Suscribirse",
+      "currentPlan": "Tu Plan Actual",
+      "redirecting": "Redirigiendo al Pago...",
+      "retry": "Intentar de Nuevo",
+      "continueFree": "Continuar con plan gratuito",
+      "descriptions": {
+        "starter": "Ideal para pequeños negocios y restaurantes. Controla tus insumos básicos de recetas, kits y balanzas inteligentes.",
+        "pro": "Perfecto para negocios en crecimiento. Gestión avanzada de inventario, recetas complejas, kits de producción y balanzas en tiempo real.",
+        "enterprise": "Acceso ilimitado y soporte prioritario. Diseñado para grandes almacenes, múltiples sedes y operaciones a gran escala."
+      }
+    },
+    "success": {
+      "title": "¡Pago Exitoso!",
+      "message": "Gracias por suscribirte. Los límites de tu cuenta se han actualizado de inmediato.",
+      "redirectNotice": "Serás redirigido a la pantalla de inicio de sesión en breve...",
+      "redirectNoticeSettings": "Serás redirigido a la pantalla de configuración en breve...",
+      "continueButton": "Ir a Iniciar Sesión",
+      "continueButtonSettings": "Volver a Configuración"
+    },
+    "cancel": {
+      "title": "Pago Cancelado",
+      "message": "El proceso de pago fue cancelado. No se realizaron cargos en tu tarjeta.",
+      "tryAgainButton": "Ver Planes e Intentar de Nuevo",
+      "backButton": "Cancelar y Volver a Ajustes"
+    }
   }
 }
-

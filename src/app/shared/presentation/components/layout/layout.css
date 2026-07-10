@@ -72,3 +72,8 @@
   }
 }
 
+.main-content.onboarding-content {
+  padding: 0;
+  background: transparent;
+}
+
