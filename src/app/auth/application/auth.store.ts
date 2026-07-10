@@ -98,7 +98,8 @@ export class AuthStore {
               email: currentUser.email,
               roles: currentUser.roles,
               permissions: userData.permissions || [],
-              token: currentUser.token
+              token: currentUser.token,
+              ownerId: currentUser.ownerId
             }));
           }
           resolve();
