@@ -12,5 +12,6 @@ export const environment = {
   platformProviderAuthEndpointPath: '/authentication',
   platformProviderAuthSignInEndpointPath: '/authentication/sign-in',
   platformProviderAuthSignUpEndpointPath: '/authentication/sign-up',
-  platformProviderReportsEndpointPath: '/reports'
+  platformProviderReportsEndpointPath: '/reports',
+  platformProviderLocalizationEndpointPath: '/localization'
 }
