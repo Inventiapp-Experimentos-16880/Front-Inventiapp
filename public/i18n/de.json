@@ -1,0 +1,578 @@
+{
+  "global": {
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "exit": "Beenden",
+    "unlimited": "Unbegrenzt"
+  },
+  "app": {
+    "title": "StockTrack"
+  },
+  "languageSwitcher": {
+    "title": "Anwendungssprache",
+    "trigger": "Anwendungssprache ändern",
+    "mode": {
+      "manualShort": "Manuell",
+      "locationShort": "Standort"
+    },
+    "manual": {
+      "description": "Manuell ausgewählte Sprache",
+      "choose": "Manuelle Sprache auswählen"
+    },
+    "location": {
+      "title": "Sprache nach Standort",
+      "loading": "Sprache anhand des Standorts wird ermittelt...",
+      "detectedIn": "Empfohlen für {{country}}",
+      "unavailable": "Die standortbasierte Sprache ist nicht verfügbar",
+      "refresh": "Standort erneut erkennen"
+    }
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "subtitle": "Anwendungseinstellungen und Optionen verwalten",
+    "userInfo": {
+      "title": "Benutzerinformationen",
+      "email": "E-Mail",
+      "role": "Rolle",
+      "admin": "Administrator",
+      "user": "Benutzer",
+      "planType": "Tarifart",
+      "freePlan": "Kostenloser Tarif"
+    },
+    "language": {
+      "title": "Sprache",
+      "description": "Sprache der Benutzeroberfläche auswählen"
+    },
+    "appInfo": {
+      "title": "Anwendungsinformationen",
+      "version": "Version",
+      "name": "Name"
+    },
+    "subscription": {
+      "title": "Abonnement",
+      "description": "Verwalten Sie Ihre Zahlungstarife und Nutzungslimits in Ihrem Konto.",
+      "manageBtn": "Abonnement verwalten"
+    }
+  },
+  "sidebar": {
+    "title": "StockTrack",
+    "menu": {
+      "home": "Startseite",
+      "inventory": "Lagerbestand",
+      "providers": "Lieferanten",
+      "sales": "Verkäufe",
+      "reports": "Berichte",
+      "more": "Mehr",
+      "aria": {
+        "home": "Zur Startseite",
+        "inventory": "Zum Lagerbestand",
+        "providers": "Zu den Lieferanten",
+        "sales": "Zu den Verkäufen",
+        "reports": "Zu den Berichten",
+        "more": "Menü mit weiteren Optionen öffnen",
+        "language": "Sprachauswahl",
+        "navigation": "Hauptnavigation"
+      }
+    },
+    "footer": {
+      "settings": "Einstellungen",
+      "personal": "Personalverwaltung",
+      "logout": "Abmelden",
+      "aria": {
+        "settings": "Zu den Einstellungen",
+        "personal": "Zur Personalverwaltung",
+        "logout": "Abmelden"
+      }
+    }
+  },
+  "home": {
+    "title": "Willkommen bei StockTrack",
+    "subtitle": "Bestandsverwaltungssystem"
+  },
+  "kits": {
+    "validationQuantityInteger": "Die Menge muss eine positive ganze Zahl sein"
+  },
+  "inventory": {
+    "title": "Bestandsverwaltung",
+    "subtitle": "Produkte und Lagerbestand verwalten",
+    "emptyState": {
+      "title": "Lagerbestand",
+      "description": "Dies ist die Bestandsansicht",
+      "message": "Bald können Sie hier alle Ihre Produkte verwalten"
+    },
+    "header": "Lagerbestand",
+    "invalidPrice": "Ungültiger Preis. Bitte geben Sie eine gültige positive Zahl ein.",
+    "products": "Produkte",
+    "name": "Name",
+    "unitPrice": "Stückpreis",
+    "currentStock": "Aktueller Bestand",
+    "minimumStock": "Mindestbestand",
+    "informationProduct": "Informationen",
+    "actions": "Aktionen",
+    "viewDetail": "Details anzeigen",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "confirmDelete": "Möchten Sie das Produkt {name} wirklich löschen?",
+    "noProductsFound": "Keine Produkte gefunden",
+    "tryDifferentSearch": "Versuchen Sie andere Suchkriterien oder Filter",
+    "filter": "Filter",
+    "search": "Suchen",
+    "allCategories": "Alle Kategorien",
+    "allProviders": "Alle Lieferanten",
+    "allLots": "Alle Chargen",
+    "allStatuses": "Alle Status",
+    "date": "Datum",
+    "clearFilters": "Filter zurücksetzen",
+    "removeFilter": "Filter entfernen",
+    "loadingKits": "Kits werden geladen...",
+    "loadingProducts": "Produkte werden geladen...",
+    "retry": "Erneut versuchen",
+    "product": "Produkt",
+    "newReplacement": "Nachschub erfassen",
+    "noKits": "Keine Kits vorhanden",
+    "startKits": "Erstellen Sie Ihr erstes Kit über die Schaltfläche",
+    "newKit": "Neues Kit",
+    "priceKit": "Kit-Preis",
+    "quantity": "Auszuwählende Menge",
+    "category": "Kategorie",
+    "provider": "Lieferant",
+    "select": "Auswählen",
+    "newProduct": "Neues Produkt",
+    "editProduct": "Produkt bearbeiten",
+    "newCategory": "Neue Kategorie",
+    "description": "Beschreibung",
+    "categoryNamePlaceholder": "Beispiel: Milchprodukte",
+    "categoryDescriptionPlaceholder": "Beispiel: Milchprodukte und daraus hergestellte Erzeugnisse",
+    "productDescriptionPlaceholder": "Beispiel: Vollmilch in einer 1-Liter-Packung",
+    "isActive": "Status",
+    "activeProduct": "Produkt ist aktiv",
+    "lot": "Charge",
+    "receiptDate": "Eingangsdatum",
+    "expirationDate": "Ablaufdatum",
+    "amountEntering": "Eingehende Menge",
+    "lastReception": "Letzter Wareneingang",
+    "lowStock": "Niedriger Bestand",
+    "status": "Status",
+    "outOfStock": "Nicht auf Lager",
+    "normalStock": "Normal",
+    "kits": "Kits",
+    "price": "Preis",
+    "kitProductUnitPrice": "Stückpreis",
+    "kitProductTotal": "Gesamt",
+    "batchHistory": {
+      "viewHistory": "Bewegungsverlauf anzeigen",
+      "title": "Bewegungsverlauf",
+      "lot": "Charge",
+      "type": "Typ",
+      "quantity": "Menge",
+      "date": "Datum",
+      "entrada": "Eingang",
+      "salida": "Ausgang",
+      "noMovements": "Für dieses Produkt sind keine Bewegungen erfasst",
+      "loadError": "Der Bewegungsverlauf konnte nicht geladen werden",
+      "viewOnExpiring": "Charge im Bericht „Bald ablaufend“ anzeigen",
+      "from": "Von",
+      "to": "Bis",
+      "allTypes": "Alle",
+      "allLots": "Alle",
+      "clearFilters": "Filter zurücksetzen",
+      "noFilteredMovements": "Keine Bewegung entspricht den Filtern",
+      "filteredCount": "{{count}} von {{total}} Bewegungen"
+    }
+  },
+  "providers-view": {
+    "providers": "Lieferanten",
+    "providers-table": {
+      "name": "Name",
+      "contact": "Kontakt",
+      "phone": "Mobiltelefon",
+      "email": "E-Mail",
+      "ruc": "RUC",
+      "address": "Adresse",
+      "actions": "Aktionen",
+      "edit": "Bearbeiten",
+      "delete": "Löschen"
+    },
+    "providers-toolbar": {
+      "search": "Suchen",
+      "filter": "Filtern",
+      "add-provider": "Lieferant hinzufügen"
+    },
+    "form-dialog": {
+      "add": "Lieferant hinzufügen",
+      "edit": "Lieferant bearbeiten",
+      "title": "Lieferant hinzufügen/bearbeiten",
+      "first-name": "Vorname",
+      "last-name": "Nachname",
+      "phone-number": "Mobiltelefon",
+      "email": "E-Mail",
+      "ruc": "RUC",
+      "cancel": "Abbrechen",
+      "save": "Speichern",
+      "first-name-required": "Der Vorname ist erforderlich",
+      "first-name-minlength": "Der Vorname muss mindestens 2 Zeichen lang sein",
+      "last-name-required": "Der Nachname ist erforderlich",
+      "last-name-minlength": "Der Nachname muss mindestens 2 Zeichen lang sein",
+      "phone-number-required": "Die Telefonnummer ist erforderlich",
+      "phone-number-invalid": "Ungültiges Telefonnummernformat",
+      "email-required": "Die E-Mail-Adresse ist erforderlich",
+      "email-invalid": "Ungültiges E-Mail-Format",
+      "ruc-required": "Die RUC ist erforderlich",
+      "ruc-invalid": "Die RUC muss genau 11 Ziffern enthalten"
+    }
+  },
+  "sales": {
+    "title": "Verkaufsverwaltung",
+    "subtitle": "Verkäufe und Transaktionen verwalten",
+    "search": "Produkte suchen",
+    "filter": "Filter",
+    "emptyState": {
+      "title": "Verkäufe",
+      "description": "Dies ist die Verkaufsansicht",
+      "message": "Bald können Sie hier alle Ihre Verkäufe verwalten"
+    },
+    "products": "Produkte",
+    "salesDraft": "Entwurf für Produktausgänge",
+    "table": {
+      "name": "Name",
+      "unitPrice": "Stückpreis",
+      "stock": "Bestand",
+      "quantity": "Menge",
+      "totalPrice": "Gesamtpreis",
+      "actions": "Aktionen",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "cancel": "Abbrechen",
+      "save": "Speichern"
+    },
+    "kits": "Kits",
+    "noKitsAvailable": "Keine Kits verfügbar",
+    "total": "Gesamt",
+    "kit": "Kit",
+    "emptyCart": "Der Entwurf ist leer. Fügen Sie Produkte oder Kits hinzu, um zu beginnen.",
+    "noStockAvailable": "Für {{product}} ist kein Bestand verfügbar",
+    "stockInsufficient": "Unzureichender Bestand. Für {{product}} sind nur {{stock}} Einheiten verfügbar",
+    "saleSaved": "Verkauf erfolgreich gespeichert",
+    "saleSaveError": "Fehler beim Speichern des Verkaufs. Bitte versuchen Sie es erneut",
+    "userNotIdentified": "Fehler: Benutzer konnte nicht identifiziert werden"
+  },
+  "auth": {
+    "login": {
+      "title": "Anmelden",
+      "email": "E-Mail",
+      "password": "Passwort",
+      "forgotPassword": "Passwort vergessen?",
+      "submit": "Anmelden",
+      "noAccount": "Sie haben noch kein Konto?",
+      "createAccount": "Konto erstellen"
+    },
+    "register": {
+      "title": "Registrieren",
+      "name": "Name",
+      "email": "E-Mail",
+      "password": "Passwort",
+      "confirmPassword": "Passwort bestätigen",
+      "submit": "Registrieren",
+      "hasAccount": "Sie haben bereits ein Konto?",
+      "login": "Anmelden"
+    },
+    "tagline": "Eine Bestandskontrolle, mit der Sie mehr verkaufen und sich weniger stressen",
+    "errors": {
+      "loginFailed": "Anmeldung fehlgeschlagen. Bitte überprüfen Sie Ihre Zugangsdaten.",
+      "registerFailed": "Registrierung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+      "passwordMismatch": "Die Passwörter stimmen nicht überein"
+    },
+    "validation": {
+      "required": "ist erforderlich",
+      "emailInvalid": "Ungültige E-Mail-Adresse",
+      "minLength": "Mindestens {{min}} Zeichen",
+      "passwordRequired": "ist erforderlich",
+      "confirmRequired": "Die Bestätigung ist erforderlich",
+      "passwordMismatch": "Die Passwörter stimmen nicht überein"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "greeting": "Guten Morgen",
+    "notifications": {
+      "title": "Benachrichtigungen",
+      "button": "Benachrichtigungen öffnen",
+      "icon": "notifications",
+      "empty": "Keine Benachrichtigungen",
+      "types": {
+        "warning": "Warnung",
+        "alert": "Alarm",
+        "info": "Information"
+      }
+    },
+    "stats": {
+      "productsInInventory": "Produkte im Lager",
+      "monthlyIncome": "Monatlicher Umsatz",
+      "salesThisMonth": "Verkäufe in diesem Monat",
+      "productsWithAlerts": "Produkte mit Warnmeldungen"
+    },
+    "charts": {
+      "topProducts": "Meistverkaufte Produkte",
+      "monthlyIncome": "Monatlicher Umsatz"
+    },
+    "notificationMessages": {
+      "expiringProduct": "Das Produkt „{{product}}“ läuft am {{date}} ab",
+      "lowStock": "Das Produkt „{{product}}“ hat nur noch {{quantity}} Einheiten auf Lager"
+    },
+    "notificationTitles": {
+      "expiringProduct": "Produkt läuft bald ab",
+      "lowStock": "Produktbestand geht zur Neige"
+    }
+  },
+  "personal": {
+    "title": "Personalverwaltung"
+  },
+  "personalAdministration": {
+    "title": "Personalverwaltung",
+    "subtitle": "Benutzer Ihres Unternehmens verwalten",
+    "search": "Suchen...",
+    "filter": "Filter",
+    "status": "Status",
+    "role": "Rolle",
+    "all": "Alle",
+    "active": "Aktiv",
+    "inactive": "Inaktiv",
+    "apply": "Anwenden",
+    "clear": "Zurücksetzen",
+    "clearFilters": "Filter zurücksetzen",
+    "newRole": "Neue Rolle",
+    "newUser": "Neuer Benutzer",
+    "addUser": "Benutzer hinzufügen",
+    "name": "Name",
+    "account": "Konto",
+    "actions": "Aktionen",
+    "newUserTitle": "Neuer Mitarbeiter",
+    "nameLabel": "Vorname",
+    "lastnameLabel": "Nachname",
+    "phoneLabel": "Telefonnummer",
+    "emailLabel": "E-Mail",
+    "passwordLabel": "Passwort",
+    "roleLabel": "Rolle",
+    "editUserTitle": "Benutzer bearbeiten",
+    "fullNameLabel": "Vollständiger Name",
+    "accountLabel": "Konto (E-Mail)",
+    "statusLabel": "Status",
+    "confirmDeleteTitle": "Löschen bestätigen",
+    "confirmDeleteMessage": "Möchten Sie {{name}} wirklich löschen?",
+    "newRoleTitle": "Neue Rolle",
+    "roleNameLabel": "Rollenname",
+    "rolePlaceholder": "Beispiel: Supervisor",
+    "permissionsTitle": "Berechtigungen",
+    "permissionsHint": "Wählen Sie die Module aus, auf die dieser Benutzer zugreifen darf",
+    "permissionsSelected": "{{count}} Berechtigung(en) ausgewählt",
+    "permissionDashboard": "Dashboard",
+    "permissionInventory": "Lagerbestand",
+    "permissionSales": "Verkäufe",
+    "permissionProviders": "Lieferanten",
+    "permissionReports": "Berichte",
+    "permissionUserManagement": "Benutzerverwaltung",
+    "permissionProducts": "Produktverwaltung",
+    "permissionPurchases": "Einkaufsprozess",
+    "permissionStats": "Statistiken",
+    "permissionUsers": "Benutzerverwaltung",
+    "loadingUsers": "Benutzer werden geladen...",
+    "noUsers": "Keine Benutzer",
+    "noUsersFiltered": "Keine Benutzer mit den angewendeten Filtern gefunden",
+    "noUsersYet": "Sie haben Ihrem Unternehmen noch keine Benutzer hinzugefügt",
+    "admin": "Administrator",
+    "admins": "Administratoren",
+    "users": "Benutzer",
+    "cannotDeleteSelf": "Sie können sich nicht selbst löschen",
+    "cannotDeleteOwner": "Der Hauptbenutzer kann nicht gelöscht werden",
+    "deleteUser": "Benutzer löschen",
+    "emailPlaceholder": "benutzer@beispiel.de",
+    "passwordPlaceholder": "Mindestens 6 Zeichen",
+    "passwordPlaceholderOptional": "Leer lassen, um das aktuelle Passwort beizubehalten",
+    "passwordHintOptional": "Leer lassen, wenn Sie das Passwort nicht ändern möchten",
+    "emailRequired": "Die E-Mail-Adresse ist erforderlich",
+    "emailInvalid": "Geben Sie eine gültige E-Mail-Adresse ein",
+    "passwordRequired": "Das Passwort ist erforderlich",
+    "passwordMinLength": "Mindestens 6 Zeichen",
+    "editUser": "Benutzer bearbeiten",
+    "user": "Benutzer",
+    "aria": {
+      "search": "Benutzer suchen",
+      "filterRole": "Nach Rolle filtern",
+      "createUser": "Neuen Benutzer erstellen",
+      "deleteUser": "Benutzer löschen",
+      "clearFilters": "Angewendete Filter zurücksetzen"
+    }
+  },
+  "common": {
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "saveChanges": "Änderungen speichern",
+    "delete": "Löschen",
+    "loading": "Wird geladen...",
+    "validationNumber": "Bitte geben Sie eine gültige positive Zahl kleiner als 100 ein",
+    "validationExpirationDate": "Das Ablaufdatum muss dem heutigen Datum entsprechen oder danach liegen",
+    "validateNumberCart": "Ungültige Menge im Warenkorb. Bitte geben Sie eine gültige Zahl ein."
+  },
+  "notFound": {
+    "title": "Seite nicht gefunden",
+    "message": "Ups! Die gesuchte Seite existiert nicht.",
+    "description": "Die URL ist möglicherweise falsch geschrieben oder die Seite wurde verschoben. Überprüfen Sie die Adresse oder kehren Sie zur Hauptseite zurück.",
+    "goHome": "Zur Startseite",
+    "goBack": "Zurück"
+  },
+  "reports": {
+    "title": "Berichte",
+    "subtitle": "Wichtige Informationen zu Ihrem Lagerbestand anzeigen und analysieren",
+    "refresh": "Aktualisieren",
+    "export": "Nach Excel exportieren",
+    "loading": "Berichte werden geladen...",
+    "retry": "Erneut versuchen",
+    "expired": "Abgelaufen",
+    "expiresToday": "Läuft heute ab",
+    "expiresTomorrow": "Läuft morgen ab",
+    "daysLeft": "{days} Tage verbleibend",
+    "dayLeft": "{days} Tag verbleibend",
+    "monthLeft": "{months} Monat verbleibend",
+    "monthsLeft": "{months} Monate verbleibend",
+    "tabs": {
+      "providers": "Lieferanten",
+      "stock": "Aktueller Bestand",
+      "expiring": "Bald ablaufend",
+      "lowStock": "Niedriger Bestand",
+      "sales": "Verkäufe"
+    },
+    "providers": {
+      "title": "Lieferantenliste",
+      "subtitle": "Vollständige Informationen zu allen Lieferanten",
+      "empty": "Keine Lieferanten registriert",
+      "filterByCategory": "Nach Kategorie filtern",
+      "allCategories": "Alle Kategorien",
+      "clearFilter": "Filter zurücksetzen",
+      "columns": {
+        "name": "Name",
+        "ruc": "RUC",
+        "email": "E-Mail",
+        "phone": "Telefon",
+        "productCount": "Produkte",
+        "products": "Produkte"
+      }
+    },
+    "stock": {
+      "title": "Bericht zum aktuellen Bestand",
+      "subtitle": "Aktueller Lagerstatus aller Produkte",
+      "empty": "Keine Produkte im Lager",
+      "columns": {
+        "productName": "Produkt",
+        "category": "Kategorie",
+        "currentStock": "Aktueller Bestand",
+        "minStock": "Mindestbestand",
+        "unitPrice": "Stückpreis",
+        "totalValue": "Gesamtwert",
+        "status": "Status"
+      },
+      "status": {
+        "normal": "Normal",
+        "low": "Niedrig",
+        "critical": "Kritisch"
+      }
+    },
+    "expiring": {
+      "title": "Bald ablaufende Produkte",
+      "subtitle": "Produkte nach Ablaufmonat anzeigen",
+      "empty": "Keine Produkte mit Ablaufdatum",
+      "emptyFiltered": "Im ausgewählten Monat laufen keine Produkte ab",
+      "emptyNext30Days": "In den nächsten 30 Tagen laufen keine Produkte ab",
+      "filterByMonth": "Nach Monat filtern",
+      "next30Days": "Nächste 30 Tage",
+      "showAll": "Alle anzeigen",
+      "clearFilter": "Filter zurücksetzen",
+      "columns": {
+        "productName": "Produkt",
+        "category": "Kategorie",
+        "expirationDate": "Ablaufdatum",
+        "daysLeft": "Verbleibende Tage",
+        "currentStock": "Aktueller Bestand",
+        "lot": "Charge",
+        "status": "Status"
+      },
+      "status": {
+        "expired": "Abgelaufen",
+        "critical": "Kritisch",
+        "warning": "Warnung",
+        "normal": "Normal"
+      }
+    },
+    "lowStock": {
+      "title": "Produkte mit niedrigem Bestand",
+      "subtitle": "Produkte, deren Bestand unter dem Mindestbestand liegt",
+      "empty": "Keine Produkte mit niedrigem Bestand",
+      "columns": {
+        "productName": "Produkt",
+        "category": "Kategorie",
+        "currentStock": "Aktueller Bestand",
+        "minStock": "Mindestbestand",
+        "difference": "Differenz",
+        "unitPrice": "Stückpreis",
+        "status": "Status"
+      },
+      "status": {
+        "critical": "Kritisch",
+        "low": "Niedrig",
+        "normal": "Normal"
+      }
+    },
+    "sales": {
+      "title": "Verkaufsbericht",
+      "subtitle": "Verlauf aller durchgeführten Verkäufe",
+      "empty": "Keine Verkäufe registriert",
+      "columns": {
+        "id": "ID",
+        "date": "Datum",
+        "totalAmount": "Gesamtbetrag",
+        "products": "Produktdetails"
+      }
+    }
+  },
+  "subscriptions": {
+    "plans": {
+      "backToSettings": "Zurück zu den Einstellungen",
+      "title": "Preise und Tarife",
+      "subtitle": "Wählen Sie den passenden Tarif für Ihr Unternehmen. Sie können jederzeit upgraden oder kündigen.",
+      "titleOnboarding": "Wählen Sie Ihren Einstiegstarif",
+      "subtitleOnboarding": "Wählen Sie den Abonnementtarif, der am besten zu Ihrem Unternehmen passt, um Inventiapp zu nutzen.",
+      "loading": "Tarifdetails werden geladen...",
+      "popular": "Empfohlen",
+      "month": "Mon.",
+      "year": "Jahr",
+      "limitRecipes": "Bis zu {{count}} Produkte",
+      "limitKits": "Bis zu {{count}} Kits",
+      "limitDevices": "Bis zu {{count}} Lieferanten",
+      "realtimeAnalytics": "Chargenkontrolle und Ablaufdaten",
+      "alertNotifications": "Warnungen bei niedrigem Bestand und Berichte",
+      "choosePlan": "Abonnieren",
+      "currentPlan": "Ihr aktueller Tarif",
+      "redirecting": "Weiterleitung zur Kasse...",
+      "retry": "Erneut versuchen",
+      "continueFree": "Mit kostenlosem Tarif fortfahren",
+      "descriptions": {
+        "starter": "Ideal für kleine Geschäfte und Restaurants. Verwalten Sie grundlegende Zutaten, Kits und intelligente Waagen.",
+        "pro": "Ideal für wachsende Unternehmen. Erweiterte Bestandsverwaltung, komplexe Rezepte, Produktionskits und Waagen in Echtzeit.",
+        "enterprise": "Unbegrenzter Zugriff und bevorzugter Support. Für große Lager, mehrere Standorte und hohe Warenbewegungen."
+      }
+    },
+    "success": {
+      "title": "Zahlung erfolgreich!",
+      "message": "Vielen Dank für Ihr Abonnement. Die Limits Ihres Kontotarifs wurden sofort aktualisiert.",
+      "redirectNotice": "Sie werden in Kürze zur Anmeldeseite weitergeleitet...",
+      "redirectNoticeSettings": "Sie werden in Kürze zu den Einstellungen weitergeleitet...",
+      "continueButton": "Zur Anmeldung",
+      "continueButtonSettings": "Zurück zu den Einstellungen"
+    },
+    "cancel": {
+      "title": "Zahlung abgebrochen",
+      "message": "Der Zahlungsvorgang wurde abgebrochen. Ihre Karte wurde nicht belastet.",
+      "tryAgainButton": "Tarife anzeigen und erneut versuchen",
+      "backButton": "Abbrechen und zu den Einstellungen zurückkehren"
+    }
+  }
+}

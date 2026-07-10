@@ -1,0 +1,576 @@
+{
+  "global": {
+    "cancel": "キャンセル",
+    "save": "保存",
+    "exit": "終了",
+    "unlimited": "無制限"
+  },
+  "app": {
+    "title": "StockTrack"
+  },
+  "languageSwitcher": {
+    "title": "アプリケーションの言語",
+    "trigger": "アプリケーションの言語を変更",
+    "mode": {
+      "manualShort": "手動",
+      "locationShort": "位置情報"
+    },
+    "manual": {
+      "description": "手動で選択した言語",
+      "choose": "手動で使用する言語を選択してください"
+    },
+    "location": {
+      "title": "位置情報に基づく言語",
+      "loading": "位置情報から言語を検出しています...",
+      "detectedIn": "{{country}} におすすめ",
+      "unavailable": "位置情報から言語を検出できませんでした",
+      "refresh": "位置情報を再検出"
+    }
+  },
+  "settings": {
+    "title": "設定",
+    "subtitle": "アプリケーションの設定とオプションを管理します",
+    "userInfo": {
+      "title": "ユーザー情報",
+      "email": "メールアドレス",
+      "role": "ロール",
+      "admin": "管理者",
+      "user": "ユーザー",
+      "planType": "プランの種類",
+      "freePlan": "無料プラン"
+    },
+    "language": {
+      "title": "言語",
+      "description": "インターフェースの言語を選択してください"
+    },
+    "appInfo": {
+      "title": "アプリケーション情報",
+      "version": "バージョン",
+      "name": "名前"
+    },
+    "subscription": {
+      "title": "サブスクリプションプラン",
+      "description": "アカウントの支払いプランと利用上限を管理します。",
+      "manageBtn": "サブスクリプションを管理"
+    }
+  },
+  "sidebar": {
+    "title": "StockTrack",
+    "menu": {
+      "home": "ホーム",
+      "inventory": "在庫",
+      "providers": "仕入先",
+      "sales": "販売",
+      "reports": "レポート",
+      "more": "その他",
+      "aria": {
+        "home": "ホームへ移動",
+        "inventory": "在庫へ移動",
+        "providers": "仕入先へ移動",
+        "sales": "販売へ移動",
+        "reports": "レポートへ移動",
+        "more": "その他のオプションメニューを開く",
+        "language": "言語セレクター",
+        "navigation": "メインナビゲーション"
+      }
+    },
+    "footer": {
+      "settings": "設定",
+      "personal": "スタッフ管理",
+      "logout": "ログアウト",
+      "aria": {
+        "settings": "設定へ移動",
+        "personal": "スタッフ管理へ移動",
+        "logout": "ログアウト"
+      }
+    }
+  },
+  "home": {
+    "title": "StockTrack へようこそ",
+    "subtitle": "在庫管理システム"
+  },
+  "kits": {
+    "validationQuantityInteger": "数量は正の整数で入力してください"
+  },
+  "inventory": {
+    "title": "在庫管理",
+    "subtitle": "商品と在庫を管理します",
+    "emptyState": {
+      "title": "在庫",
+      "description": "これは在庫画面です",
+      "message": "まもなく、ここですべての商品を管理できるようになります"
+    },
+    "header": "在庫",
+    "invalidPrice": "価格が無効です",
+    "products": "商品",
+    "name": "名前",
+    "unitPrice": "単価",
+    "currentStock": "現在庫",
+    "minimumStock": "最低在庫",
+    "informationProduct": "情報",
+    "actions": "操作",
+    "viewDetail": "詳細を表示",
+    "edit": "編集",
+    "delete": "削除",
+    "confirmDelete": "商品 {name} を削除してもよろしいですか？",
+    "noProductsFound": "商品が見つかりません",
+    "tryDifferentSearch": "別の検索条件またはフィルターをお試しください",
+    "filter": "フィルター",
+    "search": "検索",
+    "allCategories": "すべてのカテゴリ",
+    "allProviders": "すべての仕入先",
+    "allLots": "すべてのロット",
+    "allStatuses": "すべてのステータス",
+    "date": "日付",
+    "clearFilters": "フィルターをクリア",
+    "removeFilter": "フィルターを削除",
+    "loadingKits": "キットを読み込んでいます...",
+    "loadingProducts": "商品を読み込んでいます...",
+    "retry": "再試行",
+    "product": "商品",
+    "newReplacement": "補充を登録",
+    "noKits": "利用可能なキットがありません",
+    "startKits": "ボタンをクリックして最初のキットを作成してください",
+    "newKit": "新しいキット",
+    "priceKit": "キット価格",
+    "quantity": "選択する数量",
+    "category": "カテゴリ",
+    "provider": "仕入先",
+    "select": "選択",
+    "newProduct": "新しい商品",
+    "editProduct": "商品を編集",
+    "newCategory": "新しいカテゴリ",
+    "description": "説明",
+    "categoryNamePlaceholder": "例：乳製品",
+    "categoryDescriptionPlaceholder": "例：乳製品および関連商品",
+    "productDescriptionPlaceholder": "例：1リットルパックの全乳",
+    "isActive": "ステータス",
+    "activeProduct": "有効な商品",
+    "lot": "ロット",
+    "receiptDate": "入荷日",
+    "expirationDate": "有効期限",
+    "amountEntering": "入荷数量",
+    "lastReception": "最終入荷",
+    "lowStock": "在庫不足",
+    "status": "ステータス",
+    "outOfStock": "在庫切れ",
+    "normalStock": "正常",
+    "kits": "キット",
+    "price": "価格",
+    "kitProductUnitPrice": "単価",
+    "kitProductTotal": "合計",
+    "batchHistory": {
+      "viewHistory": "入出庫履歴を表示",
+      "title": "入出庫履歴",
+      "lot": "ロット",
+      "type": "種類",
+      "quantity": "数量",
+      "date": "日付",
+      "entrada": "入庫",
+      "salida": "出庫",
+      "noMovements": "この商品には登録された入出庫履歴がありません",
+      "loadError": "入出庫履歴を読み込めませんでした",
+      "viewOnExpiring": "期限間近レポートでロットを表示",
+      "from": "開始",
+      "to": "終了",
+      "allTypes": "すべて",
+      "allLots": "すべて",
+      "clearFilters": "フィルターをクリア",
+      "noFilteredMovements": "フィルターに一致する入出庫履歴がありません",
+      "filteredCount": "{{total}} 件中 {{count}} 件の入出庫履歴"
+    }
+  },
+  "providers-view": {
+    "providers": "仕入先",
+    "providers-table": {
+      "name": "名前",
+      "contact": "担当者",
+      "phone": "携帯電話",
+      "email": "メールアドレス",
+      "ruc": "RUC",
+      "address": "住所",
+      "actions": "操作",
+      "edit": "編集",
+      "delete": "削除"
+    },
+    "providers-toolbar": {
+      "search": "検索",
+      "filter": "フィルター",
+      "add-provider": "仕入先を追加"
+    },
+    "form-dialog": {
+      "add": "仕入先を追加",
+      "edit": "仕入先を編集",
+      "first-name": "名",
+      "last-name": "姓",
+      "phone-number": "携帯電話",
+      "email": "メールアドレス",
+      "ruc": "RUC",
+      "cancel": "キャンセル",
+      "save": "保存",
+      "first-name-required": "名は必須です",
+      "first-name-minlength": "名は2文字以上で入力してください",
+      "last-name-required": "姓は必須です",
+      "last-name-minlength": "姓は2文字以上で入力してください",
+      "phone-number-required": "電話番号は必須です",
+      "phone-number-invalid": "電話番号の形式が無効です",
+      "email-required": "メールアドレスは必須です",
+      "email-invalid": "メールアドレスの形式が無効です",
+      "ruc-required": "RUCは必須です",
+      "ruc-invalid": "RUCは11桁で入力してください"
+    }
+  },
+  "sales": {
+    "title": "販売管理",
+    "subtitle": "販売と取引を管理します",
+    "search": "商品を検索",
+    "filter": "フィルター",
+    "emptyState": {
+      "title": "販売",
+      "description": "これは販売画面です",
+      "message": "まもなく、ここですべての販売を管理できるようになります"
+    },
+    "products": "商品",
+    "salesDraft": "商品出庫の下書き",
+    "table": {
+      "name": "名前",
+      "unitPrice": "単価",
+      "stock": "在庫",
+      "quantity": "数量",
+      "totalPrice": "合計価格",
+      "actions": "操作",
+      "edit": "編集",
+      "delete": "削除",
+      "cancel": "キャンセル",
+      "save": "保存"
+    },
+    "kits": "キット",
+    "noKitsAvailable": "利用可能なキットがありません",
+    "total": "合計",
+    "kit": "キット",
+    "emptyCart": "下書きは空です。商品またはキットを追加してください。",
+    "noStockAvailable": "{{product}} の在庫がありません",
+    "stockInsufficient": "在庫が不足しています。{{product}} は {{stock}} 個のみ利用可能です",
+    "saleSaved": "販売を保存しました",
+    "saleSaveError": "販売の保存中にエラーが発生しました。もう一度お試しください",
+    "userNotIdentified": "エラー：ユーザーを特定できませんでした"
+  },
+  "auth": {
+    "login": {
+      "title": "ログイン",
+      "email": "メールアドレス",
+      "password": "パスワード",
+      "forgotPassword": "パスワードをお忘れですか？",
+      "submit": "ログイン",
+      "noAccount": "アカウントをお持ちでないですか？",
+      "createAccount": "アカウントを作成"
+    },
+    "register": {
+      "title": "新規登録",
+      "name": "名前",
+      "email": "メールアドレス",
+      "password": "パスワード",
+      "confirmPassword": "パスワードを確認",
+      "submit": "登録",
+      "hasAccount": "すでにアカウントをお持ちですか？",
+      "login": "ログイン"
+    },
+    "tagline": "売上を増やし、負担を減らすために設計された在庫管理",
+    "errors": {
+      "loginFailed": "ログインに失敗しました。認証情報をご確認ください。",
+      "registerFailed": "登録に失敗しました。もう一度お試しください。",
+      "passwordMismatch": "パスワードが一致しません"
+    },
+    "validation": {
+      "required": "は必須です",
+      "emailInvalid": "メールアドレスが無効です",
+      "minLength": "{{min}}文字以上で入力してください",
+      "passwordRequired": "は必須です",
+      "confirmRequired": "確認入力は必須です",
+      "passwordMismatch": "パスワードが一致しません"
+    }
+  },
+  "dashboard": {
+    "title": "ダッシュボード",
+    "greeting": "おはようございます",
+    "notifications": {
+      "title": "通知",
+      "button": "通知を開く",
+      "icon": "notifications",
+      "empty": "通知はありません",
+      "types": {
+        "warning": "警告",
+        "alert": "アラート",
+        "info": "情報"
+      }
+    },
+    "stats": {
+      "productsInInventory": "在庫商品数",
+      "monthlyIncome": "今月の売上",
+      "salesThisMonth": "今月の販売件数",
+      "productsWithAlerts": "アラートのある商品"
+    },
+    "charts": {
+      "topProducts": "売れ筋商品",
+      "monthlyIncome": "月間売上"
+    },
+    "notificationMessages": {
+      "expiringProduct": "商品「{{product}}」の有効期限は {{date}} です",
+      "lowStock": "商品「{{product}}」の在庫は残り {{quantity}} 個です"
+    },
+    "notificationTitles": {
+      "expiringProduct": "期限が近い商品",
+      "lowStock": "在庫が残りわずかな商品"
+    }
+  },
+  "personal": {
+    "title": "スタッフ管理"
+  },
+  "personalAdministration": {
+    "title": "スタッフ管理",
+    "subtitle": "事業のユーザーを管理します",
+    "search": "検索...",
+    "filter": "フィルター",
+    "status": "ステータス",
+    "role": "ロール",
+    "all": "すべて",
+    "active": "有効",
+    "inactive": "無効",
+    "apply": "適用",
+    "clear": "クリア",
+    "clearFilters": "フィルターをクリア",
+    "newRole": "新しいロール",
+    "newUser": "新しいユーザー",
+    "addUser": "ユーザーを追加",
+    "name": "名前",
+    "account": "アカウント",
+    "actions": "操作",
+    "newUserTitle": "新しいスタッフ",
+    "nameLabel": "名",
+    "lastnameLabel": "姓",
+    "phoneLabel": "電話番号",
+    "emailLabel": "メールアドレス",
+    "passwordLabel": "パスワード",
+    "roleLabel": "ロール",
+    "editUserTitle": "ユーザーを編集",
+    "fullNameLabel": "氏名",
+    "accountLabel": "アカウント（メールアドレス）",
+    "statusLabel": "ステータス",
+    "confirmDeleteTitle": "削除の確認",
+    "confirmDeleteMessage": "{{name}} を削除してもよろしいですか？",
+    "newRoleTitle": "新しいロール",
+    "roleNameLabel": "ロール名",
+    "rolePlaceholder": "例：スーパーバイザー",
+    "permissionsTitle": "権限",
+    "permissionsHint": "このユーザーがアクセスできるモジュールを選択してください",
+    "permissionsSelected": "{{count}} 件の権限を選択済み",
+    "permissionDashboard": "ダッシュボード",
+    "permissionInventory": "在庫",
+    "permissionSales": "販売",
+    "permissionProviders": "仕入先",
+    "permissionReports": "レポート",
+    "permissionUserManagement": "ユーザー管理",
+    "permissionProducts": "商品管理",
+    "permissionPurchases": "購買プロセス",
+    "permissionStats": "統計",
+    "permissionUsers": "ユーザー管理",
+    "loadingUsers": "ユーザーを読み込んでいます...",
+    "noUsers": "ユーザーはいません",
+    "noUsersFiltered": "適用したフィルターに一致するユーザーが見つかりません",
+    "noUsersYet": "まだ事業にユーザーを追加していません",
+    "admin": "管理者",
+    "user": "ユーザー",
+    "admins": "管理者",
+    "users": "ユーザー",
+    "cannotDeleteSelf": "自分自身を削除することはできません",
+    "cannotDeleteOwner": "メインユーザーは削除できません",
+    "deleteUser": "ユーザーを削除",
+    "emailPlaceholder": "user@example.jp",
+    "passwordPlaceholder": "6文字以上",
+    "passwordPlaceholderOptional": "変更しない場合は空欄にしてください",
+    "passwordHintOptional": "パスワードを変更しない場合は空欄にしてください",
+    "emailRequired": "メールアドレスは必須です",
+    "emailInvalid": "有効なメールアドレスを入力してください",
+    "passwordRequired": "パスワードは必須です",
+    "passwordMinLength": "6文字以上",
+    "editUser": "ユーザーを編集",
+    "aria": {
+      "search": "ユーザーを検索",
+      "filterRole": "ロールで絞り込む",
+      "createUser": "新しいユーザーを作成",
+      "deleteUser": "ユーザーを削除",
+      "clearFilters": "適用したフィルターをクリア"
+    }
+  },
+  "common": {
+    "cancel": "キャンセル",
+    "save": "保存",
+    "saveChanges": "変更を保存",
+    "delete": "削除",
+    "loading": "読み込み中...",
+    "validationNumber": "100未満の正の整数を入力してください",
+    "validationExpirationDate": "入荷日と同日またはそれ以降の有効な有効期限を入力してください",
+    "validateNumberCart": "カート内に無効な数量があります。保存する前に修正してください"
+  },
+  "notFound": {
+    "title": "ページが見つかりません",
+    "message": "お探しのページは存在しません。",
+    "description": "URLが間違っているか、ページが移動された可能性があります。アドレスを確認するか、メインページに戻ってください。",
+    "goHome": "ホームへ",
+    "goBack": "戻る"
+  },
+  "reports": {
+    "title": "レポート",
+    "subtitle": "在庫に関する重要な情報を表示・分析します",
+    "refresh": "更新",
+    "export": "Excelにエクスポート",
+    "loading": "レポートを読み込んでいます...",
+    "retry": "再試行",
+    "expired": "期限切れ",
+    "expiresToday": "本日期限",
+    "expiresTomorrow": "明日期限",
+    "daysLeft": "残り{days}日",
+    "dayLeft": "残り{days}日",
+    "monthLeft": "残り{months}か月",
+    "monthsLeft": "残り{months}か月",
+    "tabs": {
+      "providers": "仕入先",
+      "stock": "現在庫",
+      "expiring": "期限間近",
+      "lowStock": "在庫不足",
+      "sales": "販売"
+    },
+    "providers": {
+      "title": "仕入先一覧",
+      "subtitle": "すべての仕入先の詳細情報",
+      "empty": "登録された仕入先はありません",
+      "filterByCategory": "カテゴリで絞り込む",
+      "allCategories": "すべてのカテゴリ",
+      "columns": {
+        "name": "名前",
+        "ruc": "RUC",
+        "email": "メールアドレス",
+        "phone": "電話番号",
+        "productCount": "商品数",
+        "products": "商品"
+      }
+    },
+    "stock": {
+      "title": "現在庫レポート",
+      "subtitle": "すべての商品の現在の在庫状況",
+      "empty": "在庫に商品がありません",
+      "columns": {
+        "productName": "商品",
+        "category": "カテゴリ",
+        "currentStock": "現在庫",
+        "minStock": "最低在庫",
+        "unitPrice": "単価",
+        "totalValue": "合計金額",
+        "status": "ステータス"
+      },
+      "status": {
+        "normal": "正常",
+        "low": "少ない",
+        "critical": "危険"
+      }
+    },
+    "expiring": {
+      "title": "期限間近の商品",
+      "subtitle": "有効期限の月ごとに商品を表示します",
+      "empty": "有効期限が設定された商品はありません",
+      "emptyFiltered": "選択した月に期限を迎える商品はありません",
+      "emptyNext30Days": "今後30日以内に期限を迎える商品はありません",
+      "filterByMonth": "月で絞り込む",
+      "next30Days": "今後30日",
+      "showAll": "すべて表示",
+      "clearFilter": "フィルターをクリア",
+      "columns": {
+        "productName": "商品",
+        "category": "カテゴリ",
+        "expirationDate": "有効期限",
+        "daysLeft": "残り日数",
+        "currentStock": "現在庫",
+        "lot": "ロット",
+        "status": "ステータス"
+      },
+      "status": {
+        "expired": "期限切れ",
+        "critical": "危険",
+        "warning": "警告",
+        "normal": "正常"
+      }
+    },
+    "lowStock": {
+      "title": "在庫不足の商品",
+      "subtitle": "在庫が最低在庫を下回っている商品",
+      "empty": "在庫不足の商品はありません",
+      "columns": {
+        "productName": "商品",
+        "category": "カテゴリ",
+        "currentStock": "現在庫",
+        "minStock": "最低在庫",
+        "difference": "差",
+        "unitPrice": "単価",
+        "status": "ステータス"
+      },
+      "status": {
+        "critical": "危険",
+        "low": "少ない",
+        "normal": "正常"
+      }
+    },
+    "sales": {
+      "title": "販売レポート",
+      "subtitle": "実施されたすべての販売履歴",
+      "empty": "登録された販売はありません",
+      "columns": {
+        "id": "ID",
+        "date": "日付",
+        "totalAmount": "合計金額",
+        "products": "商品の詳細"
+      }
+    }
+  },
+  "subscriptions": {
+    "plans": {
+      "backToSettings": "設定に戻る",
+      "title": "料金とプラン",
+      "subtitle": "事業のニーズに適したプランを選択してください。いつでもアップグレードまたはキャンセルできます。",
+      "titleOnboarding": "初期プランを選択",
+      "subtitleOnboarding": "Inventiappの利用を開始するには、事業に最適なサブスクリプションプランを選択してください。",
+      "loading": "プランの詳細を取得しています...",
+      "popular": "おすすめ",
+      "month": "月",
+      "year": "年",
+      "limitRecipes": "最大{{count}}商品",
+      "limitKits": "最大{{count}}キット",
+      "limitDevices": "最大{{count}}仕入先",
+      "realtimeAnalytics": "ロットと有効期限の管理",
+      "alertNotifications": "在庫不足アラートとレポート",
+      "choosePlan": "申し込む",
+      "currentPlan": "現在のプラン",
+      "redirecting": "決済画面へ移動しています...",
+      "retry": "再試行",
+      "continueFree": "無料プランで続ける",
+      "descriptions": {
+        "starter": "小規模な店舗やレストランに最適です。基本的なレシピ材料、キット、スマートスケールを管理できます。",
+        "pro": "成長中の事業に最適です。高度な在庫管理、複雑なレシピ、製造キット、リアルタイムのスケール管理を利用できます。",
+        "enterprise": "無制限のアクセスと優先サポートを提供します。大規模倉庫、複数拠点、大量の業務向けに設計されています。"
+      }
+    },
+    "success": {
+      "title": "支払いが完了しました！",
+      "message": "ご登録ありがとうございます。アカウントの利用上限がすぐに更新されました。",
+      "redirectNotice": "まもなくログイン画面へ移動します...",
+      "redirectNoticeSettings": "まもなく設定画面へ移動します...",
+      "continueButton": "ログインへ",
+      "continueButtonSettings": "設定に戻る"
+    },
+    "cancel": {
+      "title": "支払いがキャンセルされました",
+      "message": "決済処理がキャンセルされました。カードへの請求は行われていません。",
+      "tryAgainButton": "プランを表示して再試行",
+      "backButton": "キャンセルして設定に戻る"
+    }
+  }
+}
