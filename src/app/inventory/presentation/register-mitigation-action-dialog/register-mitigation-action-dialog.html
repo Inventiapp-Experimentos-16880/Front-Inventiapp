@@ -1,0 +1,71 @@
+<div class="dialog-container">
+  <div class="dialog-header">
+    <h2>{{ 'inventory.expirationAlerts.dialog.title' | translate }}</h2>
+    <button mat-icon-button (click)="onCancel()" [attr.aria-label]="'global.cancel' | translate">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div class="dialog-content">
+    <div class="context-box">
+      <div class="context-row">
+        <span class="context-label">{{ 'inventory.expirationAlerts.product' | translate }}:</span>
+        <span class="context-value">{{ data.productName }}</span>
+      </div>
+      <div class="context-row">
+        <span class="context-label">{{ 'inventory.expirationAlerts.lot' | translate }}:</span>
+        <span class="context-value">{{ data.batchLabel }}</span>
+      </div>
+      <div class="context-row">
+        <span class="context-label">{{ 'inventory.expirationAlerts.dialog.remainingQuantity' | translate }}:</span>
+        <span class="context-value">{{ data.batchQuantity }}</span>
+      </div>
+    </div>
+
+    <mat-form-field appearance="outline" class="form-field-full">
+      <mat-label>{{ 'inventory.expirationAlerts.dialog.actionType' | translate }}</mat-label>
+      <mat-select [ngModel]="actionType()" (ngModelChange)="actionType.set($event)">
+        <mat-option value="LIQUIDATION">{{ 'inventory.expirationAlerts.action.liquidation' | translate }}</mat-option>
+        <mat-option value="RETURN">{{ 'inventory.expirationAlerts.action.return' | translate }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field-full">
+      <mat-label>{{ 'inventory.expirationAlerts.dialog.quantity' | translate }}</mat-label>
+      <input
+        matInput
+        type="number"
+        min="1"
+        step="1"
+        inputmode="numeric"
+        [placeholder]="data.batchQuantity.toString()"
+        [ngModel]="quantity()"
+        (ngModelChange)="onQuantityChange($event)">
+      <mat-hint>{{ 'inventory.expirationAlerts.dialog.quantityHint' | translate }}</mat-hint>
+    </mat-form-field>
+
+    @if (quantityErrorKey()) {
+      <p class="field-error">{{ quantityErrorKey()! | translate: { max: data.batchQuantity } }}</p>
+    }
+
+    @if (serverError()) {
+      <div class="server-error">
+        <mat-icon color="warn">error</mat-icon>
+        <span>{{ serverError()! | translate }}</span>
+      </div>
+    }
+  </div>
+
+  <div class="dialog-actions">
+    <button mat-stroked-button (click)="onCancel()" [disabled]="submitting()">
+      {{ 'global.cancel' | translate }}
+    </button>
+    <button mat-raised-button color="primary" [disabled]="!canConfirm()" (click)="onConfirm()">
+      @if (submitting()) {
+        <mat-spinner diameter="18"></mat-spinner>
+      } @else {
+        {{ 'inventory.expirationAlerts.dialog.confirm' | translate }}
+      }
+    </button>
+  </div>
+</div>
