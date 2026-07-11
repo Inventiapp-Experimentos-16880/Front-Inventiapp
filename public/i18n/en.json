@@ -648,7 +648,8 @@
       "lossWithout": "Estimated Annual Loss without Inventiapp",
       "lossWith": "Estimated Annual Loss with Inventiapp",
       "potentialSavings": "Estimated Annual Savings",
-      "comparisonText": "By reducing your waste from expired products by 75%, Inventiapp Pro ($29/mo) generates an estimated net annual return of ${{netSavings}}."
+      "comparisonText": "By reducing your waste from expired products by 75%, Inventiapp Pro ($29/mo) generates an estimated net annual return of ${{netSavings}}.",
+      "noAlerts": "No resolved alerts in this inventory cycle."
     }
   }
 }

@@ -23,7 +23,8 @@ export class DashboardAssembler implements BaseAssembler<Dashboard, DashboardRes
       stats: this.toDashboardStatsFromResource(resource),
       monthlyIncome: this.toMonthlyIncomeFromResources(resource.monthlyIncome),
       productSales: this.toProductSalesFromResources(resource.productSales),
-      notifications: this.toNotificationsFromResources(resource.notifications)
+      notifications: this.toNotificationsFromResources(resource.notifications),
+      resolvedAlerts: resource.resolvedAlerts || []
     });
   }
 
@@ -102,7 +103,13 @@ export class DashboardAssembler implements BaseAssembler<Dashboard, DashboardRes
         title: item.title,
         message: item.message,
         data: item.data
-      }))
+      })),
+      resolvedAlerts: entity.resolvedAlerts ? entity.resolvedAlerts.map(item => ({
+        product: item.product,
+        quantity: item.quantity,
+        amount: item.amount,
+        date: item.date
+      })) : []
     };
   }
 

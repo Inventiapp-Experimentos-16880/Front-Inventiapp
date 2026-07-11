@@ -39,6 +39,13 @@ export interface NotificationResource {
   data: NotificationData;
 }
 
+export interface ResolvedAlertResource {
+  product: string;
+  quantity: number;
+  amount: number;
+  date: string;
+}
+
 /**
  * DTO for dashboard response from the API.
  */
@@ -47,6 +54,7 @@ export interface DashboardResponse extends BaseResponse {
   monthlyIncome: MonthlyIncomeResource[];
   productSales: ProductSalesResource[];
   notifications: NotificationResource[];
+  resolvedAlerts: ResolvedAlertResource[];
 }
 
 /**
@@ -57,5 +65,6 @@ export interface DashboardResource extends BaseResource {
   monthlyIncome: MonthlyIncomeResource[];
   productSales: ProductSalesResource[];
   notifications: NotificationResource[];
+  resolvedAlerts: ResolvedAlertResource[];
 }
 
