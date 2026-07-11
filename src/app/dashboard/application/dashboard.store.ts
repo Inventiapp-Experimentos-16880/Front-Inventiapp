@@ -3,6 +3,7 @@ import { DashboardStats } from '../domain/model/dashboard-stats.entity';
 import { MonthlyIncome } from '../domain/model/monthly-income.entity';
 import { ProductSales } from '../domain/model/product-sales.entity';
 import { DashboardNotification } from '../domain/model/notification.entity';
+import { ResolvedAlert } from '../domain/model/resolved-alert.entity';
 import { DashboardApi } from '../infrastructure/dashboard-api';
 import { Dashboard } from '../domain/model/dashboard.entity';
 
@@ -20,6 +21,7 @@ export class DashboardStore {
   private readonly monthlyIncomeSignal = signal<MonthlyIncome[]>([]);
   private readonly productSalesSignal = signal<ProductSales[]>([]);
   private readonly notificationsSignal = signal<DashboardNotification[]>([]);
+  private readonly resolvedAlertsSignal = signal<ResolvedAlert[]>([]);
   private readonly loadingSignal = signal<boolean>(false);
   private readonly errorSignal = signal<string | null>(null);
 
@@ -27,6 +29,7 @@ export class DashboardStore {
   readonly monthlyIncome = this.monthlyIncomeSignal.asReadonly();
   readonly productSales = this.productSalesSignal.asReadonly();
   readonly notifications = this.notificationsSignal.asReadonly();
+  readonly resolvedAlerts = this.resolvedAlertsSignal.asReadonly();
   readonly loading = this.loadingSignal.asReadonly();
   readonly error = this.errorSignal.asReadonly();
 
@@ -49,6 +52,7 @@ export class DashboardStore {
         this.monthlyIncomeSignal.set(dashboard.monthlyIncome);
         this.productSalesSignal.set(dashboard.productSales);
         this.notificationsSignal.set(dashboard.notifications);
+        this.resolvedAlertsSignal.set(dashboard.resolvedAlerts || []);
         this.loadingSignal.set(false);
       },
       error: (err: Error) => {

@@ -32,11 +32,9 @@ export class PlansView implements OnInit {
     return Math.round((this.realSavings / monthlyProCost) * 10) / 10;
   }
 
-  protected resolvedAlerts = [
-    { product: 'Leche Gloria 400g', quantity: 30, amount: 120.00, date: '2026-07-10' },
-    { product: 'Arroz Costeño 5kg', quantity: 15, amount: 180.00, date: '2026-07-08' },
-    { product: 'Aceite Primor 1L', quantity: 10, amount: 150.00, date: '2026-07-05' }
-  ];
+  get resolvedAlerts() {
+    return this.dashboardStore.resolvedAlerts();
+  }
 
   // Requirement 2: Potential Savings Simulator
   protected monthlyInventory = 8000;
