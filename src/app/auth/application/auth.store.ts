@@ -98,7 +98,8 @@ export class AuthStore {
               email: currentUser.email,
               roles: currentUser.roles,
               permissions: userData.permissions || [],
-              token: currentUser.token
+              token: currentUser.token,
+              ownerId: currentUser.ownerId
             }));
           }
           resolve();
@@ -243,7 +244,7 @@ export class AuthStore {
         }
 
         this.loadingSignal.set(false);
-        this.router.navigate(['/dashboard']).catch(err => {
+        this.router.navigate(['/subscriptions/plans'], { queryParams: { onboarding: 'true' } }).catch(err => {
           console.error('Navigation error:', err);
         });
       },

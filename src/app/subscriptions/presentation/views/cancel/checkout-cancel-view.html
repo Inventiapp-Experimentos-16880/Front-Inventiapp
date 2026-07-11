@@ -1,0 +1,18 @@
+<div class="success-container">
+  <div class="success-card">
+    <div class="checkmark-circle" style="background: rgba(239, 68, 68, 0.15); display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; border-radius: 50%; margin-bottom: 28px;">
+      <span class="material-icons checkmark-icon" style="color: #ef4444; font-size: 3.5rem;">cancel</span>
+    </div>
+    <h1 class="success-title">{{ 'subscriptions.cancel.title' | translate }}</h1>
+    <p class="success-message">{{ 'subscriptions.cancel.message' | translate }}</p>
+    
+    <div style="display: flex; flex-direction: column; gap: 12px; width: 100%;">
+      <button class="continue-btn" style="background: var(--color-primary); box-shadow: 0 4px 12px var(--color-primary-light);" (click)="tryAgain()">
+        {{ 'subscriptions.cancel.tryAgainButton' | translate }}
+      </button>
+      <button class="continue-btn" style="background: #334155; box-shadow: none;" (click)="cancel()">
+        {{ 'subscriptions.cancel.backButton' | translate }}
+      </button>
+    </div>
+  </div>
+</div>

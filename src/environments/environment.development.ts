@@ -13,5 +13,6 @@ export const environment = {
   platformProviderAuthSignInEndpointPath: '/authentication/sign-in',
   platformProviderAuthSignUpEndpointPath: '/authentication/sign-up',
   platformProviderReportsEndpointPath: '/reports',
-  platformProviderExpirationAlertsEndpointPath: '/expiration-alerts'
+  platformProviderExpirationAlertsEndpointPath: '/expiration-alerts',
+  platformProviderLocalizationEndpointPath: '/localization'
 }

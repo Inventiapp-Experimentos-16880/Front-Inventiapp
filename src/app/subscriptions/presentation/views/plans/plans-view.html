@@ -1,0 +1,226 @@
+<div class="pricing-container" [class.onboarding-mode]="isOnboarding">
+  <!-- Back Header -->
+  <div class="pricing-header">
+    <button *ngIf="!isOnboarding" class="back-btn" (click)="goBack()">
+      <span class="material-icons">arrow_back</span>
+      <span>{{ 'subscriptions.plans.backToSettings' | translate }}</span>
+    </button>
+    <h1 class="pricing-title">{{ (isOnboarding ? 'subscriptions.plans.titleOnboarding' : 'subscriptions.plans.title') | translate }}</h1>
+    <p class="pricing-subtitle">{{ (isOnboarding ? 'subscriptions.plans.subtitleOnboarding' : 'subscriptions.plans.subtitle') | translate }}</p>
+  </div>
+
+  <!-- Loading State: only show when plans are still loading -->
+  <div *ngIf="store.plansLoading()" class="loading-state">
+    <div class="spinner"></div>
+    <p>{{ 'subscriptions.plans.loading' | translate }}</p>
+  </div>
+
+  <!-- Error State: only show when the plans request itself failed -->
+  <div *ngIf="!store.plansLoading() && store.plansError()" class="error-state">
+    <span class="material-icons error-icon">error_outline</span>
+    <p>{{ store.plansError() }}</p>
+    <button class="retry-btn" (click)="store.loadPlans()">
+      {{ 'subscriptions.plans.retry' | translate }}
+    </button>
+  </div>
+
+  <!-- Pricing Cards Grid -->
+  <div *ngIf="!store.plansLoading() && !store.plansError()" class="pricing-grid">
+    <div
+      *ngFor="let plan of store.plans()"
+      class="pricing-card"
+      [class.pricing-card--pro]="plan.name === 'Pro'"
+    >
+      <div *ngIf="plan.name === 'Pro'" class="featured-badge">
+        {{ 'subscriptions.plans.popular' | translate }}
+      </div>
+
+      <div class="card-header">
+        <h2 class="plan-name">{{ plan.name }}</h2>
+        <p class="plan-desc">{{ 'subscriptions.plans.descriptions.' + plan.name.toLowerCase() | translate }}</p>
+      </div>
+
+      <div class="plan-price-block">
+        <span class="price-symbol">$</span>
+        <span class="plan-price">{{ plan.price }}</span>
+        <span class="plan-interval">/{{ 'subscriptions.plans.' + plan.billingInterval | translate }}</span>
+      </div>
+
+      <ul class="plan-features">
+        <li>
+          <span class="material-icons feature-check">check</span>
+          <span>{{ 'subscriptions.plans.limitRecipes' | translate: { count: plan.maxRecipes === -1 ? ('global.unlimited' | translate) : plan.maxRecipes } }}</span>
+        </li>
+        <li>
+          <span class="material-icons feature-check">check</span>
+          <span>{{ 'subscriptions.plans.limitKits' | translate: { count: plan.maxKits === -1 ? ('global.unlimited' | translate) : plan.maxKits } }}</span>
+        </li>
+        <li>
+          <span class="material-icons feature-check">check</span>
+          <span>{{ 'subscriptions.plans.limitDevices' | translate: { count: plan.maxDevices === -1 ? ('global.unlimited' | translate) : plan.maxDevices } }}</span>
+        </li>
+        <li>
+          <span class="material-icons feature-check">check</span>
+          <span>{{ 'subscriptions.plans.realtimeAnalytics' | translate }}</span>
+        </li>
+        <li>
+          <span class="material-icons feature-check">check</span>
+          <span>{{ 'subscriptions.plans.alertNotifications' | translate }}</span>
+        </li>
+      </ul>
+
+      <div class="card-action">
+        <button
+          class="btn-subscribe"
+          [disabled]="store.saving() || store.activeSubscription()?.planId === plan.id"
+          (click)="selectPlan(plan.id)"
+        >
+          <span *ngIf="store.saving() && store.activeSubscription()?.planId !== plan.id" class="btn-spinner"></span>
+          <span *ngIf="store.activeSubscription()?.planId === plan.id">
+            {{ 'subscriptions.plans.currentPlan' | translate }}
+          </span>
+          <span *ngIf="store.activeSubscription()?.planId !== plan.id && !store.saving()">
+            {{ 'subscriptions.plans.choosePlan' | translate }}
+          </span>
+          <span *ngIf="store.activeSubscription()?.planId !== plan.id && store.saving()">
+            {{ 'subscriptions.plans.redirecting' | translate }}
+          </span>
+        </button>
+        <!-- Show checkout error beneath the button that triggered it -->
+        <p *ngIf="store.error()" class="checkout-error">{{ store.error() }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Continue with Free Plan Option: only show in onboarding mode -->
+  <div *ngIf="isOnboarding" class="free-plan-container">
+    <button class="btn-free-plan" (click)="continueWithFreePlan()">
+      {{ 'subscriptions.plans.continueFree' | translate }}
+    </button>
+  </div>
+
+  <!-- Savings and ROI Section -->
+  <div class="savings-roi-section" *ngIf="!store.plansLoading() && !store.plansError()">
+    <div class="section-divider"></div>
+    <h2 class="savings-section-title">{{ 'subscriptions.savings.title' | translate }}</h2>
+    <p class="savings-section-subtitle">{{ 'subscriptions.savings.subtitle' | translate }}</p>
+
+    <div class="savings-grid">
+      <!-- Requirement 1: Real Savings from Resolved Alerts -->
+      <div class="savings-card-real">
+        <h3>{{ 'subscriptions.savings.realTitle' | translate }}</h3>
+        <p class="card-desc">{{ 'subscriptions.savings.realSubtitle' | translate }}</p>
+        
+        <div class="savings-value-block">
+          <span class="value-label">{{ 'subscriptions.savings.totalSaved' | translate }}</span>
+          <span class="value-amount">S/. {{ realSavings | number:'1.2-2' }}</span>
+        </div>
+
+        <div class="roi-notice-box">
+          <span class="material-icons info-icon">trending_up</span>
+          <p>{{ 'subscriptions.savings.roiText' | translate:{ multiplier: realSavingsMultiplier } }}</p>
+        </div>
+
+        <!-- History of resolved alerts -->
+        <div class="alerts-history-container">
+          <h4>{{ 'subscriptions.savings.historyTitle' | translate }}</h4>
+          <div class="alerts-table-wrapper">
+            <table class="alerts-history-table">
+              <thead>
+                <tr>
+                  <th>{{ 'subscriptions.savings.product' | translate }}</th>
+                  <th>{{ 'subscriptions.savings.quantity' | translate }}</th>
+                  <th>{{ 'subscriptions.savings.amount' | translate }}</th>
+                  <th>{{ 'subscriptions.savings.date' | translate }}</th>
+                  <th>{{ 'subscriptions.savings.status' | translate }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let alert of resolvedAlerts">
+                  <td><strong>{{ alert.product }}</strong></td>
+                  <td>{{ alert.quantity }} uds</td>
+                  <td class="text-saved">S/. {{ alert.amount | number:'1.2-2' }}</td>
+                  <td>{{ alert.date }}</td>
+                  <td>
+                    <span class="badge-resolved">
+                      <span class="material-icons mini-check">check_circle</span>
+                      {{ 'subscriptions.savings.resolved' | translate }}
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Requirement 2: Potential Savings Simulator -->
+      <div class="savings-card-potential">
+        <h3>{{ 'subscriptions.savings.potentialTitle' | translate }}</h3>
+        <p class="card-desc">{{ 'subscriptions.savings.potentialSubtitle' | translate }}</p>
+
+        <!-- Slider 1: Monthly Inventory -->
+        <div class="simulator-slider-group">
+          <div class="slider-header">
+            <span>{{ 'subscriptions.savings.monthlyInventory' | translate }}</span>
+            <span class="slider-value">S/. {{ monthlyInventory | number:'1.0-0' }}</span>
+          </div>
+          <input 
+            type="range" 
+            min="2000" 
+            max="30000" 
+            step="500" 
+            [value]="monthlyInventory" 
+            (input)="onInventoryChange($event)"
+            class="range-slider">
+          <div class="slider-labels">
+            <span>S/. 2,000</span>
+            <span>S/. 30,000</span>
+          </div>
+        </div>
+
+        <!-- Slider 2: Current Waste/Merma Percent -->
+        <div class="simulator-slider-group">
+          <div class="slider-header">
+            <span>{{ 'subscriptions.savings.mermaPercent' | translate }}</span>
+            <span class="slider-value">{{ currentMermaPercent }}%</span>
+          </div>
+          <input 
+            type="range" 
+            min="1" 
+            max="15" 
+            step="0.5" 
+            [value]="currentMermaPercent" 
+            (input)="onMermaChange($event)"
+            class="range-slider">
+          <div class="slider-labels">
+            <span>1%</span>
+            <span>15%</span>
+          </div>
+        </div>
+
+        <!-- Simulator Results -->
+        <div class="simulator-results">
+          <div class="result-row">
+            <span>{{ 'subscriptions.savings.lossWithout' | translate }}</span>
+            <span class="result-value loss-value">S/. {{ lossWithoutInventiapp | number:'1.2-2' }}</span>
+          </div>
+          <div class="result-row">
+            <span>{{ 'subscriptions.savings.lossWith' | translate }}</span>
+            <span class="result-value gain-value">S/. {{ lossWithInventiapp | number:'1.2-2' }}</span>
+          </div>
+          <div class="result-divider"></div>
+          <div class="result-row highlighted-row">
+            <span>{{ 'subscriptions.savings.potentialSavings' | translate }}</span>
+            <span class="result-value savings-value">S/. {{ potentialSavings | number:'1.2-2' }}</span>
+          </div>
+        </div>
+
+        <div class="comparison-footer-box">
+          <span class="material-icons alert-icon">check_circle_outline</span>
+          <p>{{ 'subscriptions.savings.comparisonText' | translate:{ netSavings: (potentialNetSavings | number:'1.2-2') } }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

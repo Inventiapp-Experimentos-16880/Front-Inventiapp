@@ -1,5 +1,6 @@
 import {Component, inject, computed, ViewChild, signal} from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -37,6 +38,7 @@ export class DashboardComponent {
   protected readonly dashboardStore = inject(DashboardStore);
   protected readonly authStore = inject(AuthStore);
   private readonly translate = inject(TranslateService);
+  private readonly router = inject(Router);
 
   @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
 
@@ -54,6 +56,10 @@ export class DashboardComponent {
     await this.authStore.waitForInitialization();
     this.authInitialized.set(true);
     this.dashboardStore.refresh()
+  }
+
+  goToSavings(): void {
+    void this.router.navigate(['/subscriptions/plans']);
   }
   public barChartType: ChartType = 'bar';
   public barChartData = computed<ChartData<'bar'>>(() => {

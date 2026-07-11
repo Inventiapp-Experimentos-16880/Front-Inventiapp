@@ -1,0 +1,600 @@
+{
+  "global": {
+    "cancel": "Annulla",
+    "save": "Salva",
+    "exit": "Esci",
+    "unlimited": "Illimitato"
+  },
+  "app": {
+    "title": "StockTrack"
+  },
+  "languageSwitcher": {
+    "title": "Lingua dell’applicazione",
+    "trigger": "Cambia la lingua dell’applicazione",
+    "mode": {
+      "manualShort": "Manuale",
+      "locationShort": "Posizione"
+    },
+    "manual": {
+      "description": "Lingua selezionata manualmente",
+      "choose": "Seleziona la lingua manuale"
+    },
+    "location": {
+      "title": "Lingua in base alla posizione",
+      "loading": "Rilevamento della lingua in base alla posizione...",
+      "detectedIn": "Consigliato per {{country}}",
+      "unavailable": "Impossibile rilevare la lingua in base alla posizione",
+      "refresh": "Rileva nuovamente la posizione"
+    }
+  },
+  "settings": {
+    "title": "Impostazioni",
+    "subtitle": "Gestisci le preferenze e le opzioni dell’applicazione",
+    "userInfo": {
+      "title": "Informazioni utente",
+      "email": "E-mail",
+      "role": "Ruolo",
+      "admin": "Amministratore",
+      "user": "Utente",
+      "planType": "Tipo di piano",
+      "freePlan": "Piano gratuito"
+    },
+    "language": {
+      "title": "Lingua",
+      "description": "Seleziona la lingua dell’interfaccia"
+    },
+    "appInfo": {
+      "title": "Informazioni sull’applicazione",
+      "version": "Versione",
+      "name": "Nome"
+    },
+    "subscription": {
+      "title": "Piano di abbonamento",
+      "description": "Gestisci i piani di pagamento e i limiti di utilizzo del tuo account.",
+      "manageBtn": "Gestisci abbonamento"
+    }
+  },
+  "sidebar": {
+    "title": "StockTrack",
+    "menu": {
+      "home": "Home",
+      "inventory": "Inventario",
+      "providers": "Fornitori",
+      "sales": "Vendite",
+      "reports": "Report",
+      "more": "Altro",
+      "aria": {
+        "home": "Vai alla home",
+        "inventory": "Vai all’inventario",
+        "providers": "Vai ai fornitori",
+        "sales": "Vai alle vendite",
+        "reports": "Vai ai report",
+        "more": "Apri il menu con altre opzioni",
+        "language": "Selettore della lingua",
+        "navigation": "Navigazione principale"
+      }
+    },
+    "footer": {
+      "settings": "Impostazioni",
+      "personal": "Gestione del personale",
+      "logout": "Esci",
+      "aria": {
+        "settings": "Vai alle impostazioni",
+        "personal": "Vai alla gestione del personale",
+        "logout": "Esci"
+      }
+    }
+  },
+  "home": {
+    "title": "Benvenuto in StockTrack",
+    "subtitle": "Sistema di gestione dell’inventario"
+  },
+  "kits": {
+    "validationQuantityInteger": "La quantità deve essere un numero intero positivo"
+  },
+  "inventory": {
+    "title": "Gestione dell’inventario",
+    "subtitle": "Gestisci i tuoi prodotti e le scorte",
+    "emptyState": {
+      "title": "Inventario",
+      "description": "Questa è la schermata dell’inventario",
+      "message": "Presto potrai gestire qui tutti i tuoi prodotti"
+    },
+    "header": "Inventario",
+    "invalidPrice": "Prezzo non valido",
+    "products": "Prodotti",
+    "name": "Nome",
+    "unitPrice": "Prezzo unitario",
+    "currentStock": "Scorte attuali",
+    "minimumStock": "Scorte minime",
+    "informationProduct": "Informazioni",
+    "actions": "Azioni",
+    "viewDetail": "Visualizza dettagli",
+    "edit": "Modifica",
+    "delete": "Elimina",
+    "confirmDelete": "Sei sicuro di voler eliminare il prodotto {name}?",
+    "noProductsFound": "Nessun prodotto trovato",
+    "tryDifferentSearch": "Prova criteri di ricerca o filtri diversi",
+    "filter": "Filtri",
+    "search": "Cerca",
+    "allCategories": "Tutte le categorie",
+    "allProviders": "Tutti i fornitori",
+    "allLots": "Tutti i lotti",
+    "allStatuses": "Tutti gli stati",
+    "date": "Data",
+    "clearFilters": "Cancella filtri",
+    "removeFilter": "Rimuovi filtro",
+    "loadingKits": "Caricamento dei kit...",
+    "loadingProducts": "Caricamento dei prodotti...",
+    "retry": "Riprova",
+    "product": "Prodotto",
+    "newReplacement": "Registra rifornimento",
+    "noKits": "Nessun kit disponibile",
+    "startKits": "Inizia creando il tuo primo kit facendo clic sul pulsante",
+    "newKit": "Nuovo kit",
+    "priceKit": "Prezzo del kit",
+    "quantity": "Quantità da selezionare",
+    "category": "Categoria",
+    "provider": "Fornitore",
+    "select": "Seleziona",
+    "newProduct": "Nuovo prodotto",
+    "editProduct": "Modifica prodotto",
+    "newCategory": "Nuova categoria",
+    "description": "Descrizione",
+    "categoryNamePlaceholder": "Es.: Latticini",
+    "categoryDescriptionPlaceholder": "Es.: Prodotti lattiero-caseari e derivati",
+    "productDescriptionPlaceholder": "Es.: Latte intero in confezione da 1 litro",
+    "isActive": "Stato",
+    "activeProduct": "Prodotto attivo",
+    "lot": "Lotto",
+    "receiptDate": "Data di ricezione",
+    "expirationDate": "Data di scadenza",
+    "amountEntering": "Quantità in entrata",
+    "lastReception": "Ultima ricezione",
+    "lowStock": "Scorte basse",
+    "status": "Stato",
+    "outOfStock": "Esaurito",
+    "normalStock": "Normale",
+    "kits": "Kit",
+    "price": "Prezzo",
+    "kitProductUnitPrice": "Prezzo unitario",
+    "kitProductTotal": "Totale",
+    "batchHistory": {
+      "viewHistory": "Visualizza lo storico dei movimenti",
+      "title": "Storico dei movimenti",
+      "lot": "Lotto",
+      "type": "Tipo",
+      "quantity": "Quantità",
+      "date": "Data",
+      "entrada": "Entrata",
+      "salida": "Uscita",
+      "noMovements": "Questo prodotto non ha movimenti registrati",
+      "loadError": "Impossibile caricare lo storico dei movimenti",
+      "viewOnExpiring": "Visualizza il lotto nel report dei prodotti in scadenza",
+      "from": "Da",
+      "to": "A",
+      "allTypes": "Tutti",
+      "allLots": "Tutti",
+      "clearFilters": "Cancella filtri",
+      "noFilteredMovements": "Nessun movimento corrisponde ai filtri",
+      "filteredCount": "{{count}} di {{total}} movimenti"
+    }
+  },
+  "providers-view": {
+    "providers": "Fornitori",
+    "providers-table": {
+      "name": "Nome",
+      "contact": "Contatto",
+      "phone": "Cellulare",
+      "email": "E-mail",
+      "ruc": "RUC",
+      "address": "Indirizzo",
+      "actions": "Azioni",
+      "edit": "Modifica",
+      "delete": "Elimina"
+    },
+    "providers-toolbar": {
+      "search": "Cerca",
+      "filter": "Filtra",
+      "add-provider": "Aggiungi fornitore"
+    },
+    "form-dialog": {
+      "add": "Aggiungi fornitore",
+      "edit": "Modifica fornitore",
+      "first-name": "Nome",
+      "last-name": "Cognome",
+      "phone-number": "Cellulare",
+      "email": "E-mail",
+      "ruc": "RUC",
+      "cancel": "Annulla",
+      "save": "Salva",
+      "first-name-required": "Il nome è obbligatorio",
+      "first-name-minlength": "Il nome deve contenere almeno 2 caratteri",
+      "last-name-required": "Il cognome è obbligatorio",
+      "last-name-minlength": "Il cognome deve contenere almeno 2 caratteri",
+      "phone-number-required": "Il numero di telefono è obbligatorio",
+      "phone-number-invalid": "Formato del numero di telefono non valido",
+      "email-required": "L’indirizzo e-mail è obbligatorio",
+      "email-invalid": "Formato e-mail non valido",
+      "ruc-required": "Il RUC è obbligatorio",
+      "ruc-invalid": "Il RUC deve contenere esattamente 11 cifre"
+    }
+  },
+  "sales": {
+    "title": "Gestione delle vendite",
+    "subtitle": "Gestisci le vendite e le transazioni",
+    "search": "Cerca prodotti",
+    "filter": "Filtro",
+    "emptyState": {
+      "title": "Vendite",
+      "description": "Questa è la schermata delle vendite",
+      "message": "Presto potrai gestire qui tutte le tue vendite"
+    },
+    "products": "Prodotti",
+    "salesDraft": "Bozza di uscita prodotti",
+    "table": {
+      "name": "Nome",
+      "unitPrice": "Prezzo unitario",
+      "stock": "Scorte",
+      "quantity": "Quantità",
+      "totalPrice": "Prezzo totale",
+      "actions": "Azioni",
+      "edit": "Modifica",
+      "delete": "Elimina",
+      "cancel": "Annulla",
+      "save": "Salva"
+    },
+    "kits": "Kit",
+    "noKitsAvailable": "Nessun kit disponibile",
+    "total": "Totale",
+    "kit": "Kit",
+    "emptyCart": "La bozza è vuota. Aggiungi prodotti o kit per iniziare.",
+    "noStockAvailable": "Nessuna scorta disponibile per {{product}}",
+    "stockInsufficient": "Scorte insufficienti. Sono disponibili solo {{stock}} unità di {{product}}",
+    "saleSaved": "Vendita salvata correttamente",
+    "saleSaveError": "Errore durante il salvataggio della vendita. Riprova",
+    "userNotIdentified": "Errore: impossibile identificare l’utente"
+  },
+  "auth": {
+    "login": {
+      "title": "Accedi",
+      "email": "E-mail",
+      "password": "Password",
+      "forgotPassword": "Hai dimenticato la password?",
+      "submit": "Accedi",
+      "noAccount": "Non hai un account?",
+      "createAccount": "Creane uno"
+    },
+    "register": {
+      "title": "Registrati",
+      "name": "Nome",
+      "email": "E-mail",
+      "password": "Password",
+      "confirmPassword": "Conferma password",
+      "submit": "Registrati",
+      "hasAccount": "Hai già un account?",
+      "login": "Accedi"
+    },
+    "tagline": "Un controllo dell’inventario pensato per aiutarti a vendere di più e stressarti di meno",
+    "errors": {
+      "loginFailed": "Accesso non riuscito. Controlla le credenziali.",
+      "registerFailed": "Registrazione non riuscita. Riprova.",
+      "passwordMismatch": "Le password non corrispondono"
+    },
+    "validation": {
+      "required": "è obbligatorio",
+      "emailInvalid": "E-mail non valida",
+      "minLength": "Minimo {{min}} caratteri",
+      "passwordRequired": "è obbligatoria",
+      "confirmRequired": "La conferma è obbligatoria",
+      "passwordMismatch": "Le password non corrispondono"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "greeting": "Buongiorno",
+    "notifications": {
+      "title": "Notifiche",
+      "button": "Apri notifiche",
+      "icon": "notifications",
+      "empty": "Nessuna notifica",
+      "types": {
+        "warning": "Avviso",
+        "alert": "Allerta",
+        "info": "Informazione"
+      }
+    },
+    "stats": {
+      "productsInInventory": "Prodotti in magazzino",
+      "monthlyIncome": "Entrate del mese",
+      "salesThisMonth": "Vendite effettuate questo mese",
+      "productsWithAlerts": "Prodotti con avvisi",
+      "savingsThisMonth": "Risparmi dagli avvisi gestiti"
+    },
+    "charts": {
+      "topProducts": "Prodotti più venduti",
+      "monthlyIncome": "Entrate mensili"
+    },
+    "notificationMessages": {
+      "expiringProduct": "Il prodotto \"{{product}}\" scadrà il {{date}}",
+      "lowStock": "Il prodotto \"{{product}}\" ha solo {{quantity}} unità disponibili"
+    },
+    "notificationTitles": {
+      "expiringProduct": "Prodotto in prossimità della scadenza",
+      "lowStock": "Prodotto in esaurimento"
+    }
+  },
+  "personal": {
+    "title": "Gestione del personale"
+  },
+  "personalAdministration": {
+    "title": "Gestione del personale",
+    "subtitle": "Gestisci gli utenti della tua attività",
+    "search": "Cerca...",
+    "filter": "Filtro",
+    "status": "Stato",
+    "role": "Ruolo",
+    "all": "Tutti",
+    "active": "Attivo",
+    "inactive": "Inattivo",
+    "apply": "Applica",
+    "clear": "Cancella",
+    "clearFilters": "Cancella filtri",
+    "newRole": "Nuovo ruolo",
+    "newUser": "Nuovo utente",
+    "addUser": "Aggiungi utente",
+    "name": "Nome",
+    "account": "Account",
+    "actions": "Azioni",
+    "newUserTitle": "Nuovo membro del personale",
+    "nameLabel": "Nome",
+    "lastnameLabel": "Cognome",
+    "phoneLabel": "Numero di telefono",
+    "emailLabel": "E-mail",
+    "passwordLabel": "Password",
+    "roleLabel": "Ruolo",
+    "editUserTitle": "Modifica utente",
+    "fullNameLabel": "Nome completo",
+    "accountLabel": "Account (e-mail)",
+    "statusLabel": "Stato",
+    "confirmDeleteTitle": "Conferma eliminazione",
+    "confirmDeleteMessage": "Sei sicuro di voler eliminare {{name}}?",
+    "newRoleTitle": "Nuovo ruolo",
+    "roleNameLabel": "Nome del ruolo",
+    "rolePlaceholder": "Es.: Supervisore",
+    "permissionsTitle": "Autorizzazioni",
+    "permissionsHint": "Seleziona i moduli a cui questo utente potrà accedere",
+    "permissionsSelected": "{{count}} autorizzazione/i selezionata/e",
+    "permissionDashboard": "Dashboard",
+    "permissionInventory": "Inventario",
+    "permissionSales": "Vendite",
+    "permissionProviders": "Fornitori",
+    "permissionReports": "Report",
+    "permissionUserManagement": "Gestione utenti",
+    "permissionProducts": "Gestione prodotti",
+    "permissionPurchases": "Processo di acquisto",
+    "permissionStats": "Statistiche",
+    "permissionUsers": "Gestione utenti",
+    "loadingUsers": "Caricamento degli utenti...",
+    "noUsers": "Nessun utente",
+    "noUsersFiltered": "Nessun utente trovato con i filtri applicati",
+    "noUsersYet": "Non hai ancora aggiunto utenti alla tua attività",
+    "admin": "Amministratore",
+    "user": "Utente",
+    "admins": "Amministratori",
+    "users": "Utenti",
+    "cannotDeleteSelf": "Non puoi eliminare te stesso",
+    "cannotDeleteOwner": "Impossibile eliminare l’utente principale",
+    "deleteUser": "Elimina utente",
+    "emailPlaceholder": "utente@esempio.it",
+    "passwordPlaceholder": "Minimo 6 caratteri",
+    "passwordPlaceholderOptional": "Lascia vuoto per non modificare",
+    "passwordHintOptional": "Lascia vuoto se non desideri cambiare la password",
+    "emailRequired": "L’e-mail è obbligatoria",
+    "emailInvalid": "Inserisci un’e-mail valida",
+    "passwordRequired": "La password è obbligatoria",
+    "passwordMinLength": "Minimo 6 caratteri",
+    "editUser": "Modifica utente",
+    "aria": {
+      "search": "Cerca utenti",
+      "filterRole": "Filtra per ruolo",
+      "createUser": "Crea nuovo utente",
+      "deleteUser": "Elimina utente",
+      "clearFilters": "Cancella i filtri applicati"
+    }
+  },
+  "common": {
+    "cancel": "Annulla",
+    "save": "Salva",
+    "saveChanges": "Salva modifiche",
+    "delete": "Elimina",
+    "loading": "Caricamento...",
+    "validationNumber": "Inserisci un numero intero positivo inferiore a 100",
+    "validationExpirationDate": "Inserisci una data di scadenza valida, uguale o successiva alla data di ricezione",
+    "validateNumberCart": "Nel carrello sono presenti quantità non valide. Correggile prima di salvare"
+  },
+  "notFound": {
+    "title": "Pagina non trovata",
+    "message": "Ops! La pagina che stai cercando non esiste.",
+    "description": "L’URL potrebbe essere errato oppure la pagina potrebbe essere stata spostata. Controlla l’indirizzo o torna alla pagina principale.",
+    "goHome": "Vai alla home",
+    "goBack": "Indietro"
+  },
+  "reports": {
+    "title": "Report",
+    "subtitle": "Visualizza e analizza le informazioni importanti del tuo inventario",
+    "refresh": "Aggiorna",
+    "export": "Esporta in Excel",
+    "loading": "Caricamento dei report...",
+    "retry": "Riprova",
+    "expired": "Scaduto",
+    "expiresToday": "Scade oggi",
+    "expiresTomorrow": "Scade domani",
+    "daysLeft": "{days} giorni rimanenti",
+    "dayLeft": "{days} giorno rimanente",
+    "monthLeft": "{months} mese rimanente",
+    "monthsLeft": "{months} mesi rimanenti",
+    "tabs": {
+      "providers": "Fornitori",
+      "stock": "Scorte attuali",
+      "expiring": "In scadenza",
+      "lowStock": "Scorte basse",
+      "sales": "Vendite"
+    },
+    "providers": {
+      "title": "Elenco dei fornitori",
+      "subtitle": "Informazioni complete su tutti i tuoi fornitori",
+      "empty": "Nessun fornitore registrato",
+      "filterByCategory": "Filtra per categoria",
+      "allCategories": "Tutte le categorie",
+      "columns": {
+        "name": "Nome",
+        "ruc": "RUC",
+        "email": "E-mail",
+        "phone": "Telefono",
+        "productCount": "Prodotti",
+        "products": "Prodotti"
+      }
+    },
+    "stock": {
+      "title": "Report delle scorte attuali",
+      "subtitle": "Stato attuale dell’inventario di tutti i prodotti",
+      "empty": "Nessun prodotto in inventario",
+      "columns": {
+        "productName": "Prodotto",
+        "category": "Categoria",
+        "currentStock": "Scorte attuali",
+        "minStock": "Scorte minime",
+        "unitPrice": "Prezzo unitario",
+        "totalValue": "Valore totale",
+        "status": "Stato"
+      },
+      "status": {
+        "normal": "Normale",
+        "low": "Basso",
+        "critical": "Critico"
+      }
+    },
+    "expiring": {
+      "title": "Prodotti in scadenza",
+      "subtitle": "Visualizza i prodotti per mese di scadenza",
+      "empty": "Nessun prodotto con data di scadenza",
+      "emptyFiltered": "Nessun prodotto scade nel mese selezionato",
+      "emptyNext30Days": "Nessun prodotto scade nei prossimi 30 giorni",
+      "filterByMonth": "Filtra per mese",
+      "next30Days": "Prossimi 30 giorni",
+      "showAll": "Mostra tutti",
+      "clearFilter": "Cancella filtro",
+      "columns": {
+        "productName": "Prodotto",
+        "category": "Categoria",
+        "expirationDate": "Data di scadenza",
+        "daysLeft": "Giorni rimanenti",
+        "currentStock": "Scorte attuali",
+        "lot": "Lotto",
+        "status": "Stato"
+      },
+      "status": {
+        "expired": "Scaduto",
+        "critical": "Critico",
+        "warning": "Avviso",
+        "normal": "Normale"
+      }
+    },
+    "lowStock": {
+      "title": "Prodotti con scorte basse",
+      "subtitle": "Prodotti al di sotto delle scorte minime",
+      "empty": "Nessun prodotto con scorte basse",
+      "columns": {
+        "productName": "Prodotto",
+        "category": "Categoria",
+        "currentStock": "Scorte attuali",
+        "minStock": "Scorte minime",
+        "difference": "Differenza",
+        "unitPrice": "Prezzo unitario",
+        "status": "Stato"
+      },
+      "status": {
+        "critical": "Critico",
+        "low": "Basso",
+        "normal": "Normale"
+      }
+    },
+    "sales": {
+      "title": "Report delle vendite",
+      "subtitle": "Storico di tutte le vendite effettuate",
+      "empty": "Nessuna vendita registrata",
+      "columns": {
+        "id": "ID",
+        "date": "Data",
+        "totalAmount": "Importo totale",
+        "products": "Dettagli dei prodotti"
+      }
+    }
+  },
+  "subscriptions": {
+    "plans": {
+      "backToSettings": "Torna alle impostazioni",
+      "title": "Prezzi e piani",
+      "subtitle": "Scegli il piano più adatto alle esigenze della tua attività. Puoi effettuare l’upgrade o annullare in qualsiasi momento.",
+      "titleOnboarding": "Scegli il tuo piano iniziale",
+      "subtitleOnboarding": "Per iniziare a usare Inventiapp, seleziona il piano di abbonamento più adatto alla tua attività.",
+      "loading": "Caricamento dei dettagli del piano...",
+      "popular": "Consigliato",
+      "month": "mese",
+      "year": "anno",
+      "limitRecipes": "Fino a {{count}} prodotti",
+      "limitKits": "Fino a {{count}} kit",
+      "limitDevices": "Fino a {{count}} fornitori",
+      "realtimeAnalytics": "Controllo dei lotti e delle date di scadenza",
+      "alertNotifications": "Avvisi di scorte basse e report",
+      "choosePlan": "Abbonati",
+      "currentPlan": "Il tuo piano attuale",
+      "redirecting": "Reindirizzamento al pagamento...",
+      "retry": "Riprova",
+      "continueFree": "Continua con il piano gratuito",
+      "descriptions": {
+        "starter": "Ideale per piccoli negozi e ristoranti. Gestisci gli ingredienti di base delle ricette, i kit e le bilance intelligenti.",
+        "pro": "Perfetto per le attività in crescita. Gestione avanzata dell’inventario, ricette complesse, kit di produzione e bilance in tempo reale.",
+        "enterprise": "Accesso illimitato e assistenza prioritaria. Progettato per grandi magazzini, più sedi e operazioni su larga scala."
+      }
+    },
+    "success": {
+      "title": "Pagamento completato!",
+      "message": "Grazie per esserti abbonato. I limiti del tuo account sono stati aggiornati immediatamente.",
+      "redirectNotice": "Verrai reindirizzato a breve alla schermata di accesso...",
+      "redirectNoticeSettings": "Verrai reindirizzato a breve alla schermata delle impostazioni...",
+      "continueButton": "Vai all’accesso",
+      "continueButtonSettings": "Torna alle impostazioni"
+    },
+    "cancel": {
+      "title": "Pagamento annullato",
+      "message": "La procedura di pagamento è stata annullata. Non è stato effettuato alcun addebito sulla carta.",
+      "tryAgainButton": "Visualizza i piani e riprova",
+      "backButton": "Annulla e torna alle impostazioni"
+    },
+    "savings": {
+      "title": "Il Tuo Impatto Economico",
+      "subtitle": "Scopri come Inventiapp ti aiuta a evitare perdite e a migliorare la redditività della tua attività.",
+      "realTitle": "Risparmio Reale dagli Avvisi Gestiti",
+      "realSubtitle": "Questo è il valore monetario dei prodotti che hai salvato dalla scadenza gestendo gli avvisi della piattaforma.",
+      "totalSaved": "Totale Risparmiato Questo Mese",
+      "roiText": "Il tuo risparmio equivale a {{multiplier}} volte il costo del tuo abbonamento mensile Pro (S/. 108/mese). Il tuo piano si è già ripagato da solo!",
+      "historyTitle": "Cronologia degli Avvisi Gestiti",
+      "product": "Prodotto",
+      "quantity": "Quantità Gestita",
+      "amount": "Risparmio",
+      "date": "Data di Risoluzione",
+      "status": "Stato",
+      "resolved": "Gestito",
+      "potentialTitle": "Simulatore di Risparmio Potenziale",
+      "potentialSubtitle": "Calcola quanto denaro puoi evitare di perdere riducendo gli sprechi di magazzino della tua attività.",
+      "monthlyInventory": "Inventario Mensile Totale (S/.)",
+      "mermaPercent": "Percentuale Attuale di Spreco (%)",
+      "lossWithout": "Perdita Stimata senza Inventiapp (Annuale)",
+      "lossWith": "Perdita Stimata con Inventiapp (Annuale)",
+      "potentialSavings": "Risparmio Annuale Stimato",
+      "comparisonText": "Riducendo del 75% le perdite causate dai prodotti scaduti, Inventiapp Pro ($29/mese) genera un rendimento netto annuale stimato di S/. {{netSavings}}."
+    }
+  }
+}

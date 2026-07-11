@@ -15,23 +15,31 @@
   z-index: 10;
 }
 
-.language-switcher-wrapper ::ng-deep .language-switcher {
-  background: rgba(228, 127, 4, 0.1) !important;
-  border: 1px solid rgba(228, 127, 4, 0.2) !important;
+.language-switcher-wrapper {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 10;
 }
 
-.language-switcher-wrapper ::ng-deep .lang-btn {
-  color: #1f2937 !important;
+.language-switcher-wrapper
+::ng-deep
+.language-trigger {
+  background:
+    rgba(228, 127, 4, 0.1);
+
+  border:
+    1px solid
+    rgba(228, 127, 4, 0.2);
+
+  color: #1f2937;
 }
 
-.language-switcher-wrapper ::ng-deep .lang-btn.active {
-  background: #E47F04 !important;
-  color: white !important;
-}
-
-.language-switcher-wrapper ::ng-deep .lang-btn:hover::before {
-  background: #E47F04 !important;
-  opacity: 0.2 !important;
+.language-switcher-wrapper
+::ng-deep
+.language-trigger:hover {
+  background:
+    rgba(228, 127, 4, 0.18);
 }
 
 .auth-branding {

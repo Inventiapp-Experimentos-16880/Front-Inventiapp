@@ -1,7 +1,7 @@
-import {Component, inject, signal} from '@angular/core';
-import {Layout} from './shared/presentation/components/layout/layout';
-import {TranslateService} from '@ngx-translate/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+
+import { LocalizationStore } from './localization/application/localization.store';
 
 @Component({
   selector: 'app-root',
@@ -11,11 +11,11 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App {
   protected readonly title = signal('StockTrack-frontend');
-  private translate: TranslateService;
+
+  private readonly localizationStore =
+    inject(LocalizationStore);
 
   constructor() {
-    this.translate = inject(TranslateService);
-    this.translate.addLangs(['en', 'es']);
-    this.translate.use('en');
+    this.localizationStore.initialize();
   }
 }
