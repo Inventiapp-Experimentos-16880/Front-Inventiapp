@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { Layout } from './shared/presentation/components/layout/layout';
 import { DashboardComponent } from './dashboard/presentation/views/dashboard/dashboard';
 import { InventoryListComponent } from './inventory/presentation/inventory-list/inventory-list';
+import { ExpirationAlertsComponent } from './inventory/presentation/expiration-alerts/expiration-alerts';
 import { PersonalAdministrationComponent } from './personal-administration/presentation/personal-administration/personal-administration';
 import { ProviderComponent } from './shared/presentation/views/provider/provider';
 import { SalesComponent } from './shared/presentation/views/sales/sales';
@@ -46,6 +47,12 @@ export const routes: Routes = [
       {
         path: 'inventario',
         component: InventoryListComponent,
+        canActivate: [permissionGuard],
+        data: { permissions: ['inventory_access'] }
+      },
+      {
+        path: 'gestion-vencimientos',
+        component: ExpirationAlertsComponent,
         canActivate: [permissionGuard],
         data: { permissions: ['inventory_access'] }
       },

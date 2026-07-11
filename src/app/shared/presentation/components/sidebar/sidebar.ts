@@ -51,6 +51,12 @@ export class SidebarComponent {
       requiredPermission: 'inventory_access'
     },
     {
+      titleKey: 'sidebar.menu.expirationAlerts',
+      icon: 'event_busy',
+      route: '/gestion-vencimientos',
+      requiredPermission: 'inventory_access'
+    },
+    {
       titleKey: 'sidebar.menu.providers',
       icon: 'people',
       route: '/proveedores',
