@@ -178,6 +178,58 @@
       "clearFilters": "Filter zurücksetzen",
       "noFilteredMovements": "Keine Bewegung entspricht den Filtern",
       "filteredCount": "{{count}} von {{total}} Bewegungen"
+    },
+    "expirationAlerts": {
+      "title": "Ablaufverwaltung",
+      "intro": "Diese Warnungen erfordern eine Entscheidung von dir: Chargen, die bald ablaufen (7 Tage), müssen liquidiert oder zurückgegeben werden. Anders als die informativen Hinweise im Dashboard musst du hier eine Entscheidung dokumentieren. Bereits bearbeitete Fälle bleiben als einsehbarer Verlauf erhalten.",
+      "pendingBadge": "{{count}} zu bearbeiten",
+      "loadError": "Die Ablaufwarnungen konnten nicht geladen werden",
+      "noAlerts": "Es sind keine Ablaufwarnungen registriert",
+      "noFilteredAlerts": "Keine Warnung entspricht den Filtern",
+      "filterStatus": "Status",
+      "allStatuses": "Alle",
+      "filterSearch": "Suchen",
+      "filterSearchPlaceholder": "Produkt oder Charge",
+      "clearFilters": "Filter zurücksetzen",
+      "filteredCount": "{{count}} von {{total}} Warnungen",
+      "product": "Produkt",
+      "unknownProduct": "Produkt nicht gefunden",
+      "lot": "Charge",
+      "expirationDate": "Verfällt am",
+      "triggeredAt": "Erkannt",
+      "statusColumn": "Status",
+      "actionColumn": "Aktion",
+      "registerAction": "Aktion erfassen",
+      "handled": "Bearbeitet",
+      "unitsCount": "{{count}} Einheiten",
+      "viewMovement": "Bewegung anzeigen",
+      "actionRegistered": "Aktion erfolgreich erfasst",
+      "alreadyResolved": "Diese Warnung wurde bereits bearbeitet",
+      "scanNow": "Jetzt scannen",
+      "scanning": "Wird gescannt...",
+      "scanCreated": "{{count}} neue Warnungen",
+      "scanNoNew": "Keine Neuigkeiten",
+      "scanError": "Der Scan konnte nicht ausgeführt werden. Bitte versuche es erneut.",
+      "status": {
+        "pending": "Ausstehend",
+        "resolved": "Bearbeitet"
+      },
+      "action": {
+        "liquidation": "Liquidation",
+        "return": "Rückgabe"
+      },
+      "dialog": {
+        "title": "Mitigationsaktion erfassen",
+        "remainingQuantity": "Verbleibende Menge der Charge",
+        "actionType": "Art der Aktion",
+        "quantity": "Menge",
+        "quantityHint": "Leer lassen, um die gesamte Charge abzuschreiben",
+        "quantityPositive": "Die Menge muss größer als 0 sein",
+        "quantityExceedsBatch": "Die Menge darf {{max}} nicht überschreiten",
+        "invalidQuantityError": "Ungültige Menge. Bitte überprüfe den eingegebenen Wert.",
+        "genericError": "Die Aktion konnte nicht erfasst werden. Bitte versuche es erneut.",
+        "confirm": "Bestätigen"
+      }
     }
   },
   "providers-view": {

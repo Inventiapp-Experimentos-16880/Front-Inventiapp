@@ -1,4 +1,7 @@
 {
+  "app": {
+    "title": "StockTrack"
+  },
   "global": {
     "cancel": "Cancelar",
     "save": "Guardar",
@@ -59,6 +62,7 @@
     "menu": {
       "home": "Inicio",
       "inventory": "Inventario",
+      "expirationAlerts": "Gestión de vencimientos",
       "providers": "Proveedores",
       "sales": "Venta",
       "reports": "Reportes",
@@ -66,6 +70,7 @@
       "aria": {
         "home": "Ir a inicio",
         "inventory": "Ir a inventario",
+        "expirationAlerts": "Ir a gestión de vencimientos",
         "providers": "Ir a proveedores",
         "sales": "Ir a ventas",
         "reports": "Ir a reportes",
@@ -178,6 +183,58 @@
       "clearFilters": "Limpiar filtros",
       "noFilteredMovements": "Ningún movimiento coincide con los filtros",
       "filteredCount": "{{count}} de {{total}} movimientos"
+    },
+    "expirationAlerts": {
+      "title": "Gestión de vencimientos",
+      "intro": "Estas alertas requieren una acción tuya: liquidar o devolver los lotes próximos a vencer (7 días). A diferencia de los avisos informativos del panel, aquí debes registrar una decisión. Los casos ya atendidos quedan como historial consultable.",
+      "pendingBadge": "{{count}} por atender",
+      "loadError": "No se pudieron cargar las alertas de vencimiento",
+      "noAlerts": "No hay alertas de vencimiento registradas",
+      "noFilteredAlerts": "Ninguna alerta coincide con los filtros",
+      "filterStatus": "Estado",
+      "allStatuses": "Todos",
+      "filterSearch": "Buscar",
+      "filterSearchPlaceholder": "Producto o lote",
+      "clearFilters": "Limpiar filtros",
+      "filteredCount": "{{count}} de {{total}} alertas",
+      "product": "Producto",
+      "unknownProduct": "Producto no encontrado",
+      "lot": "Lote",
+      "expirationDate": "Vence",
+      "triggeredAt": "Detectada",
+      "statusColumn": "Estado",
+      "actionColumn": "Acción",
+      "registerAction": "Registrar acción",
+      "handled": "Atendida",
+      "unitsCount": "{{count}} unidades",
+      "viewMovement": "Ver movimiento",
+      "actionRegistered": "Acción registrada correctamente",
+      "alreadyResolved": "Esta alerta ya había sido atendida",
+      "scanNow": "Escanear ahora",
+      "scanning": "Escaneando...",
+      "scanCreated": "{{count}} alertas nuevas",
+      "scanNoNew": "Sin novedades",
+      "scanError": "No se pudo ejecutar el escaneo. Inténtalo de nuevo.",
+      "status": {
+        "pending": "Pendiente",
+        "resolved": "Atendida"
+      },
+      "action": {
+        "liquidation": "Liquidación",
+        "return": "Devolución"
+      },
+      "dialog": {
+        "title": "Registrar acción de mitigación",
+        "remainingQuantity": "Cantidad restante del lote",
+        "actionType": "Tipo de acción",
+        "quantity": "Cantidad",
+        "quantityHint": "Déjala vacía para dar de baja el lote completo",
+        "quantityPositive": "La cantidad debe ser mayor que 0",
+        "quantityExceedsBatch": "La cantidad no puede superar {{max}}",
+        "invalidQuantityError": "Cantidad inválida. Revisa el valor ingresado.",
+        "genericError": "No se pudo registrar la acción. Inténtalo de nuevo.",
+        "confirm": "Confirmar"
+      }
     }
   },
   "providers-view": {

@@ -178,6 +178,58 @@
       "clearFilters": "Limpar filtros",
       "noFilteredMovements": "Nenhuma movimentação corresponde aos filtros",
       "filteredCount": "{{count}} de {{total}} movimentações"
+    },
+    "expirationAlerts": {
+      "title": "Gestão de vencimentos",
+      "intro": "Esses alertas exigem uma ação sua: liquidar ou devolver os lotes próximos do vencimento (7 dias). Diferentemente dos avisos informativos do painel, aqui você deve registrar uma decisão. Os casos já resolvidos permanecem como histórico consultável.",
+      "pendingBadge": "{{count}} pendente(s)",
+      "loadError": "Não foi possível carregar os alertas de vencimento",
+      "noAlerts": "Não há alertas de vencimento registrados",
+      "noFilteredAlerts": "Nenhum alerta corresponde aos filtros",
+      "filterStatus": "Status",
+      "allStatuses": "Todos",
+      "filterSearch": "Buscar",
+      "filterSearchPlaceholder": "Produto ou lote",
+      "clearFilters": "Limpar filtros",
+      "filteredCount": "{{count}} de {{total}} alertas",
+      "product": "Produto",
+      "unknownProduct": "Produto não encontrado",
+      "lot": "Lote",
+      "expirationDate": "Vence",
+      "triggeredAt": "Detectado",
+      "statusColumn": "Status",
+      "actionColumn": "Ação",
+      "registerAction": "Registrar ação",
+      "handled": "Resolvido",
+      "unitsCount": "{{count}} unidades",
+      "viewMovement": "Ver movimentação",
+      "actionRegistered": "Ação registrada com sucesso",
+      "alreadyResolved": "Este alerta já havia sido resolvido",
+      "scanNow": "Escanear agora",
+      "scanning": "Escaneando...",
+      "scanCreated": "{{count}} novos alertas",
+      "scanNoNew": "Sem novidades",
+      "scanError": "Não foi possível executar a verificação. Tente novamente.",
+      "status": {
+        "pending": "Pendente",
+        "resolved": "Resolvido"
+      },
+      "action": {
+        "liquidation": "Liquidação",
+        "return": "Devolução"
+      },
+      "dialog": {
+        "title": "Registrar ação de mitigação",
+        "remainingQuantity": "Quantidade restante do lote",
+        "actionType": "Tipo de ação",
+        "quantity": "Quantidade",
+        "quantityHint": "Deixe em branco para dar baixa no lote inteiro",
+        "quantityPositive": "A quantidade deve ser maior que 0",
+        "quantityExceedsBatch": "A quantidade não pode exceder {{max}}",
+        "invalidQuantityError": "Quantidade inválida. Verifique o valor informado.",
+        "genericError": "Não foi possível registrar a ação. Tente novamente.",
+        "confirm": "Confirmar"
+      }
     }
   },
   "providers-view": {

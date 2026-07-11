@@ -1,0 +1,139 @@
+<div class="page">
+  <header class="page-header">
+    <div class="action-bar">
+      <div class="title-row">
+        <h1 class="page-title">{{ 'inventory.expirationAlerts.title' | translate }}</h1>
+        @if (pendingCount() > 0) {
+          <span class="pending-badge">{{ 'inventory.expirationAlerts.pendingBadge' | translate: { count: pendingCount() } }}</span>
+        }
+      </div>
+
+      <div class="toolbar-buttons">
+        <button
+          class="btn-orange"
+          (click)="scanNow()"
+          [disabled]="store.scanning()">
+          <i class="material-icons">refresh</i>
+          {{ (store.scanning() ? 'inventory.expirationAlerts.scanning' : 'inventory.expirationAlerts.scanNow') | translate }}
+        </button>
+      </div>
+    </div>
+    <p class="page-intro">{{ 'inventory.expirationAlerts.intro' | translate }}</p>
+  </header>
+
+  @if (store.loading()) {
+    <div class="state-row">
+      <mat-spinner diameter="36"></mat-spinner>
+    </div>
+  } @else if (store.loadError()) {
+    <p class="empty-state">{{ 'inventory.expirationAlerts.loadError' | translate }}</p>
+  } @else if (rows().length === 0) {
+    <p class="empty-state">{{ 'inventory.expirationAlerts.noAlerts' | translate }}</p>
+  } @else {
+    <div class="filters-bar">
+      <mat-form-field appearance="outline" class="filter-field">
+        <mat-label>{{ 'inventory.expirationAlerts.filterStatus' | translate }}</mat-label>
+        <mat-select [ngModel]="statusFilter()" (ngModelChange)="statusFilter.set($event)">
+          <mat-option value="ALL">{{ 'inventory.expirationAlerts.allStatuses' | translate }}</mat-option>
+          <mat-option value="PENDING">{{ 'inventory.expirationAlerts.status.pending' | translate }}</mat-option>
+          <mat-option value="RESOLVED">{{ 'inventory.expirationAlerts.status.resolved' | translate }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="filter-field filter-search">
+        <mat-label>{{ 'inventory.expirationAlerts.filterSearch' | translate }}</mat-label>
+        <input matInput [ngModel]="searchTerm()" (ngModelChange)="searchTerm.set($event)"
+               [placeholder]="'inventory.expirationAlerts.filterSearchPlaceholder' | translate">
+        <mat-icon matIconSuffix>search</mat-icon>
+      </mat-form-field>
+
+      @if (hasActiveFilters()) {
+        <button mat-stroked-button class="clear-filters-btn" (click)="clearFilters()">
+          {{ 'inventory.expirationAlerts.clearFilters' | translate }}
+        </button>
+      }
+    </div>
+
+    <p class="filters-summary">
+      {{ 'inventory.expirationAlerts.filteredCount' | translate: { count: filteredRows().length, total: rows().length } }}
+    </p>
+
+    @if (filteredRows().length === 0) {
+      <p class="empty-state">{{ 'inventory.expirationAlerts.noFilteredAlerts' | translate }}</p>
+    } @else {
+      <div class="table-wrapper">
+        <table mat-table [dataSource]="filteredRows()" [trackBy]="trackByAlertId" class="alerts-table">
+          <ng-container matColumnDef="product">
+            <th mat-header-cell *matHeaderCellDef>{{ 'inventory.expirationAlerts.product' | translate }}</th>
+            <td mat-cell *matCellDef="let row">{{ row.productName }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="lot">
+            <th mat-header-cell *matHeaderCellDef>{{ 'inventory.expirationAlerts.lot' | translate }}</th>
+            <td mat-cell *matCellDef="let row">
+              <mat-chip class="lot-chip" disableRipple>{{ row.batchLabel }}</mat-chip>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="expiration">
+            <th mat-header-cell *matHeaderCellDef>{{ 'inventory.expirationAlerts.expirationDate' | translate }}</th>
+            <td mat-cell *matCellDef="let row">{{ row.expirationDate | date:'dd/MM/yyyy' }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="triggeredAt">
+            <th mat-header-cell *matHeaderCellDef>{{ 'inventory.expirationAlerts.triggeredAt' | translate }}</th>
+            <td mat-cell *matCellDef="let row">{{ row.triggeredAt | date:'dd/MM/yyyy HH:mm' }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>{{ 'inventory.expirationAlerts.statusColumn' | translate }}</th>
+            <td mat-cell *matCellDef="let row">
+              <mat-chip class="status-chip"
+                        [class.pending]="row.status === 'PENDING'"
+                        [class.resolved]="row.status === 'RESOLVED'"
+                        disableRipple>
+                {{ (row.status === 'PENDING' ? 'inventory.expirationAlerts.status.pending' : 'inventory.expirationAlerts.status.resolved') | translate }}
+              </mat-chip>
+              @if (row.status === 'RESOLVED' && row.actionType) {
+                <span class="resolved-detail">
+                  {{ (row.actionType === 'LIQUIDATION' ? 'inventory.expirationAlerts.action.liquidation' : 'inventory.expirationAlerts.action.return') | translate }}
+                  @if (row.actionQuantity !== null && row.actionQuantity !== undefined) {
+                    · {{ 'inventory.expirationAlerts.unitsCount' | translate: { count: row.actionQuantity } }}
+                  }
+                  @if (row.resolvedAt) {
+                    · {{ row.resolvedAt | date:'dd/MM/yyyy' }}
+                  }
+                </span>
+              }
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>{{ 'inventory.expirationAlerts.actionColumn' | translate }}</th>
+            <td mat-cell *matCellDef="let row">
+              @if (row.status === 'PENDING') {
+                <button mat-raised-button color="primary" class="register-btn" (click)="openRegisterActionDialog(row)">
+                  <mat-icon>fact_check</mat-icon>
+                  {{ 'inventory.expirationAlerts.registerAction' | translate }}
+                </button>
+              } @else {
+                <span class="handled-label">
+                  <mat-icon class="handled-icon">check_circle</mat-icon>
+                  {{ 'inventory.expirationAlerts.handled' | translate }}
+                </span>
+                <button mat-button class="view-movement-btn" (click)="openMovementHistory(row)">
+                  <mat-icon class="view-movement-icon">history</mat-icon>
+                  {{ 'inventory.expirationAlerts.viewMovement' | translate }}
+                </button>
+              }
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+              [class.pending-row]="row.status === 'PENDING'"></tr>
+        </table>
+      </div>
+    }
+  }
+</div>

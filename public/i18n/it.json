@@ -178,6 +178,58 @@
       "clearFilters": "Cancella filtri",
       "noFilteredMovements": "Nessun movimento corrisponde ai filtri",
       "filteredCount": "{{count}} di {{total}} movimenti"
+    },
+    "expirationAlerts": {
+      "title": "Gestione delle scadenze",
+      "intro": "Questi avvisi richiedono un’azione da parte tua: liquidare o restituire i lotti prossimi alla scadenza (7 giorni). A differenza degli avvisi informativi della dashboard, qui devi registrare una decisione. I casi già gestiti restano consultabili come storico.",
+      "pendingBadge": "{{count}} da gestire",
+      "loadError": "Impossibile caricare gli avvisi di scadenza",
+      "noAlerts": "Non ci sono avvisi di scadenza registrati",
+      "noFilteredAlerts": "Nessun avviso corrisponde ai filtri",
+      "filterStatus": "Stato",
+      "allStatuses": "Tutti",
+      "filterSearch": "Cerca",
+      "filterSearchPlaceholder": "Prodotto o lotto",
+      "clearFilters": "Cancella filtri",
+      "filteredCount": "{{count}} di {{total}} avvisi",
+      "product": "Prodotto",
+      "unknownProduct": "Prodotto non trovato",
+      "lot": "Lotto",
+      "expirationDate": "Scade",
+      "triggeredAt": "Rilevata",
+      "statusColumn": "Stato",
+      "actionColumn": "Azione",
+      "registerAction": "Registra azione",
+      "handled": "Gestita",
+      "unitsCount": "{{count}} unità",
+      "viewMovement": "Visualizza movimento",
+      "actionRegistered": "Azione registrata correttamente",
+      "alreadyResolved": "Questo avviso era già stato gestito",
+      "scanNow": "Scansiona ora",
+      "scanning": "Scansione in corso...",
+      "scanCreated": "{{count}} nuovi avvisi",
+      "scanNoNew": "Nessuna novità",
+      "scanError": "Impossibile eseguire la scansione. Riprova.",
+      "status": {
+        "pending": "In attesa",
+        "resolved": "Gestita"
+      },
+      "action": {
+        "liquidation": "Liquidazione",
+        "return": "Reso"
+      },
+      "dialog": {
+        "title": "Registra azione di mitigazione",
+        "remainingQuantity": "Quantità residua del lotto",
+        "actionType": "Tipo di azione",
+        "quantity": "Quantità",
+        "quantityHint": "Lascia vuoto per eliminare l’intero lotto",
+        "quantityPositive": "La quantità deve essere maggiore di 0",
+        "quantityExceedsBatch": "La quantità non può superare {{max}}",
+        "invalidQuantityError": "Quantità non valida. Controlla il valore inserito.",
+        "genericError": "Impossibile registrare l’azione. Riprova.",
+        "confirm": "Conferma"
+      }
     }
   },
   "providers-view": {
