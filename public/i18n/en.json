@@ -304,7 +304,8 @@
       "productsInInventory": "Products in inventory",
       "monthlyIncome": "Monthly income",
       "salesThisMonth": "Sales made this month",
-      "productsWithAlerts": "Products with alerts"
+      "productsWithAlerts": "Products with alerts",
+      "savingsThisMonth": "Savings from resolved alerts"
     },
     "charts": {
       "topProducts": "Top selling products",
@@ -568,6 +569,29 @@
       "message": "The checkout process was canceled. No charges were made to your card.",
       "tryAgainButton": "View Plans & Try Again",
       "backButton": "Cancel & Return to Settings"
+    },
+    "savings": {
+      "title": "Your Economic Impact",
+      "subtitle": "See how Inventiapp helps you prevent losses and boost your business profitability.",
+      "realTitle": "Real Savings from Resolved Alerts",
+      "realSubtitle": "This is the monetary value of products you saved from expiring by resolving platform alerts.",
+      "totalSaved": "Total Saved This Month",
+      "roiText": "Your savings are equivalent to {{multiplier}}x the monthly cost of your Pro subscription ($29/mo). Your plan has already paid for itself!",
+      "historyTitle": "Resolved Alerts History",
+      "product": "Product",
+      "quantity": "Quantity Resolved",
+      "amount": "Savings",
+      "date": "Resolution Date",
+      "status": "Status",
+      "resolved": "Resolved",
+      "potentialTitle": "Potential Savings Simulator",
+      "potentialSubtitle": "Calculate how much money you can stop losing by reducing waste in your store.",
+      "monthlyInventory": "Total Monthly Inventory ($)",
+      "mermaPercent": "Current Waste Percentage (%)",
+      "lossWithout": "Estimated Annual Loss without Inventiapp",
+      "lossWith": "Estimated Annual Loss with Inventiapp",
+      "potentialSavings": "Estimated Annual Savings",
+      "comparisonText": "By reducing your waste from expired products by 75%, Inventiapp Pro ($29/mo) generates an estimated net annual return of ${{netSavings}}."
     }
   }
 }

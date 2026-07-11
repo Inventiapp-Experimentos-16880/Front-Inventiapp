@@ -308,7 +308,8 @@
       "productsInInventory": "Productos en inventario",
       "monthlyIncome": "Ingresos del mes",
       "salesThisMonth": "Ventas realizadas este mes",
-      "productsWithAlerts": "Productos con alertas"
+      "productsWithAlerts": "Productos con alertas",
+      "savingsThisMonth": "Ahorros por alertas atendidas"
     },
     "charts": {
       "topProducts": "Productos más vendidos",
@@ -572,6 +573,29 @@
       "message": "El proceso de pago fue cancelado. No se realizaron cargos en tu tarjeta.",
       "tryAgainButton": "Ver Planes e Intentar de Nuevo",
       "backButton": "Cancelar y Volver a Ajustes"
+    },
+    "savings": {
+      "title": "Tu Impacto Económico",
+      "subtitle": "Mira cómo Inventiapp te ayuda a evitar pérdidas y a rentabilizar tu negocio.",
+      "realTitle": "Ahorro Real por Alertas Atendidas",
+      "realSubtitle": "Este es el valor monetario de los productos que salvaste de vencerse al atender las alertas de la plataforma.",
+      "totalSaved": "Total Ahorrado este Mes",
+      "roiText": "Tu ahorro equivale a {{multiplier}}x veces el costo de tu suscripción mensual Pro (S/. 108/mes). ¡Tu plan ya se pagó solo!",
+      "historyTitle": "Historial de Alertas Atendidas",
+      "product": "Producto",
+      "quantity": "Cantidad Resuelta",
+      "amount": "Ahorro",
+      "date": "Fecha de Resolución",
+      "status": "Estado",
+      "resolved": "Atendido",
+      "potentialTitle": "Simulador de Ahorro Potencial",
+      "potentialSubtitle": "Calcula cuánto dinero puedes dejar de perder al reducir las mermas de tu bodega.",
+      "monthlyInventory": "Inventario Mensual Total (S/.)",
+      "mermaPercent": "Porcentaje de Merma Actual (%)",
+      "lossWithout": "Pérdida estimada sin Inventiapp (Anual)",
+      "lossWith": "Pérdida estimada con Inventiapp (Anual)",
+      "potentialSavings": "Ahorro Anual Estimado",
+      "comparisonText": "Al reducir un 75% tus mermas por productos vencidos, Inventiapp Pro ($29/mes) te genera un retorno neto anual estimado de S/. {{netSavings}}."
     }
   }
 }

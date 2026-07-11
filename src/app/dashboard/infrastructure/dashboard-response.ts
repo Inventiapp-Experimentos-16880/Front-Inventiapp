@@ -9,6 +9,7 @@ export interface DashboardStatsResource {
   monthlyIncome: number;
   salesThisMonth: number;
   productsWithAlerts: number;
+  savingsThisMonth: number;
 }
 
 /**
