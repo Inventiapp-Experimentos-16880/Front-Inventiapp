@@ -22,9 +22,8 @@ export class PlansView implements OnInit {
 
   protected isOnboarding = false;
 
-  // Requirement 1: Real Savings from Resolved Alerts
   get realSavings(): number {
-    return this.dashboardStore.stats()?.savingsThisMonth || 450;
+    return this.dashboardStore.stats()?.savingsThisMonth ?? 0;
   }
 
   get realSavingsMultiplier(): number {
