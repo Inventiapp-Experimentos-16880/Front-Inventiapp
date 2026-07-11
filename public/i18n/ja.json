@@ -178,6 +178,58 @@
       "clearFilters": "フィルターをクリア",
       "noFilteredMovements": "フィルターに一致する入出庫履歴がありません",
       "filteredCount": "{{total}} 件中 {{count}} 件の入出庫履歴"
+    },
+    "expirationAlerts": {
+      "title": "期限管理",
+      "intro": "これらのアラートにはあなたの対応が必要です。期限が近い(7日以内)ロットを廃棄処分または返品として処理してください。ダッシュボードの通知とは異なり、ここでは対応内容を記録する必要があります。すでに対応済みのケースは履歴として確認できます。",
+      "pendingBadge": "{{count}} 件対応待ち",
+      "loadError": "期限アラートを読み込めませんでした",
+      "noAlerts": "登録された期限アラートはありません",
+      "noFilteredAlerts": "フィルターに一致するアラートがありません",
+      "filterStatus": "状態",
+      "allStatuses": "すべて",
+      "filterSearch": "検索",
+      "filterSearchPlaceholder": "商品またはロット",
+      "clearFilters": "フィルターをクリア",
+      "filteredCount": "{{total}} 件中 {{count}} 件のアラート",
+      "product": "商品",
+      "unknownProduct": "商品が見つかりません",
+      "lot": "ロット",
+      "expirationDate": "期限日",
+      "triggeredAt": "検出日時",
+      "statusColumn": "状態",
+      "actionColumn": "アクション",
+      "registerAction": "アクションを登録",
+      "handled": "対応済み",
+      "unitsCount": "{{count}} 個",
+      "viewMovement": "入出庫を表示",
+      "actionRegistered": "アクションが正常に登録されました",
+      "alreadyResolved": "このアラートはすでに対応済みです",
+      "scanNow": "今すぐスキャン",
+      "scanning": "スキャン中...",
+      "scanCreated": "新しいアラート {{count}} 件",
+      "scanNoNew": "新着なし",
+      "scanError": "スキャンを実行できませんでした。もう一度お試しください。",
+      "status": {
+        "pending": "未対応",
+        "resolved": "対応済み"
+      },
+      "action": {
+        "liquidation": "廃棄処分",
+        "return": "返品"
+      },
+      "dialog": {
+        "title": "対応アクションを登録",
+        "remainingQuantity": "ロットの残数量",
+        "actionType": "アクションの種類",
+        "quantity": "数量",
+        "quantityHint": "空欄のままにするとロット全体を廃棄します",
+        "quantityPositive": "数量は0より大きい値を入力してください",
+        "quantityExceedsBatch": "数量は {{max}} を超えることはできません",
+        "invalidQuantityError": "数量が無効です。入力した値を確認してください。",
+        "genericError": "アクションを登録できませんでした。もう一度お試しください。",
+        "confirm": "確認"
+      }
     }
   },
   "providers-view": {

@@ -178,6 +178,58 @@
       "clearFilters": "Effacer les filtres",
       "noFilteredMovements": "Aucun mouvement ne correspond aux filtres",
       "filteredCount": "{{count}} sur {{total}} mouvements"
+    },
+    "expirationAlerts": {
+      "title": "Gestion des péremptions",
+      "intro": "Ces alertes nécessitent une action de votre part : liquider ou retourner les lots proches de la péremption (7 jours). Contrairement aux avis informatifs du tableau de bord, vous devez ici enregistrer une décision. Les cas déjà traités restent consultables dans l’historique.",
+      "pendingBadge": "{{count}} à traiter",
+      "loadError": "Impossible de charger les alertes de péremption",
+      "noAlerts": "Aucune alerte de péremption enregistrée",
+      "noFilteredAlerts": "Aucune alerte ne correspond aux filtres",
+      "filterStatus": "Statut",
+      "allStatuses": "Tous",
+      "filterSearch": "Rechercher",
+      "filterSearchPlaceholder": "Produit ou lot",
+      "clearFilters": "Effacer les filtres",
+      "filteredCount": "{{count}} sur {{total}} alertes",
+      "product": "Produit",
+      "unknownProduct": "Produit introuvable",
+      "lot": "Lot",
+      "expirationDate": "Expire le",
+      "triggeredAt": "Détectée",
+      "statusColumn": "Statut",
+      "actionColumn": "Action",
+      "registerAction": "Enregistrer l’action",
+      "handled": "Traitée",
+      "unitsCount": "{{count}} unités",
+      "viewMovement": "Voir le mouvement",
+      "actionRegistered": "Action enregistrée avec succès",
+      "alreadyResolved": "Cette alerte avait déjà été traitée",
+      "scanNow": "Analyser maintenant",
+      "scanning": "Analyse en cours...",
+      "scanCreated": "{{count}} nouvelles alertes",
+      "scanNoNew": "Aucune nouveauté",
+      "scanError": "Impossible d’exécuter l’analyse. Veuillez réessayer.",
+      "status": {
+        "pending": "En attente",
+        "resolved": "Traitée"
+      },
+      "action": {
+        "liquidation": "Liquidation",
+        "return": "Retour"
+      },
+      "dialog": {
+        "title": "Enregistrer une action de mitigation",
+        "remainingQuantity": "Quantité restante du lot",
+        "actionType": "Type d’action",
+        "quantity": "Quantité",
+        "quantityHint": "Laissez vide pour retirer le lot entier",
+        "quantityPositive": "La quantité doit être supérieure à 0",
+        "quantityExceedsBatch": "La quantité ne peut pas dépasser {{max}}",
+        "invalidQuantityError": "Quantité invalide. Vérifiez la valeur saisie.",
+        "genericError": "Impossible d’enregistrer l’action. Veuillez réessayer.",
+        "confirm": "Confirmer"
+      }
     }
   },
   "providers-view": {
