@@ -576,7 +576,8 @@
       "lossWithout": "Pérdida estimada sin Inventiapp (Anual)",
       "lossWith": "Pérdida estimada con Inventiapp (Anual)",
       "potentialSavings": "Ahorro Anual Estimado",
-      "comparisonText": "Al reducir un 75% tus mermas por productos vencidos, Inventiapp Pro ($29/mes) te genera un retorno neto anual estimado de S/. {{netSavings}}."
+      "comparisonText": "Al reducir un 75% tus mermas por productos vencidos, Inventiapp Pro ($29/mes) te genera un retorno neto anual estimado de S/. {{netSavings}}.",
+      "noAlerts": "No hay alertas atendidas en este ciclo de inventario."
     }
   }
 }
