@@ -201,6 +201,8 @@
       "actionColumn": "Action",
       "registerAction": "Register action",
       "handled": "Handled",
+      "unitsCount": "{{count}} units",
+      "viewMovement": "View movement",
       "actionRegistered": "Action registered successfully",
       "alreadyResolved": "This alert had already been handled",
       "scanNow": "Scan now",

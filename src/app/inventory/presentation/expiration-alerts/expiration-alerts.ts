@@ -21,6 +21,10 @@ import {
   RegisterMitigationActionDialogData,
   RegisterMitigationActionResult
 } from '../register-mitigation-action-dialog/register-mitigation-action-dialog';
+import {
+  BatchHistoryDialogData,
+  BatchMovementHistoryDialogComponent
+} from '../batch-movement-history-dialog/batch-movement-history-dialog';
 
 interface AlertRow {
   id: string;
@@ -33,6 +37,7 @@ interface AlertRow {
   triggeredAt: string;
   status: ExpirationAlertStatus;
   actionType: 'LIQUIDATION' | 'RETURN' | null;
+  actionQuantity: number | null;
   resolvedAt: string | null;
 }
 
@@ -87,6 +92,7 @@ export class ExpirationAlertsComponent implements OnInit {
           triggeredAt: alert.triggeredAt,
           status: alert.status,
           actionType: alert.actionType,
+          actionQuantity: alert.actionQuantity,
           resolvedAt: alert.resolvedAt
         } as AlertRow;
       })
@@ -171,6 +177,22 @@ export class ExpirationAlertsComponent implements OnInit {
         this.notify('inventory.expirationAlerts.alreadyResolved');
       }
       this.store.refresh();
+    });
+  }
+
+  /** Opens the US18 movement history for the alert's product, prefiltered to its batch. */
+  openMovementHistory(row: AlertRow): void {
+    const data: BatchHistoryDialogData = {
+      productId: row.productId,
+      productName: row.productName,
+      initialBatchId: row.batchId
+    };
+
+    this.dialog.open(BatchMovementHistoryDialogComponent, {
+      width: '640px',
+      maxWidth: '90vw',
+      panelClass: 'batch-movement-history-dialog',
+      data
     });
   }
 

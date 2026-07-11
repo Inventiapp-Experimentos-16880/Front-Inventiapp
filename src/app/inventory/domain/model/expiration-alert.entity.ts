@@ -24,7 +24,7 @@ export class ExpirationAlert implements BaseEntity {
   /**
    * Creates a new ExpirationAlert instance.
    * @param alert - An object containing the id, batchId, productId, expirationDate,
-   * triggeredAt, status, actionType, and resolvedAt of the alert.
+   * triggeredAt, status, actionType, actionQuantity, and resolvedAt of the alert.
    * @returns A new instance of ExpirationAlert.
    */
   constructor(alert: {
@@ -35,6 +35,7 @@ export class ExpirationAlert implements BaseEntity {
     triggeredAt: string;
     status: ExpirationAlertStatus;
     actionType: MitigationActionType | null;
+    actionQuantity: number | null;
     resolvedAt: string | null;
   }) {
     this._id = alert.id;
@@ -44,6 +45,7 @@ export class ExpirationAlert implements BaseEntity {
     this._triggeredAt = alert.triggeredAt;
     this._status = alert.status;
     this._actionType = alert.actionType;
+    this._actionQuantity = alert.actionQuantity;
     this._resolvedAt = alert.resolvedAt;
   }
 
@@ -122,6 +124,17 @@ export class ExpirationAlert implements BaseEntity {
   }
   set actionType(value: MitigationActionType | null) {
     this._actionType = value;
+  }
+
+  /**
+   * The effective quantity written off by the mitigation action (null while PENDING).
+   */
+  private _actionQuantity: number | null;
+  get actionQuantity(): number | null {
+    return this._actionQuantity;
+  }
+  set actionQuantity(value: number | null) {
+    this._actionQuantity = value;
   }
 
   /**

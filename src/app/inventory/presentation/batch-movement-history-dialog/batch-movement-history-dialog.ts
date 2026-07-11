@@ -22,6 +22,8 @@ import { StockMovement, StockMovementType } from '../../domain/model/stock-movem
 export interface BatchHistoryDialogData {
   productId: string;
   productName: string;
+  /** Optional batch id to preselect in the batch filter; defaults to 'ALL' when omitted. */
+  initialBatchId?: string;
 }
 
 @Component({
@@ -92,6 +94,8 @@ export class BatchMovementHistoryDialogComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: BatchHistoryDialogData) {}
 
   ngOnInit(): void {
+    this.batchFilter.set(this.data.initialBatchId ?? 'ALL');
+
     this.batchApi.getBatchesByProductId(this.data.productId).subscribe({
       next: (batches) => {
         if (batches.length === 0) {

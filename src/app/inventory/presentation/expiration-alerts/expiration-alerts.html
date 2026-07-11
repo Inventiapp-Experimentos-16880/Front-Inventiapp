@@ -97,6 +97,9 @@
               @if (row.status === 'RESOLVED' && row.actionType) {
                 <span class="resolved-detail">
                   {{ (row.actionType === 'LIQUIDATION' ? 'inventory.expirationAlerts.action.liquidation' : 'inventory.expirationAlerts.action.return') | translate }}
+                  @if (row.actionQuantity !== null && row.actionQuantity !== undefined) {
+                    · {{ 'inventory.expirationAlerts.unitsCount' | translate: { count: row.actionQuantity } }}
+                  }
                   @if (row.resolvedAt) {
                     · {{ row.resolvedAt | date:'dd/MM/yyyy' }}
                   }
@@ -118,6 +121,10 @@
                   <mat-icon class="handled-icon">check_circle</mat-icon>
                   {{ 'inventory.expirationAlerts.handled' | translate }}
                 </span>
+                <button mat-button class="view-movement-btn" (click)="openMovementHistory(row)">
+                  <mat-icon class="view-movement-icon">history</mat-icon>
+                  {{ 'inventory.expirationAlerts.viewMovement' | translate }}
+                </button>
               }
             </td>
           </ng-container>

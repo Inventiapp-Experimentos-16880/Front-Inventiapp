@@ -13,6 +13,7 @@ export class ExpirationAlertAssembler implements BaseAssembler<ExpirationAlert, 
       triggeredAt: resource.triggeredAt,
       status: resource.status,
       actionType: resource.actionType ?? null,
+      actionQuantity: resource.actionQuantity ?? null,
       resolvedAt: resource.resolvedAt ?? null
     });
   }
@@ -29,6 +30,7 @@ export class ExpirationAlertAssembler implements BaseAssembler<ExpirationAlert, 
       triggeredAt: entity.triggeredAt,
       status: entity.status,
       actionType: entity.actionType,
+      actionQuantity: entity.actionQuantity,
       resolvedAt: entity.resolvedAt
     } as ExpirationAlertResource;
 

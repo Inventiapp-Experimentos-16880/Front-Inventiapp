@@ -9,6 +9,7 @@ export interface ExpirationAlertResource extends BaseResource {
   triggeredAt: string; // ISO 8601 format
   status: ExpirationAlertStatus;
   actionType: MitigationActionType | null;
+  actionQuantity: number | null; // effective quantity written off; null while PENDING
   resolvedAt: string | null; // ISO 8601 format or null
 }
 
