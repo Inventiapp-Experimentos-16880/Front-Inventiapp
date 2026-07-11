@@ -37,7 +37,8 @@ export class DashboardAssembler implements BaseAssembler<Dashboard, DashboardRes
       productsInInventory: resource.stats.productsInInventory,
       monthlyIncome: resource.stats.monthlyIncome,
       salesThisMonth: resource.stats.salesThisMonth,
-      productsWithAlerts: resource.stats.productsWithAlerts
+      productsWithAlerts: resource.stats.productsWithAlerts,
+      savingsThisMonth: resource.stats.savingsThisMonth
     });
   }
 
@@ -84,7 +85,8 @@ export class DashboardAssembler implements BaseAssembler<Dashboard, DashboardRes
         productsInInventory: entity.stats.productsInInventory,
         monthlyIncome: entity.stats.monthlyIncome,
         salesThisMonth: entity.stats.salesThisMonth,
-        productsWithAlerts: entity.stats.productsWithAlerts
+        productsWithAlerts: entity.stats.productsWithAlerts,
+        savingsThisMonth: entity.stats.savingsThisMonth
       },
       monthlyIncome: entity.monthlyIncome.map(item => ({
         month: item.month,

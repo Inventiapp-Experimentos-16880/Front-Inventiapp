@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { SubscriptionsStore } from '../../../application/subscriptions.store';
 import { AuthStore } from '../../../../auth/application/auth.store';
+import { DashboardStore } from '../../../../dashboard/application/dashboard.store';
 
 @Component({
   selector: 'app-plans-view',
@@ -17,16 +18,24 @@ export class PlansView implements OnInit {
   private readonly authStore = inject(AuthStore);
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
+  private readonly dashboardStore = inject(DashboardStore);
 
   protected isOnboarding = false;
 
   // Requirement 1: Real Savings from Resolved Alerts
-  protected realSavings = 450;
-  protected realSavingsMultiplier = 4.1; // 450 / 108 (Pro Subscription cost in PEN)
+  get realSavings(): number {
+    return this.dashboardStore.stats()?.savingsThisMonth || 450;
+  }
+
+  get realSavingsMultiplier(): number {
+    const monthlyProCost = 29 * 3.75; // Approx S/. 108.75
+    return Math.round((this.realSavings / monthlyProCost) * 10) / 10;
+  }
+
   protected resolvedAlerts = [
-    { product: 'Leche Gloria', quantity: 10, amount: 35.00, date: '2026-07-10' },
-    { product: 'Arroz Costeño', quantity: 15, amount: 60.00, date: '2026-07-08' },
-    { product: 'Aceite Primor', quantity: 5, amount: 35.00, date: '2026-07-05' }
+    { product: 'Leche Gloria 400g', quantity: 30, amount: 120.00, date: '2026-07-10' },
+    { product: 'Arroz Costeño 5kg', quantity: 15, amount: 180.00, date: '2026-07-08' },
+    { product: 'Aceite Primor 1L', quantity: 10, amount: 150.00, date: '2026-07-05' }
   ];
 
   // Requirement 2: Potential Savings Simulator
@@ -67,6 +76,7 @@ export class PlansView implements OnInit {
       this.isOnboarding = params['onboarding'] === 'true';
     });
     this.store.loadPlans();
+    this.dashboardStore.refresh();
     const currentUser = this.authStore.currentUser();
     if (currentUser) {
       const ownerId = currentUser.ownerId || currentUser.id;
