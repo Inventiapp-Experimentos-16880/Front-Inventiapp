@@ -308,7 +308,8 @@
       "productsInInventory": "Produtos em estoque",
       "monthlyIncome": "Receita do mês",
       "salesThisMonth": "Vendas realizadas neste mês",
-      "productsWithAlerts": "Produtos com alertas"
+      "productsWithAlerts": "Produtos com alertas",
+      "savingsThisMonth": "Economia com alertas resolvidos"
     },
     "charts": {
       "topProducts": "Produtos mais vendidos",
@@ -571,6 +572,29 @@
       "message": "O processo de pagamento foi cancelado. Nenhuma cobrança foi realizada no seu cartão.",
       "tryAgainButton": "Ver planos e tentar novamente",
       "backButton": "Cancelar e voltar para as configurações"
+    },
+    "savings": {
+      "title": "Seu Impacto Econômico",
+      "subtitle": "Veja como o Inventiapp ajuda você a evitar perdas e aumentar a rentabilidade do seu negócio.",
+      "realTitle": "Economia Real com Alertas Resolvidos",
+      "realSubtitle": "Este é o valor monetário dos produtos que você salvou do vencimento ao atender aos alertas da plataforma.",
+      "totalSaved": "Total Economizado neste Mês",
+      "roiText": "Sua economia equivale a {{multiplier}} vezes o custo da sua assinatura mensal Pro (S/. 108/mês). Seu plano já se pagou sozinho!",
+      "historyTitle": "Histórico de Alertas Resolvidos",
+      "product": "Produto",
+      "quantity": "Quantidade Resolvida",
+      "amount": "Economia",
+      "date": "Data de Resolução",
+      "status": "Status",
+      "resolved": "Resolvido",
+      "potentialTitle": "Simulador de Economia Potencial",
+      "potentialSubtitle": "Calcule quanto dinheiro você pode deixar de perder ao reduzir as perdas de estoque do seu negócio.",
+      "monthlyInventory": "Estoque Mensal Total (S/.)",
+      "mermaPercent": "Percentual Atual de Perdas (%)",
+      "lossWithout": "Perda Estimada sem o Inventiapp (Anual)",
+      "lossWith": "Perda Estimada com o Inventiapp (Anual)",
+      "potentialSavings": "Economia Anual Estimada",
+      "comparisonText": "Ao reduzir em 75% as perdas causadas por produtos vencidos, o Inventiapp Pro ($29/mês) gera um retorno líquido anual estimado de S/. {{netSavings}}."
     }
   }
 }

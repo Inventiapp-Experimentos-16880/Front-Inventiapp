@@ -308,7 +308,8 @@
       "productsInInventory": "在庫商品数",
       "monthlyIncome": "今月の売上",
       "salesThisMonth": "今月の販売件数",
-      "productsWithAlerts": "アラートのある商品"
+      "productsWithAlerts": "アラートのある商品",
+      "savingsThisMonth": "対応済みアラートによる今月の節約額"
     },
     "charts": {
       "topProducts": "売れ筋商品",
@@ -571,6 +572,29 @@
       "message": "決済処理がキャンセルされました。カードへの請求は行われていません。",
       "tryAgainButton": "プランを表示して再試行",
       "backButton": "キャンセルして設定に戻る"
+    },
+    "savings": {
+      "title": "経済効果",
+      "subtitle": "Inventiappが損失を防ぎ、ビジネスの収益性向上にどのように役立つかをご確認ください。",
+      "realTitle": "対応済みアラートによる実質的な節約額",
+      "realSubtitle": "これは、プラットフォームのアラートに対応することで、期限切れを防いだ商品の金銭的価値です。",
+      "totalSaved": "今月の合計節約額",
+      "roiText": "節約額は、Pro月額プラン（S/. 108/月）の料金の{{multiplier}}倍に相当します。すでにプラン料金の元を取れています！",
+      "historyTitle": "対応済みアラート履歴",
+      "product": "商品",
+      "quantity": "対応数量",
+      "amount": "節約額",
+      "date": "対応日",
+      "status": "ステータス",
+      "resolved": "対応済み",
+      "potentialTitle": "節約可能額シミュレーター",
+      "potentialSubtitle": "在庫廃棄を減らすことで、どれだけの損失を防げるかを計算します。",
+      "monthlyInventory": "月間総在庫額 (S/.)",
+      "mermaPercent": "現在の廃棄率 (%)",
+      "lossWithout": "Inventiappを使用しない場合の推定年間損失",
+      "lossWith": "Inventiappを使用した場合の推定年間損失",
+      "potentialSavings": "推定年間節約額",
+      "comparisonText": "期限切れ商品による損失を75%削減すると、Inventiapp Pro（$29/月）により、年間の推定純リターンとしてS/. {{netSavings}}を得られます。"
     }
   }
 }

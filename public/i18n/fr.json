@@ -308,7 +308,8 @@
       "productsInInventory": "Produits en stock",
       "monthlyIncome": "Revenus du mois",
       "salesThisMonth": "Ventes réalisées ce mois-ci",
-      "productsWithAlerts": "Produits avec alertes"
+      "productsWithAlerts": "Produits avec des alertes",
+      "savingsThisMonth": "Économies grâce aux alertes traitées"
     },
     "charts": {
       "topProducts": "Produits les plus vendus",
@@ -571,6 +572,29 @@
       "message": "Le processus de paiement a été annulé. Aucun montant n’a été débité de votre carte.",
       "tryAgainButton": "Voir les forfaits et réessayer",
       "backButton": "Annuler et revenir aux paramètres"
+    },
+    "savings": {
+      "title": "Votre Impact Économique",
+      "subtitle": "Découvrez comment Inventiapp vous aide à éviter les pertes et à améliorer la rentabilité de votre entreprise.",
+      "realTitle": "Économies Réelles grâce aux Alertes Traitées",
+      "realSubtitle": "Il s'agit de la valeur monétaire des produits que vous avez sauvés de la péremption en traitant les alertes de la plateforme.",
+      "totalSaved": "Total Économisé ce Mois-ci",
+      "roiText": "Vos économies représentent {{multiplier}} fois le coût de votre abonnement mensuel Pro (S/. 108/mois). Votre abonnement s'est déjà rentabilisé tout seul !",
+      "historyTitle": "Historique des Alertes Traitées",
+      "product": "Produit",
+      "quantity": "Quantité Traitée",
+      "amount": "Économie",
+      "date": "Date de Résolution",
+      "status": "Statut",
+      "resolved": "Traitée",
+      "potentialTitle": "Simulateur d'Économies Potentielles",
+      "potentialSubtitle": "Calculez combien d'argent vous pouvez éviter de perdre en réduisant les pertes de stock dans votre entreprise.",
+      "monthlyInventory": "Stock Mensuel Total (S/.)",
+      "mermaPercent": "Pourcentage Actuel de Pertes (%)",
+      "lossWithout": "Perte Estimée sans Inventiapp (Annuelle)",
+      "lossWith": "Perte Estimée avec Inventiapp (Annuelle)",
+      "potentialSavings": "Économies Annuelles Estimées",
+      "comparisonText": "En réduisant de 75 % vos pertes liées aux produits périmés, Inventiapp Pro ($29/mois) génère un rendement net annuel estimé de S/. {{netSavings}}."
     }
   }
 }

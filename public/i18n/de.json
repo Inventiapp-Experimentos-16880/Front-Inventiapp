@@ -309,7 +309,8 @@
       "productsInInventory": "Produkte im Lager",
       "monthlyIncome": "Monatlicher Umsatz",
       "salesThisMonth": "Verkäufe in diesem Monat",
-      "productsWithAlerts": "Produkte mit Warnmeldungen"
+      "productsWithAlerts": "Produkte mit Warnmeldungen",
+      "savingsThisMonth": "Einsparungen durch bearbeitete Warnungen"
     },
     "charts": {
       "topProducts": "Meistverkaufte Produkte",
@@ -573,6 +574,29 @@
       "message": "Der Zahlungsvorgang wurde abgebrochen. Ihre Karte wurde nicht belastet.",
       "tryAgainButton": "Tarife anzeigen und erneut versuchen",
       "backButton": "Abbrechen und zu den Einstellungen zurückkehren"
+    },
+    "savings": {
+      "title": "Ihre wirtschaftliche Wirkung",
+      "subtitle": "Sehen Sie, wie Inventiapp Ihnen hilft, Verluste zu vermeiden und die Rentabilität Ihres Unternehmens zu steigern.",
+      "realTitle": "Tatsächliche Einsparungen durch bearbeitete Warnungen",
+      "realSubtitle": "Dies ist der Geldwert der Produkte, die Sie vor dem Verfall bewahrt haben, indem Sie auf die Warnungen der Plattform reagiert haben.",
+      "totalSaved": "Gesamtersparnis in diesem Monat",
+      "roiText": "Ihre Ersparnis entspricht dem {{multiplier}}-Fachen der Kosten Ihres monatlichen Pro-Abonnements (S/. 108/Monat). Ihr Tarif hat sich bereits selbst bezahlt gemacht!",
+      "historyTitle": "Verlauf der bearbeiteten Warnungen",
+      "product": "Produkt",
+      "quantity": "Bearbeitete Menge",
+      "amount": "Einsparung",
+      "date": "Bearbeitungsdatum",
+      "status": "Status",
+      "resolved": "Bearbeitet",
+      "potentialTitle": "Simulator für potenzielle Einsparungen",
+      "potentialSubtitle": "Berechnen Sie, wie viel Geld Sie einsparen können, indem Sie den Warenschwund in Ihrem Lager reduzieren.",
+      "monthlyInventory": "Gesamter monatlicher Lagerbestand (S/.)",
+      "mermaPercent": "Aktueller Schwundanteil (%)",
+      "lossWithout": "Geschätzter Verlust ohne Inventiapp (jährlich)",
+      "lossWith": "Geschätzter Verlust mit Inventiapp (jährlich)",
+      "potentialSavings": "Geschätzte jährliche Einsparung",
+      "comparisonText": "Durch eine Reduzierung Ihrer Verluste durch abgelaufene Produkte um 75 % erzielt Inventiapp Pro ($29/Monat) eine geschätzte jährliche Nettorendite von S/. {{netSavings}}."
     }
   }
 }

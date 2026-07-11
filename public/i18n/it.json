@@ -305,10 +305,11 @@
       }
     },
     "stats": {
-      "productsInInventory": "Prodotti in inventario",
+      "productsInInventory": "Prodotti in magazzino",
       "monthlyIncome": "Entrate del mese",
       "salesThisMonth": "Vendite effettuate questo mese",
-      "productsWithAlerts": "Prodotti con avvisi"
+      "productsWithAlerts": "Prodotti con avvisi",
+      "savingsThisMonth": "Risparmi dagli avvisi gestiti"
     },
     "charts": {
       "topProducts": "Prodotti più venduti",
@@ -571,6 +572,29 @@
       "message": "La procedura di pagamento è stata annullata. Non è stato effettuato alcun addebito sulla carta.",
       "tryAgainButton": "Visualizza i piani e riprova",
       "backButton": "Annulla e torna alle impostazioni"
+    },
+    "savings": {
+      "title": "Il Tuo Impatto Economico",
+      "subtitle": "Scopri come Inventiapp ti aiuta a evitare perdite e a migliorare la redditività della tua attività.",
+      "realTitle": "Risparmio Reale dagli Avvisi Gestiti",
+      "realSubtitle": "Questo è il valore monetario dei prodotti che hai salvato dalla scadenza gestendo gli avvisi della piattaforma.",
+      "totalSaved": "Totale Risparmiato Questo Mese",
+      "roiText": "Il tuo risparmio equivale a {{multiplier}} volte il costo del tuo abbonamento mensile Pro (S/. 108/mese). Il tuo piano si è già ripagato da solo!",
+      "historyTitle": "Cronologia degli Avvisi Gestiti",
+      "product": "Prodotto",
+      "quantity": "Quantità Gestita",
+      "amount": "Risparmio",
+      "date": "Data di Risoluzione",
+      "status": "Stato",
+      "resolved": "Gestito",
+      "potentialTitle": "Simulatore di Risparmio Potenziale",
+      "potentialSubtitle": "Calcola quanto denaro puoi evitare di perdere riducendo gli sprechi di magazzino della tua attività.",
+      "monthlyInventory": "Inventario Mensile Totale (S/.)",
+      "mermaPercent": "Percentuale Attuale di Spreco (%)",
+      "lossWithout": "Perdita Stimata senza Inventiapp (Annuale)",
+      "lossWith": "Perdita Stimata con Inventiapp (Annuale)",
+      "potentialSavings": "Risparmio Annuale Stimato",
+      "comparisonText": "Riducendo del 75% le perdite causate dai prodotti scaduti, Inventiapp Pro ($29/mese) genera un rendimento netto annuale stimato di S/. {{netSavings}}."
     }
   }
 }
