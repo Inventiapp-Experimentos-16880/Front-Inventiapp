@@ -8,6 +8,25 @@
   "app": {
     "title": "StockTrack"
   },
+  "languageSwitcher": {
+    "title": "Idioma de la aplicación",
+    "trigger": "Cambiar idioma de la aplicación",
+    "mode": {
+      "manualShort": "Manual",
+      "locationShort": "Ubicación"
+    },
+    "manual": {
+      "description": "Idioma elegido manualmente",
+      "choose": "Selecciona el idioma manual"
+    },
+    "location": {
+      "title": "Idioma según ubicación",
+      "loading": "Detectando idioma por ubicación...",
+      "detectedIn": "Recomendado para {{country}}",
+      "unavailable": "No se pudo detectar el idioma por ubicación",
+      "refresh": "Volver a detectar ubicación"
+    }
+  },
   "settings": {
     "title": "Configuración",
     "subtitle": "Gestiona las preferencias y opciones de la aplicación",

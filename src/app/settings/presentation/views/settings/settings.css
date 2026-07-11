@@ -109,9 +109,19 @@
   border: 1px solid #E5E7EB;
 }
 
-.language-section ::ng-deep .lang-btn {
-  color: #1F2937 !important;
-  font-weight: 600;
+.language-section
+::ng-deep
+.language-trigger {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  color: #1f2937;
+}
+
+.language-section
+::ng-deep
+.language-trigger:hover {
+  background: #f3f4f6;
+  border-color: var(--color-primary);
 }
 
 .language-section ::ng-deep .lang-btn:hover {
