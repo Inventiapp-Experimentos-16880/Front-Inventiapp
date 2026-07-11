@@ -20,6 +20,48 @@ export class PlansView implements OnInit {
 
   protected isOnboarding = false;
 
+  // Requirement 1: Real Savings from Resolved Alerts
+  protected realSavings = 450;
+  protected realSavingsMultiplier = 4.1; // 450 / 108 (Pro Subscription cost in PEN)
+  protected resolvedAlerts = [
+    { product: 'Leche Gloria', quantity: 10, amount: 35.00, date: '2026-07-10' },
+    { product: 'Arroz Costeño', quantity: 15, amount: 60.00, date: '2026-07-08' },
+    { product: 'Aceite Primor', quantity: 5, amount: 35.00, date: '2026-07-05' }
+  ];
+
+  // Requirement 2: Potential Savings Simulator
+  protected monthlyInventory = 8000;
+  protected currentMermaPercent = 6;
+
+  get lossWithoutInventiapp(): number {
+    return this.monthlyInventory * (this.currentMermaPercent / 100) * 12;
+  }
+
+  get lossWithInventiapp(): number {
+    // 75% reduction in waste due to smart tracking and alerts
+    return this.lossWithoutInventiapp * 0.25;
+  }
+
+  get potentialSavings(): number {
+    return this.lossWithoutInventiapp - this.lossWithInventiapp;
+  }
+
+  get potentialNetSavings(): number {
+    // Pro Subscription cost is $29/mo -> S/. 108.75/mo (approx S/. 1,305/yr at 3.75 rate)
+    const annualProCost = 29 * 3.75 * 12;
+    return Math.max(0, this.potentialSavings - annualProCost);
+  }
+
+  onInventoryChange(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    this.monthlyInventory = Number(target.value);
+  }
+
+  onMermaChange(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    this.currentMermaPercent = Number(target.value);
+  }
+
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.isOnboarding = params['onboarding'] === 'true';

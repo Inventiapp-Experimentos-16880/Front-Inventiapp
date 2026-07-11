@@ -75,6 +75,14 @@
         <div class="stat-value" [attr.aria-label]="dashboardStore.stats()?.productsWithAlerts || 0">{{ dashboardStore.stats()?.productsWithAlerts || 0 }}</div>
       </mat-card-content>
     </mat-card>
+
+    <mat-card class="stat-card stat-card-orange clickable-card" (click)="goToSavings()" role="article" [attr.aria-label]="t('dashboard.stats.savingsThisMonth')">
+      <mat-card-content>
+        <div class="stat-label">{{ t('dashboard.stats.savingsThisMonth') }}</div>
+        <div class="stat-value" aria-label="S/. 450.00">s/. 450.00</div>
+        <div class="stat-subtext">Ver detalle e impacto ROI →</div>
+      </mat-card-content>
+    </mat-card>
   </div>
 
   <div class="charts-grid">
