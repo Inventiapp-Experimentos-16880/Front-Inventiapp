@@ -1,10 +1,200 @@
-<div class="language-switcher">
-  @for (language of languages; track language) {
+<details class="language-switcher">
+  <summary
+    class="language-trigger"
+    [attr.aria-label]="
+      'languageSwitcher.trigger' | translate
+    ">
+
+    <span
+      class="language-icon"
+      aria-hidden="true">
+      🌐
+    </span>
+
+    <span class="active-language-code">
+      {{
+        localizationStore
+          .activeLanguage()
+          .toUpperCase()
+      }}
+    </span>
+
+    <span class="active-mode">
+      {{
+        (
+          localizationStore.languageMode()
+          === 'location'
+            ? 'languageSwitcher.mode.locationShort'
+            : 'languageSwitcher.mode.manualShort'
+        ) | translate
+      }}
+    </span>
+
+    <span
+      class="chevron"
+      aria-hidden="true">
+      ⌄
+    </span>
+  </summary>
+
+  <div
+    class="language-panel"
+    role="group"
+    [attr.aria-label]="
+      'languageSwitcher.title' | translate
+    "
+    (click)="$event.stopPropagation()">
+
+    <p class="panel-title">
+      {{ 'languageSwitcher.title' | translate }}
+    </p>
+
+    <!-- Primera opción: idioma manual -->
     <button
-      class="lang-btn"
-      [class.active]="currentLanguage === language"
-      (click)="useLanguage(language)">
-      {{ language.toUpperCase() }}
+      type="button"
+      class="mode-option"
+      [class.active]="
+        localizationStore.languageMode()
+          === 'manual'
+      "
+      (click)="useManualLanguage()">
+
+      <span
+        class="option-marker"
+        aria-hidden="true">
+      </span>
+
+      <span class="option-content">
+        <span class="option-title">
+          {{
+            getLanguageName(
+              localizationStore.manualLanguage()
+            )
+          }}
+        </span>
+
+        <span class="option-description">
+          {{
+            'languageSwitcher.manual.description'
+              | translate
+          }}
+        </span>
+      </span>
     </button>
-  }
-</div>
+
+    <!-- Idiomas disponibles para la opción manual -->
+    <div
+      class="manual-language-list"
+      role="group"
+      [attr.aria-label]="
+        'languageSwitcher.manual.choose'
+          | translate
+      ">
+
+      @for (
+        language of languages;
+        track language
+        ) {
+        <button
+          type="button"
+          class="manual-language-button"
+          [class.selected]="
+            localizationStore.manualLanguage()
+              === language
+          "
+          (click)="
+            selectManualLanguage(language)
+          ">
+
+          <span class="manual-language-code">
+            {{ language.toUpperCase() }}
+          </span>
+
+          <span class="manual-language-name">
+            {{ getLanguageName(language) }}
+          </span>
+        </button>
+      }
+    </div>
+
+    <!-- Segunda opción: idioma detectado por IP -->
+    <button
+      type="button"
+      class="mode-option location-option"
+      [class.active]="
+        localizationStore.languageMode()
+          === 'location'
+      "
+      [disabled]="
+        localizationStore.loading() ||
+        !localizationStore
+          .hasLocationRecommendation()
+      "
+      (click)="useLocationLanguage()">
+
+      <span
+        class="option-marker"
+        aria-hidden="true">
+      </span>
+
+      <span class="option-content">
+
+        <span class="option-title">
+          @if (
+            localizationStore.locationLanguage()
+            ) {
+            {{
+              getLanguageName(
+                localizationStore
+                  .locationLanguage()!
+              )
+            }}
+          } @else {
+            {{
+              'languageSwitcher.location.title'
+                | translate
+            }}
+          }
+        </span>
+
+        <span class="option-description">
+          @if (localizationStore.loading()) {
+            {{
+              'languageSwitcher.location.loading'
+                | translate
+            }}
+          } @else if (
+            localizationStore
+              .hasLocationRecommendation()
+            ) {
+            {{
+              'languageSwitcher.location.detectedIn'
+                | translate: {
+                country: getCountryName()
+              }
+            }}
+          } @else {
+            {{
+              'languageSwitcher.location.unavailable'
+                | translate
+            }}
+          }
+        </span>
+      </span>
+    </button>
+
+    <button
+      type="button"
+      class="refresh-button"
+      [disabled]="
+        localizationStore.loading()
+      "
+      (click)="refreshLocation()">
+
+      {{
+        'languageSwitcher.location.refresh'
+          | translate
+      }}
+    </button>
+  </div>
+</details>

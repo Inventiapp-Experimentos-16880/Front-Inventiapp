@@ -3,6 +3,7 @@ import { DashboardStats } from './dashboard-stats.entity';
 import { MonthlyIncome } from './monthly-income.entity';
 import { ProductSales } from './product-sales.entity';
 import { DashboardNotification } from './notification.entity';
+import { ResolvedAlert } from './resolved-alert.entity';
 
 /**
  * Represents a Dashboard entity in the domain.
@@ -21,12 +22,14 @@ export class Dashboard implements BaseEntity {
     monthlyIncome: MonthlyIncome[];
     productSales: ProductSales[];
     notifications: DashboardNotification[];
+    resolvedAlerts: ResolvedAlert[];
   }) {
     this._id = dashboard.id;
     this._stats = dashboard.stats;
     this._monthlyIncome = dashboard.monthlyIncome;
     this._productSales = dashboard.productSales;
     this._notifications = dashboard.notifications;
+    this._resolvedAlerts = dashboard.resolvedAlerts;
   }
 
   private _id: string;
@@ -67,5 +70,13 @@ export class Dashboard implements BaseEntity {
   }
   set notifications(value: DashboardNotification[]) {
     this._notifications = value;
+  }
+
+  private _resolvedAlerts: ResolvedAlert[];
+  get resolvedAlerts(): ResolvedAlert[] {
+    return this._resolvedAlerts;
+  }
+  set resolvedAlerts(value: ResolvedAlert[]) {
+    this._resolvedAlerts = value;
   }
 }

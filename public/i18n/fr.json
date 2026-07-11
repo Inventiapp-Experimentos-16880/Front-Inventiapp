@@ -1,0 +1,652 @@
+{
+  "global": {
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "exit": "Quitter",
+    "unlimited": "Illimité"
+  },
+  "app": {
+    "title": "StockTrack"
+  },
+  "languageSwitcher": {
+    "title": "Langue de l’application",
+    "trigger": "Changer la langue de l’application",
+    "mode": {
+      "manualShort": "Manuel",
+      "locationShort": "Localisation"
+    },
+    "manual": {
+      "description": "Langue sélectionnée manuellement",
+      "choose": "Sélectionnez la langue manuelle"
+    },
+    "location": {
+      "title": "Langue selon la localisation",
+      "loading": "Détection de la langue selon la localisation...",
+      "detectedIn": "Recommandé pour {{country}}",
+      "unavailable": "Impossible de détecter la langue selon la localisation",
+      "refresh": "Détecter à nouveau la localisation"
+    }
+  },
+  "settings": {
+    "title": "Paramètres",
+    "subtitle": "Gérez les préférences et les options de l’application",
+    "userInfo": {
+      "title": "Informations utilisateur",
+      "email": "Adresse e-mail",
+      "role": "Rôle",
+      "admin": "Administrateur",
+      "user": "Utilisateur",
+      "planType": "Type de forfait",
+      "freePlan": "Forfait gratuit"
+    },
+    "language": {
+      "title": "Langue",
+      "description": "Sélectionnez la langue de l’interface"
+    },
+    "appInfo": {
+      "title": "Informations sur l’application",
+      "version": "Version",
+      "name": "Nom"
+    },
+    "subscription": {
+      "title": "Forfait d’abonnement",
+      "description": "Gérez vos forfaits de paiement et vos limites d’utilisation dans votre compte.",
+      "manageBtn": "Gérer l’abonnement"
+    }
+  },
+  "sidebar": {
+    "title": "StockTrack",
+    "menu": {
+      "home": "Accueil",
+      "inventory": "Inventaire",
+      "providers": "Fournisseurs",
+      "sales": "Ventes",
+      "reports": "Rapports",
+      "more": "Plus",
+      "aria": {
+        "home": "Aller à l’accueil",
+        "inventory": "Aller à l’inventaire",
+        "providers": "Aller aux fournisseurs",
+        "sales": "Aller aux ventes",
+        "reports": "Aller aux rapports",
+        "more": "Ouvrir le menu d’options supplémentaires",
+        "language": "Sélecteur de langue",
+        "navigation": "Navigation principale"
+      }
+    },
+    "footer": {
+      "settings": "Paramètres",
+      "personal": "Gestion du personnel",
+      "logout": "Se déconnecter",
+      "aria": {
+        "settings": "Aller aux paramètres",
+        "personal": "Aller à la gestion du personnel",
+        "logout": "Se déconnecter"
+      }
+    }
+  },
+  "home": {
+    "title": "Bienvenue sur StockTrack",
+    "subtitle": "Système de gestion des stocks"
+  },
+  "kits": {
+    "validationQuantityInteger": "La quantité doit être un entier positif"
+  },
+  "inventory": {
+    "title": "Gestion de l’inventaire",
+    "subtitle": "Gérez vos produits et votre stock",
+    "emptyState": {
+      "title": "Inventaire",
+      "description": "Voici l’écran de l’inventaire",
+      "message": "Vous pourrez bientôt gérer tous vos produits ici"
+    },
+    "header": "Inventaire",
+    "invalidPrice": "Prix non valide",
+    "products": "Produits",
+    "name": "Nom",
+    "unitPrice": "Prix unitaire",
+    "currentStock": "Stock actuel",
+    "minimumStock": "Stock minimum",
+    "informationProduct": "Informations",
+    "actions": "Actions",
+    "viewDetail": "Voir le détail",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "confirmDelete": "Voulez-vous vraiment supprimer le produit {name} ?",
+    "noProductsFound": "Aucun produit trouvé",
+    "tryDifferentSearch": "Essayez d’autres critères de recherche ou filtres",
+    "filter": "Filtres",
+    "search": "Rechercher",
+    "allCategories": "Toutes les catégories",
+    "allProviders": "Tous les fournisseurs",
+    "allLots": "Tous les lots",
+    "allStatuses": "Tous les statuts",
+    "date": "Date",
+    "clearFilters": "Effacer les filtres",
+    "removeFilter": "Supprimer le filtre",
+    "loadingKits": "Chargement des kits...",
+    "loadingProducts": "Chargement des produits...",
+    "retry": "Réessayer",
+    "product": "Produit",
+    "newReplacement": "Ajouter un réapprovisionnement",
+    "noKits": "Aucun kit disponible",
+    "startKits": "Commencez par créer votre premier kit en cliquant sur le bouton",
+    "newKit": "Nouveau kit",
+    "priceKit": "Prix du kit",
+    "quantity": "Quantité à sélectionner",
+    "category": "Catégorie",
+    "provider": "Fournisseur",
+    "select": "Sélectionner",
+    "newProduct": "Nouveau produit",
+    "editProduct": "Modifier le produit",
+    "newCategory": "Nouvelle catégorie",
+    "description": "Description",
+    "categoryNamePlaceholder": "Ex. : Produits laitiers",
+    "categoryDescriptionPlaceholder": "Ex. : Produits laitiers et dérivés",
+    "productDescriptionPlaceholder": "Ex. : Lait entier en bouteille de 1 litre",
+    "isActive": "Statut",
+    "activeProduct": "Produit actif",
+    "lot": "Lot",
+    "receiptDate": "Date de réception",
+    "expirationDate": "Date d’expiration",
+    "amountEntering": "Quantité entrante",
+    "lastReception": "Dernière réception",
+    "lowStock": "Stock faible",
+    "status": "Statut",
+    "outOfStock": "Rupture de stock",
+    "normalStock": "Normal",
+    "kits": "Kits",
+    "price": "Prix",
+    "kitProductUnitPrice": "Prix unitaire",
+    "kitProductTotal": "Total",
+    "batchHistory": {
+      "viewHistory": "Voir l’historique des mouvements",
+      "title": "Historique des mouvements",
+      "lot": "Lot",
+      "type": "Type",
+      "quantity": "Quantité",
+      "date": "Date",
+      "entrada": "Entrée",
+      "salida": "Sortie",
+      "noMovements": "Ce produit ne possède aucun mouvement enregistré",
+      "loadError": "Impossible de charger l’historique des mouvements",
+      "viewOnExpiring": "Voir le lot dans le rapport des produits bientôt périmés",
+      "from": "Du",
+      "to": "Au",
+      "allTypes": "Tous",
+      "allLots": "Tous",
+      "clearFilters": "Effacer les filtres",
+      "noFilteredMovements": "Aucun mouvement ne correspond aux filtres",
+      "filteredCount": "{{count}} sur {{total}} mouvements"
+    },
+    "expirationAlerts": {
+      "title": "Gestion des péremptions",
+      "intro": "Ces alertes nécessitent une action de votre part : liquider ou retourner les lots proches de la péremption (7 jours). Contrairement aux avis informatifs du tableau de bord, vous devez ici enregistrer une décision. Les cas déjà traités restent consultables dans l’historique.",
+      "pendingBadge": "{{count}} à traiter",
+      "loadError": "Impossible de charger les alertes de péremption",
+      "noAlerts": "Aucune alerte de péremption enregistrée",
+      "noFilteredAlerts": "Aucune alerte ne correspond aux filtres",
+      "filterStatus": "Statut",
+      "allStatuses": "Tous",
+      "filterSearch": "Rechercher",
+      "filterSearchPlaceholder": "Produit ou lot",
+      "clearFilters": "Effacer les filtres",
+      "filteredCount": "{{count}} sur {{total}} alertes",
+      "product": "Produit",
+      "unknownProduct": "Produit introuvable",
+      "lot": "Lot",
+      "expirationDate": "Expire le",
+      "triggeredAt": "Détectée",
+      "statusColumn": "Statut",
+      "actionColumn": "Action",
+      "registerAction": "Enregistrer l’action",
+      "handled": "Traitée",
+      "unitsCount": "{{count}} unités",
+      "viewMovement": "Voir le mouvement",
+      "actionRegistered": "Action enregistrée avec succès",
+      "alreadyResolved": "Cette alerte avait déjà été traitée",
+      "scanNow": "Analyser maintenant",
+      "scanning": "Analyse en cours...",
+      "scanCreated": "{{count}} nouvelles alertes",
+      "scanNoNew": "Aucune nouveauté",
+      "scanError": "Impossible d’exécuter l’analyse. Veuillez réessayer.",
+      "status": {
+        "pending": "En attente",
+        "resolved": "Traitée"
+      },
+      "action": {
+        "liquidation": "Liquidation",
+        "return": "Retour"
+      },
+      "dialog": {
+        "title": "Enregistrer une action de mitigation",
+        "remainingQuantity": "Quantité restante du lot",
+        "actionType": "Type d’action",
+        "quantity": "Quantité",
+        "quantityHint": "Laissez vide pour retirer le lot entier",
+        "quantityPositive": "La quantité doit être supérieure à 0",
+        "quantityExceedsBatch": "La quantité ne peut pas dépasser {{max}}",
+        "invalidQuantityError": "Quantité invalide. Vérifiez la valeur saisie.",
+        "genericError": "Impossible d’enregistrer l’action. Veuillez réessayer.",
+        "confirm": "Confirmer"
+      }
+    }
+  },
+  "providers-view": {
+    "providers": "Fournisseurs",
+    "providers-table": {
+      "name": "Nom",
+      "contact": "Contact",
+      "phone": "Téléphone portable",
+      "email": "Adresse e-mail",
+      "ruc": "RUC",
+      "address": "Adresse",
+      "actions": "Actions",
+      "edit": "Modifier",
+      "delete": "Supprimer"
+    },
+    "providers-toolbar": {
+      "search": "Rechercher",
+      "filter": "Filtrer",
+      "add-provider": "Ajouter un fournisseur"
+    },
+    "form-dialog": {
+      "add": "Ajouter un fournisseur",
+      "edit": "Modifier le fournisseur",
+      "first-name": "Prénom",
+      "last-name": "Nom",
+      "phone-number": "Téléphone portable",
+      "email": "Adresse e-mail",
+      "ruc": "RUC",
+      "cancel": "Annuler",
+      "save": "Enregistrer",
+      "first-name-required": "Le prénom est obligatoire",
+      "first-name-minlength": "Le prénom doit comporter au moins 2 caractères",
+      "last-name-required": "Le nom est obligatoire",
+      "last-name-minlength": "Le nom doit comporter au moins 2 caractères",
+      "phone-number-required": "Le numéro de téléphone est obligatoire",
+      "phone-number-invalid": "Format de numéro de téléphone non valide",
+      "email-required": "L’adresse e-mail est obligatoire",
+      "email-invalid": "Format d’adresse e-mail non valide",
+      "ruc-required": "Le RUC est obligatoire",
+      "ruc-invalid": "Le RUC doit contenir exactement 11 chiffres"
+    }
+  },
+  "sales": {
+    "title": "Gestion des ventes",
+    "subtitle": "Gérez vos ventes et transactions",
+    "search": "Rechercher des produits",
+    "filter": "Filtre",
+    "emptyState": {
+      "title": "Ventes",
+      "description": "Voici l’écran des ventes",
+      "message": "Vous pourrez bientôt gérer toutes vos ventes ici"
+    },
+    "products": "Produits",
+    "salesDraft": "Brouillon de sortie de produits",
+    "table": {
+      "name": "Nom",
+      "unitPrice": "Prix unitaire",
+      "stock": "Stock",
+      "quantity": "Quantité",
+      "totalPrice": "Prix total",
+      "actions": "Actions",
+      "edit": "Modifier",
+      "delete": "Supprimer",
+      "cancel": "Annuler",
+      "save": "Enregistrer"
+    },
+    "kits": "Kits",
+    "noKitsAvailable": "Aucun kit disponible",
+    "total": "Total",
+    "kit": "Kit",
+    "emptyCart": "Le brouillon est vide. Ajoutez des produits ou des kits pour commencer.",
+    "noStockAvailable": "Aucun stock disponible pour {{product}}",
+    "stockInsufficient": "Stock insuffisant. Il ne reste que {{stock}} unités de {{product}}",
+    "saleSaved": "Vente enregistrée avec succès",
+    "saleSaveError": "Erreur lors de l’enregistrement de la vente. Veuillez réessayer",
+    "userNotIdentified": "Erreur : impossible d’identifier l’utilisateur"
+  },
+  "auth": {
+    "login": {
+      "title": "Se connecter",
+      "email": "Adresse e-mail",
+      "password": "Mot de passe",
+      "forgotPassword": "Mot de passe oublié ?",
+      "submit": "Se connecter",
+      "noAccount": "Vous n’avez pas de compte ?",
+      "createAccount": "Créer un compte"
+    },
+    "register": {
+      "title": "S’inscrire",
+      "name": "Nom",
+      "email": "Adresse e-mail",
+      "password": "Mot de passe",
+      "confirmPassword": "Confirmer le mot de passe",
+      "submit": "S’inscrire",
+      "hasAccount": "Vous avez déjà un compte ?",
+      "login": "Se connecter"
+    },
+    "tagline": "Une gestion des stocks conçue pour vous aider à vendre davantage et à réduire le stress",
+    "errors": {
+      "loginFailed": "Échec de la connexion. Vérifiez vos identifiants.",
+      "registerFailed": "Échec de l’inscription. Veuillez réessayer.",
+      "passwordMismatch": "Les mots de passe ne correspondent pas"
+    },
+    "validation": {
+      "required": "est obligatoire",
+      "emailInvalid": "Adresse e-mail non valide",
+      "minLength": "Au moins {{min}} caractères",
+      "passwordRequired": "est obligatoire",
+      "confirmRequired": "La confirmation est obligatoire",
+      "passwordMismatch": "Les mots de passe ne correspondent pas"
+    }
+  },
+  "dashboard": {
+    "title": "Tableau de bord",
+    "greeting": "Bonjour",
+    "notifications": {
+      "title": "Notifications",
+      "button": "Ouvrir les notifications",
+      "icon": "notifications",
+      "empty": "Aucune notification",
+      "types": {
+        "warning": "Avertissement",
+        "alert": "Alerte",
+        "info": "Information"
+      }
+    },
+    "stats": {
+      "productsInInventory": "Produits en stock",
+      "monthlyIncome": "Revenus du mois",
+      "salesThisMonth": "Ventes réalisées ce mois-ci",
+      "productsWithAlerts": "Produits avec des alertes",
+      "savingsThisMonth": "Économies grâce aux alertes traitées"
+    },
+    "charts": {
+      "topProducts": "Produits les plus vendus",
+      "monthlyIncome": "Revenus mensuels"
+    },
+    "notificationMessages": {
+      "expiringProduct": "Le produit « {{product}} » expire le {{date}}",
+      "lowStock": "Le produit « {{product}} » ne compte plus que {{quantity}} unités en stock"
+    },
+    "notificationTitles": {
+      "expiringProduct": "Produit bientôt périmé",
+      "lowStock": "Produit bientôt épuisé"
+    }
+  },
+  "personal": {
+    "title": "Gestion du personnel"
+  },
+  "personalAdministration": {
+    "title": "Gestion du personnel",
+    "subtitle": "Gérez les utilisateurs de votre entreprise",
+    "search": "Rechercher...",
+    "filter": "Filtre",
+    "status": "Statut",
+    "role": "Rôle",
+    "all": "Tous",
+    "active": "Actif",
+    "inactive": "Inactif",
+    "apply": "Appliquer",
+    "clear": "Effacer",
+    "clearFilters": "Effacer les filtres",
+    "newRole": "Nouveau rôle",
+    "newUser": "Nouvel utilisateur",
+    "addUser": "Ajouter un utilisateur",
+    "name": "Nom",
+    "account": "Compte",
+    "actions": "Actions",
+    "newUserTitle": "Nouveau membre du personnel",
+    "nameLabel": "Prénom(s)",
+    "lastnameLabel": "Nom",
+    "phoneLabel": "Numéro de téléphone",
+    "emailLabel": "Adresse e-mail",
+    "passwordLabel": "Mot de passe",
+    "roleLabel": "Rôle",
+    "editUserTitle": "Modifier l’utilisateur",
+    "fullNameLabel": "Nom complet",
+    "accountLabel": "Compte (adresse e-mail)",
+    "statusLabel": "Statut",
+    "confirmDeleteTitle": "Confirmer la suppression",
+    "confirmDeleteMessage": "Voulez-vous vraiment supprimer {{name}} ?",
+    "newRoleTitle": "Nouveau rôle",
+    "roleNameLabel": "Nom du rôle",
+    "rolePlaceholder": "Ex. : Superviseur",
+    "permissionsTitle": "Autorisations",
+    "permissionsHint": "Sélectionnez les modules auxquels cet utilisateur aura accès",
+    "permissionsSelected": "{{count}} autorisation(s) sélectionnée(s)",
+    "permissionDashboard": "Tableau de bord",
+    "permissionInventory": "Inventaire",
+    "permissionSales": "Ventes",
+    "permissionProviders": "Fournisseurs",
+    "permissionReports": "Rapports",
+    "permissionUserManagement": "Gestion des utilisateurs",
+    "permissionProducts": "Gestion des produits",
+    "permissionPurchases": "Processus d’achat",
+    "permissionStats": "Statistiques",
+    "permissionUsers": "Gestion des utilisateurs",
+    "loadingUsers": "Chargement des utilisateurs...",
+    "noUsers": "Aucun utilisateur",
+    "noUsersFiltered": "Aucun utilisateur trouvé avec les filtres appliqués",
+    "noUsersYet": "Vous n’avez encore ajouté aucun utilisateur à votre entreprise",
+    "admin": "Administrateur",
+    "user": "Utilisateur",
+    "admins": "Administrateurs",
+    "users": "Utilisateurs",
+    "cannotDeleteSelf": "Vous ne pouvez pas vous supprimer vous-même",
+    "cannotDeleteOwner": "Impossible de supprimer l’utilisateur principal",
+    "deleteUser": "Supprimer l’utilisateur",
+    "emailPlaceholder": "utilisateur@exemple.fr",
+    "passwordPlaceholder": "Au moins 6 caractères",
+    "passwordPlaceholderOptional": "Laisser vide pour ne pas modifier",
+    "passwordHintOptional": "Laissez ce champ vide si vous ne souhaitez pas modifier le mot de passe",
+    "emailRequired": "L’adresse e-mail est obligatoire",
+    "emailInvalid": "Saisissez une adresse e-mail valide",
+    "passwordRequired": "Le mot de passe est obligatoire",
+    "passwordMinLength": "Au moins 6 caractères",
+    "editUser": "Modifier l’utilisateur",
+    "aria": {
+      "search": "Rechercher des utilisateurs",
+      "filterRole": "Filtrer par rôle",
+      "createUser": "Créer un nouvel utilisateur",
+      "deleteUser": "Supprimer l’utilisateur",
+      "clearFilters": "Effacer les filtres appliqués"
+    }
+  },
+  "common": {
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "saveChanges": "Enregistrer les modifications",
+    "delete": "Supprimer",
+    "loading": "Chargement...",
+    "validationNumber": "Saisissez un entier positif inférieur à 100",
+    "validationExpirationDate": "Saisissez une date d’expiration valide, égale ou postérieure à la date de réception",
+    "validateNumberCart": "Certaines quantités du panier ne sont pas valides. Corrigez-les avant d’enregistrer"
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "message": "Oups ! La page que vous recherchez n’existe pas.",
+    "description": "L’URL est peut-être incorrecte ou la page a été déplacée. Vérifiez l’adresse ou revenez à la page principale.",
+    "goHome": "Aller à l’accueil",
+    "goBack": "Retour"
+  },
+  "reports": {
+    "title": "Rapports",
+    "subtitle": "Consultez et analysez les informations importantes de votre inventaire",
+    "refresh": "Actualiser",
+    "export": "Exporter vers Excel",
+    "loading": "Chargement des rapports...",
+    "retry": "Réessayer",
+    "expired": "Expiré",
+    "expiresToday": "Expire aujourd’hui",
+    "expiresTomorrow": "Expire demain",
+    "daysLeft": "{days} jours restants",
+    "dayLeft": "{days} jour restant",
+    "monthLeft": "{months} mois restant",
+    "monthsLeft": "{months} mois restants",
+    "tabs": {
+      "providers": "Fournisseurs",
+      "stock": "Stock actuel",
+      "expiring": "Bientôt périmés",
+      "lowStock": "Stock faible",
+      "sales": "Ventes"
+    },
+    "providers": {
+      "title": "Liste des fournisseurs",
+      "subtitle": "Informations complètes sur tous vos fournisseurs",
+      "empty": "Aucun fournisseur enregistré",
+      "filterByCategory": "Filtrer par catégorie",
+      "allCategories": "Toutes les catégories",
+      "columns": {
+        "name": "Nom",
+        "ruc": "RUC",
+        "email": "Adresse e-mail",
+        "phone": "Téléphone",
+        "productCount": "Produits",
+        "products": "Produits"
+      }
+    },
+    "stock": {
+      "title": "Rapport du stock actuel",
+      "subtitle": "État actuel du stock de tous les produits",
+      "empty": "Aucun produit en stock",
+      "columns": {
+        "productName": "Produit",
+        "category": "Catégorie",
+        "currentStock": "Stock actuel",
+        "minStock": "Stock minimum",
+        "unitPrice": "Prix unitaire",
+        "totalValue": "Valeur totale",
+        "status": "Statut"
+      },
+      "status": {
+        "normal": "Normal",
+        "low": "Faible",
+        "critical": "Critique"
+      }
+    },
+    "expiring": {
+      "title": "Produits bientôt périmés",
+      "subtitle": "Consultez les produits par mois d’expiration",
+      "empty": "Aucun produit avec une date d’expiration",
+      "emptyFiltered": "Aucun produit n’expire pendant le mois sélectionné",
+      "emptyNext30Days": "Aucun produit n’expire au cours des 30 prochains jours",
+      "filterByMonth": "Filtrer par mois",
+      "next30Days": "30 prochains jours",
+      "showAll": "Tout afficher",
+      "clearFilter": "Effacer le filtre",
+      "columns": {
+        "productName": "Produit",
+        "category": "Catégorie",
+        "expirationDate": "Date d’expiration",
+        "daysLeft": "Jours restants",
+        "currentStock": "Stock actuel",
+        "lot": "Lot",
+        "status": "Statut"
+      },
+      "status": {
+        "expired": "Expiré",
+        "critical": "Critique",
+        "warning": "Avertissement",
+        "normal": "Normal"
+      }
+    },
+    "lowStock": {
+      "title": "Produits avec un stock faible",
+      "subtitle": "Produits dont le stock est inférieur au stock minimum",
+      "empty": "Aucun produit avec un stock faible",
+      "columns": {
+        "productName": "Produit",
+        "category": "Catégorie",
+        "currentStock": "Stock actuel",
+        "minStock": "Stock minimum",
+        "difference": "Différence",
+        "unitPrice": "Prix unitaire",
+        "status": "Statut"
+      },
+      "status": {
+        "critical": "Critique",
+        "low": "Faible",
+        "normal": "Normal"
+      }
+    },
+    "sales": {
+      "title": "Rapport des ventes",
+      "subtitle": "Historique de toutes les ventes réalisées",
+      "empty": "Aucune vente enregistrée",
+      "columns": {
+        "id": "ID",
+        "date": "Date",
+        "totalAmount": "Montant total",
+        "products": "Détails des produits"
+      }
+    }
+  },
+  "subscriptions": {
+    "plans": {
+      "backToSettings": "Retour aux paramètres",
+      "title": "Tarifs et forfaits",
+      "subtitle": "Choisissez le forfait adapté aux besoins de votre entreprise. Vous pouvez changer de forfait ou annuler à tout moment.",
+      "titleOnboarding": "Choisissez votre forfait initial",
+      "subtitleOnboarding": "Pour commencer à utiliser Inventiapp, sélectionnez le forfait d’abonnement qui convient le mieux à votre entreprise.",
+      "loading": "Chargement des détails du forfait...",
+      "popular": "Recommandé",
+      "month": "mois",
+      "year": "an",
+      "limitRecipes": "Jusqu’à {{count}} produits",
+      "limitKits": "Jusqu’à {{count}} kits",
+      "limitDevices": "Jusqu’à {{count}} fournisseurs",
+      "realtimeAnalytics": "Contrôle des lots et des dates d’expiration",
+      "alertNotifications": "Alertes de stock faible et rapports",
+      "choosePlan": "S’abonner",
+      "currentPlan": "Votre forfait actuel",
+      "redirecting": "Redirection vers le paiement...",
+      "retry": "Réessayer",
+      "continueFree": "Continuer avec le forfait gratuit",
+      "descriptions": {
+        "starter": "Idéal pour les petits commerces et restaurants. Gérez les ingrédients de base de vos recettes, vos kits et vos balances intelligentes.",
+        "pro": "Parfait pour les entreprises en croissance. Gestion avancée des stocks, recettes complexes, kits de production et balances en temps réel.",
+        "enterprise": "Accès illimité et assistance prioritaire. Conçu pour les grands entrepôts, les sites multiples et les opérations à grande échelle."
+      }
+    },
+    "success": {
+      "title": "Paiement réussi !",
+      "message": "Merci pour votre abonnement. Les limites de votre compte ont été mises à jour immédiatement.",
+      "redirectNotice": "Vous serez bientôt redirigé vers l’écran de connexion...",
+      "redirectNoticeSettings": "Vous serez bientôt redirigé vers l’écran des paramètres...",
+      "continueButton": "Aller à la connexion",
+      "continueButtonSettings": "Retour aux paramètres"
+    },
+    "cancel": {
+      "title": "Paiement annulé",
+      "message": "Le processus de paiement a été annulé. Aucun montant n’a été débité de votre carte.",
+      "tryAgainButton": "Voir les forfaits et réessayer",
+      "backButton": "Annuler et revenir aux paramètres"
+    },
+    "savings": {
+      "title": "Votre Impact Économique",
+      "subtitle": "Découvrez comment Inventiapp vous aide à éviter les pertes et à améliorer la rentabilité de votre entreprise.",
+      "realTitle": "Économies Réelles grâce aux Alertes Traitées",
+      "realSubtitle": "Il s'agit de la valeur monétaire des produits que vous avez sauvés de la péremption en traitant les alertes de la plateforme.",
+      "totalSaved": "Total Économisé ce Mois-ci",
+      "roiText": "Vos économies représentent {{multiplier}} fois le coût de votre abonnement mensuel Pro (S/. 108/mois). Votre abonnement s'est déjà rentabilisé tout seul !",
+      "historyTitle": "Historique des Alertes Traitées",
+      "product": "Produit",
+      "quantity": "Quantité Traitée",
+      "amount": "Économie",
+      "date": "Date de Résolution",
+      "status": "Statut",
+      "resolved": "Traitée",
+      "potentialTitle": "Simulateur d'Économies Potentielles",
+      "potentialSubtitle": "Calculez combien d'argent vous pouvez éviter de perdre en réduisant les pertes de stock dans votre entreprise.",
+      "monthlyInventory": "Stock Mensuel Total (S/.)",
+      "mermaPercent": "Pourcentage Actuel de Pertes (%)",
+      "lossWithout": "Perte Estimée sans Inventiapp (Annuelle)",
+      "lossWith": "Perte Estimée avec Inventiapp (Annuelle)",
+      "potentialSavings": "Économies Annuelles Estimées",
+      "comparisonText": "En réduisant de 75 % vos pertes liées aux produits périmés, Inventiapp Pro ($29/mois) génère un rendement net annuel estimé de S/. {{netSavings}}."
+    }
+  }
+}

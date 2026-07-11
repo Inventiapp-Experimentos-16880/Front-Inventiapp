@@ -122,6 +122,28 @@
   color: white !important;
 }
 
+.stat-card-orange {
+  background: linear-gradient(135deg, #F97316 0%, #EA580C 100%) !important;
+  color: white !important;
+}
+
+.clickable-card {
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.clickable-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(249, 115, 22, 0.2) !important;
+}
+
+.stat-subtext {
+  font-size: 0.72rem;
+  margin-top: 0.5rem;
+  opacity: 0.8;
+  font-weight: 500;
+}
+
 .stat-label {
   font-size: 0.75rem;
   font-weight: 500;

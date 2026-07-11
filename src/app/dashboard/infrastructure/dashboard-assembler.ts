@@ -23,7 +23,8 @@ export class DashboardAssembler implements BaseAssembler<Dashboard, DashboardRes
       stats: this.toDashboardStatsFromResource(resource),
       monthlyIncome: this.toMonthlyIncomeFromResources(resource.monthlyIncome),
       productSales: this.toProductSalesFromResources(resource.productSales),
-      notifications: this.toNotificationsFromResources(resource.notifications)
+      notifications: this.toNotificationsFromResources(resource.notifications),
+      resolvedAlerts: resource.resolvedAlerts || []
     });
   }
 
@@ -37,7 +38,8 @@ export class DashboardAssembler implements BaseAssembler<Dashboard, DashboardRes
       productsInInventory: resource.stats.productsInInventory,
       monthlyIncome: resource.stats.monthlyIncome,
       salesThisMonth: resource.stats.salesThisMonth,
-      productsWithAlerts: resource.stats.productsWithAlerts
+      productsWithAlerts: resource.stats.productsWithAlerts,
+      savingsThisMonth: resource.stats.savingsThisMonth
     });
   }
 
@@ -84,7 +86,8 @@ export class DashboardAssembler implements BaseAssembler<Dashboard, DashboardRes
         productsInInventory: entity.stats.productsInInventory,
         monthlyIncome: entity.stats.monthlyIncome,
         salesThisMonth: entity.stats.salesThisMonth,
-        productsWithAlerts: entity.stats.productsWithAlerts
+        productsWithAlerts: entity.stats.productsWithAlerts,
+        savingsThisMonth: entity.stats.savingsThisMonth
       },
       monthlyIncome: entity.monthlyIncome.map(item => ({
         month: item.month,
@@ -100,7 +103,13 @@ export class DashboardAssembler implements BaseAssembler<Dashboard, DashboardRes
         title: item.title,
         message: item.message,
         data: item.data
-      }))
+      })),
+      resolvedAlerts: entity.resolvedAlerts ? entity.resolvedAlerts.map(item => ({
+        product: item.product,
+        quantity: item.quantity,
+        amount: item.amount,
+        date: item.date
+      })) : []
     };
   }
 

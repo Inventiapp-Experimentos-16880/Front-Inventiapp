@@ -1,55 +1,106 @@
-import {Component, inject, OnInit} from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
+import { Component, inject } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
+
+import {
+  LocalizationStore
+} from '../../../../localization/application/localization.store';
+
+import {
+  LanguageCode,
+  SUPPORTED_LANGUAGE_CODES
+} from '../../../../localization/domain/model/language-code';
 
 @Component({
   selector: 'app-language-switcher',
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './language-switcher.html',
   styleUrl: './language-switcher.css'
 })
-export class LanguageSwitcher implements OnInit {
-  private static readonly LANGUAGE_STORAGE_KEY = 'stocktrack_language';
-  
-  protected currentLanguage: string = 'es';
-  protected languages = ['es', 'en'];
+export class LanguageSwitcher {
 
-  private translate: TranslateService;
+  protected readonly localizationStore =
+    inject(LocalizationStore);
 
-  constructor() {
-    this.translate = inject(TranslateService);
-  }
+  protected readonly languages =
+    SUPPORTED_LANGUAGE_CODES;
 
-  ngOnInit(): void {
-    // Load saved language from localStorage or use default
-    const savedLanguage = this.getSavedLanguage();
-    this.currentLanguage = savedLanguage;
-    this.translate.use(savedLanguage);
+  /**
+   * Activates the language selected manually.
+   */
+  protected useManualLanguage(): void {
+    this.localizationStore.useManualLanguage();
   }
 
   /**
-   * Changes the application language and saves it to localStorage.
-   * @param lang - The language code to switch to.
+   * Selects, stores and activates a manual language.
+   *
+   * @param language selected language
    */
-  useLanguage(lang: string): void {
-    this.translate.use(lang);
-    this.currentLanguage = lang;
-    this.saveLanguage(lang);
+  protected selectManualLanguage(
+    language: LanguageCode
+  ): void {
+    this.localizationStore
+      .selectManualLanguage(language);
   }
 
   /**
-   * Retrieves the saved language from localStorage.
-   * @returns The saved language code or default 'es'.
+   * Activates the language recommended by location.
    */
-  private getSavedLanguage(): string {
-    const saved = localStorage.getItem(LanguageSwitcher.LANGUAGE_STORAGE_KEY);
-    return saved && this.languages.includes(saved) ? saved : 'es';
+  protected useLocationLanguage(): void {
+    this.localizationStore.useLocationLanguage();
   }
 
   /**
-   * Saves the selected language to localStorage.
-   * @param lang - The language code to save.
+   * Requests a new location recommendation.
    */
-  private saveLanguage(lang: string): void {
-    localStorage.setItem(LanguageSwitcher.LANGUAGE_STORAGE_KEY, lang);
+  protected refreshLocation(): void {
+    this.localizationStore
+      .refreshLocationRecommendation();
+  }
+
+  /**
+   * Returns the localized name of a language.
+   *
+   * Examples:
+   * es → Español
+   * en → Inglés
+   * de → Alemán
+   */
+  protected getLanguageName(
+    language: LanguageCode
+  ): string {
+    try {
+      return new Intl.DisplayNames(
+        [this.localizationStore.activeLanguage()],
+        { type: 'language' }
+      ).of(language) ?? language.toUpperCase();
+    } catch {
+      return language.toUpperCase();
+    }
+  }
+
+  /**
+   * Returns the localized name of the detected country.
+   *
+   * Examples:
+   * PE → Perú
+   * DE → Alemania
+   */
+  protected getCountryName(): string {
+    const countryCode =
+      this.localizationStore.countryCode();
+
+    if (!countryCode) {
+      return '';
+    }
+
+    try {
+      return new Intl.DisplayNames(
+        [this.localizationStore.activeLanguage()],
+        { type: 'region' }
+      ).of(countryCode) ?? countryCode;
+    } catch {
+      return countryCode;
+    }
   }
 }

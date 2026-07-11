@@ -14,11 +14,13 @@ export class DashboardStats {
     monthlyIncome: number;
     salesThisMonth: number;
     productsWithAlerts: number;
+    savingsThisMonth: number;
   }) {
     this._productsInInventory = stats.productsInInventory;
     this._monthlyIncome = stats.monthlyIncome;
     this._salesThisMonth = stats.salesThisMonth;
     this._productsWithAlerts = stats.productsWithAlerts;
+    this._savingsThisMonth = stats.savingsThisMonth;
   }
 
   private _productsInInventory: number;
@@ -39,6 +41,11 @@ export class DashboardStats {
   private _productsWithAlerts: number;
   get productsWithAlerts(): number {
     return this._productsWithAlerts;
+  }
+
+  private _savingsThisMonth: number;
+  get savingsThisMonth(): number {
+    return this._savingsThisMonth;
   }
 }
 

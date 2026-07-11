@@ -1,4 +1,7 @@
 {
+  "app": {
+    "title": "StockTrack"
+  },
   "global": {
     "cancel": "Cancelar",
     "save": "Guardar",
@@ -7,6 +10,25 @@
   },
   "app": {
     "title": "StockTrack"
+  },
+  "languageSwitcher": {
+    "title": "Idioma de la aplicación",
+    "trigger": "Cambiar idioma de la aplicación",
+    "mode": {
+      "manualShort": "Manual",
+      "locationShort": "Ubicación"
+    },
+    "manual": {
+      "description": "Idioma elegido manualmente",
+      "choose": "Selecciona el idioma manual"
+    },
+    "location": {
+      "title": "Idioma según ubicación",
+      "loading": "Detectando idioma por ubicación...",
+      "detectedIn": "Recomendado para {{country}}",
+      "unavailable": "No se pudo detectar el idioma por ubicación",
+      "refresh": "Volver a detectar ubicación"
+    }
   },
   "settings": {
     "title": "Configuración",
@@ -40,6 +62,7 @@
     "menu": {
       "home": "Inicio",
       "inventory": "Inventario",
+      "expirationAlerts": "Gestión de vencimientos",
       "providers": "Proveedores",
       "sales": "Venta",
       "reports": "Reportes",
@@ -47,6 +70,7 @@
       "aria": {
         "home": "Ir a inicio",
         "inventory": "Ir a inventario",
+        "expirationAlerts": "Ir a gestión de vencimientos",
         "providers": "Ir a proveedores",
         "sales": "Ir a ventas",
         "reports": "Ir a reportes",
@@ -159,6 +183,58 @@
       "clearFilters": "Limpiar filtros",
       "noFilteredMovements": "Ningún movimiento coincide con los filtros",
       "filteredCount": "{{count}} de {{total}} movimientos"
+    },
+    "expirationAlerts": {
+      "title": "Gestión de vencimientos",
+      "intro": "Estas alertas requieren una acción tuya: liquidar o devolver los lotes próximos a vencer (7 días). A diferencia de los avisos informativos del panel, aquí debes registrar una decisión. Los casos ya atendidos quedan como historial consultable.",
+      "pendingBadge": "{{count}} por atender",
+      "loadError": "No se pudieron cargar las alertas de vencimiento",
+      "noAlerts": "No hay alertas de vencimiento registradas",
+      "noFilteredAlerts": "Ninguna alerta coincide con los filtros",
+      "filterStatus": "Estado",
+      "allStatuses": "Todos",
+      "filterSearch": "Buscar",
+      "filterSearchPlaceholder": "Producto o lote",
+      "clearFilters": "Limpiar filtros",
+      "filteredCount": "{{count}} de {{total}} alertas",
+      "product": "Producto",
+      "unknownProduct": "Producto no encontrado",
+      "lot": "Lote",
+      "expirationDate": "Vence",
+      "triggeredAt": "Detectada",
+      "statusColumn": "Estado",
+      "actionColumn": "Acción",
+      "registerAction": "Registrar acción",
+      "handled": "Atendida",
+      "unitsCount": "{{count}} unidades",
+      "viewMovement": "Ver movimiento",
+      "actionRegistered": "Acción registrada correctamente",
+      "alreadyResolved": "Esta alerta ya había sido atendida",
+      "scanNow": "Escanear ahora",
+      "scanning": "Escaneando...",
+      "scanCreated": "{{count}} alertas nuevas",
+      "scanNoNew": "Sin novedades",
+      "scanError": "No se pudo ejecutar el escaneo. Inténtalo de nuevo.",
+      "status": {
+        "pending": "Pendiente",
+        "resolved": "Atendida"
+      },
+      "action": {
+        "liquidation": "Liquidación",
+        "return": "Devolución"
+      },
+      "dialog": {
+        "title": "Registrar acción de mitigación",
+        "remainingQuantity": "Cantidad restante del lote",
+        "actionType": "Tipo de acción",
+        "quantity": "Cantidad",
+        "quantityHint": "Déjala vacía para dar de baja el lote completo",
+        "quantityPositive": "La cantidad debe ser mayor que 0",
+        "quantityExceedsBatch": "La cantidad no puede superar {{max}}",
+        "invalidQuantityError": "Cantidad inválida. Revisa el valor ingresado.",
+        "genericError": "No se pudo registrar la acción. Inténtalo de nuevo.",
+        "confirm": "Confirmar"
+      }
     }
   },
   "providers-view": {
@@ -289,7 +365,8 @@
       "productsInInventory": "Productos en inventario",
       "monthlyIncome": "Ingresos del mes",
       "salesThisMonth": "Ventas realizadas este mes",
-      "productsWithAlerts": "Productos con alertas"
+      "productsWithAlerts": "Productos con alertas",
+      "savingsThisMonth": "Ahorros por alertas atendidas"
     },
     "charts": {
       "topProducts": "Productos más vendidos",
@@ -553,6 +630,30 @@
       "message": "El proceso de pago fue cancelado. No se realizaron cargos en tu tarjeta.",
       "tryAgainButton": "Ver Planes e Intentar de Nuevo",
       "backButton": "Cancelar y Volver a Ajustes"
+    },
+    "savings": {
+      "title": "Tu Impacto Económico",
+      "subtitle": "Mira cómo Inventiapp te ayuda a evitar pérdidas y a rentabilizar tu negocio.",
+      "realTitle": "Ahorro Real por Alertas Atendidas",
+      "realSubtitle": "Este es el valor monetario de los productos que salvaste de vencerse al atender las alertas de la plataforma.",
+      "totalSaved": "Total Ahorrado este Mes",
+      "roiText": "Tu ahorro equivale a {{multiplier}}x veces el costo de tu suscripción mensual Pro (S/. 108/mes). ¡Tu plan ya se pagó solo!",
+      "historyTitle": "Historial de Alertas Atendidas",
+      "product": "Producto",
+      "quantity": "Cantidad Resuelta",
+      "amount": "Ahorro",
+      "date": "Fecha de Resolución",
+      "status": "Estado",
+      "resolved": "Atendido",
+      "potentialTitle": "Simulador de Ahorro Potencial",
+      "potentialSubtitle": "Calcula cuánto dinero puedes dejar de perder al reducir las mermas de tu bodega.",
+      "monthlyInventory": "Inventario Mensual Total (S/.)",
+      "mermaPercent": "Porcentaje de Merma Actual (%)",
+      "lossWithout": "Pérdida estimada sin Inventiapp (Anual)",
+      "lossWith": "Pérdida estimada con Inventiapp (Anual)",
+      "potentialSavings": "Ahorro Anual Estimado",
+      "comparisonText": "Al reducir un 75% tus mermas por productos vencidos, Inventiapp Pro ($29/mes) te genera un retorno neto anual estimado de S/. {{netSavings}}.",
+      "noAlerts": "No hay alertas atendidas en este ciclo de inventario."
     }
   }
 }

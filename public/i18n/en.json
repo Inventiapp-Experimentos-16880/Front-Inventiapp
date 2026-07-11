@@ -1,4 +1,7 @@
 {
+  "app": {
+    "title": "StockTrack"
+  },
   "global": {
     "cancel": "Cancel",
     "save": "Save",
@@ -7,6 +10,25 @@
   },
   "app": {
     "title": "StockTrack"
+  },
+  "languageSwitcher": {
+    "title": "Application language",
+    "trigger": "Change application language",
+    "mode": {
+      "manualShort": "Manual",
+      "locationShort": "Location"
+    },
+    "manual": {
+      "description": "Language selected manually",
+      "choose": "Choose the manual language"
+    },
+    "location": {
+      "title": "Language by location",
+      "loading": "Detecting language by location...",
+      "detectedIn": "Recommended for {{country}}",
+      "unavailable": "Location language is not available",
+      "refresh": "Detect location again"
+    }
   },
   "settings": {
     "title": "Settings",
@@ -40,6 +62,7 @@
     "menu": {
       "home": "Home",
       "inventory": "Inventory",
+      "expirationAlerts": "Expiration management",
       "providers": "Providers",
       "sales": "Sales",
       "reports": "Reports",
@@ -47,6 +70,7 @@
       "aria": {
         "home": "Go to home",
         "inventory": "Go to inventory",
+        "expirationAlerts": "Go to expiration management",
         "providers": "Go to providers",
         "sales": "Go to sales",
         "reports": "Go to reports",
@@ -154,6 +178,58 @@
       "clearFilters": "Clear filters",
       "noFilteredMovements": "No movement matches the filters",
       "filteredCount": "{{count}} of {{total}} movements"
+    },
+    "expirationAlerts": {
+      "title": "Expiration management",
+      "intro": "These alerts require an action from you: liquidate or return batches that are close to expiring (7 days). Unlike the dashboard's informational notices, here you must record a decision. Handled cases remain as a consultable history.",
+      "pendingBadge": "{{count}} to handle",
+      "loadError": "The expiration alerts could not be loaded",
+      "noAlerts": "There are no registered expiration alerts",
+      "noFilteredAlerts": "No alert matches the filters",
+      "filterStatus": "Status",
+      "allStatuses": "All",
+      "filterSearch": "Search",
+      "filterSearchPlaceholder": "Product or lot",
+      "clearFilters": "Clear filters",
+      "filteredCount": "{{count}} of {{total}} alerts",
+      "product": "Product",
+      "unknownProduct": "Product not found",
+      "lot": "Lot",
+      "expirationDate": "Expires",
+      "triggeredAt": "Detected",
+      "statusColumn": "Status",
+      "actionColumn": "Action",
+      "registerAction": "Register action",
+      "handled": "Handled",
+      "unitsCount": "{{count}} units",
+      "viewMovement": "View movement",
+      "actionRegistered": "Action registered successfully",
+      "alreadyResolved": "This alert had already been handled",
+      "scanNow": "Scan now",
+      "scanning": "Scanning...",
+      "scanCreated": "{{count}} new alerts",
+      "scanNoNew": "No new alerts",
+      "scanError": "The scan could not be run. Please try again.",
+      "status": {
+        "pending": "Pending",
+        "resolved": "Handled"
+      },
+      "action": {
+        "liquidation": "Liquidation",
+        "return": "Return"
+      },
+      "dialog": {
+        "title": "Register mitigation action",
+        "remainingQuantity": "Remaining batch quantity",
+        "actionType": "Action type",
+        "quantity": "Quantity",
+        "quantityHint": "Leave empty to write off the entire batch",
+        "quantityPositive": "Quantity must be greater than 0",
+        "quantityExceedsBatch": "Quantity cannot exceed {{max}}",
+        "invalidQuantityError": "Invalid quantity. Please review the entered value.",
+        "genericError": "The action could not be registered. Please try again.",
+        "confirm": "Confirm"
+      }
     }
   },
   "providers-view": {
@@ -285,7 +361,8 @@
       "productsInInventory": "Products in inventory",
       "monthlyIncome": "Monthly income",
       "salesThisMonth": "Sales made this month",
-      "productsWithAlerts": "Products with alerts"
+      "productsWithAlerts": "Products with alerts",
+      "savingsThisMonth": "Savings from resolved alerts"
     },
     "charts": {
       "topProducts": "Top selling products",
@@ -549,6 +626,30 @@
       "message": "The checkout process was canceled. No charges were made to your card.",
       "tryAgainButton": "View Plans & Try Again",
       "backButton": "Cancel & Return to Settings"
+    },
+    "savings": {
+      "title": "Your Economic Impact",
+      "subtitle": "See how Inventiapp helps you prevent losses and boost your business profitability.",
+      "realTitle": "Real Savings from Resolved Alerts",
+      "realSubtitle": "This is the monetary value of products you saved from expiring by resolving platform alerts.",
+      "totalSaved": "Total Saved This Month",
+      "roiText": "Your savings are equivalent to {{multiplier}}x the monthly cost of your Pro subscription ($29/mo). Your plan has already paid for itself!",
+      "historyTitle": "Resolved Alerts History",
+      "product": "Product",
+      "quantity": "Quantity Resolved",
+      "amount": "Savings",
+      "date": "Resolution Date",
+      "status": "Status",
+      "resolved": "Resolved",
+      "potentialTitle": "Potential Savings Simulator",
+      "potentialSubtitle": "Calculate how much money you can stop losing by reducing waste in your store.",
+      "monthlyInventory": "Total Monthly Inventory ($)",
+      "mermaPercent": "Current Waste Percentage (%)",
+      "lossWithout": "Estimated Annual Loss without Inventiapp",
+      "lossWith": "Estimated Annual Loss with Inventiapp",
+      "potentialSavings": "Estimated Annual Savings",
+      "comparisonText": "By reducing your waste from expired products by 75%, Inventiapp Pro ($29/mo) generates an estimated net annual return of ${{netSavings}}.",
+      "noAlerts": "No resolved alerts in this inventory cycle."
     }
   }
 }

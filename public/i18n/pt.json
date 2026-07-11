@@ -1,0 +1,652 @@
+{
+  "global": {
+    "cancel": "Cancelar",
+    "save": "Salvar",
+    "exit": "Sair",
+    "unlimited": "Ilimitado"
+  },
+  "app": {
+    "title": "StockTrack"
+  },
+  "languageSwitcher": {
+    "title": "Idioma do aplicativo",
+    "trigger": "Alterar o idioma do aplicativo",
+    "mode": {
+      "manualShort": "Manual",
+      "locationShort": "Localização"
+    },
+    "manual": {
+      "description": "Idioma selecionado manualmente",
+      "choose": "Selecione o idioma manual"
+    },
+    "location": {
+      "title": "Idioma por localização",
+      "loading": "Detectando o idioma pela localização...",
+      "detectedIn": "Recomendado para {{country}}",
+      "unavailable": "Não foi possível detectar o idioma pela localização",
+      "refresh": "Detectar a localização novamente"
+    }
+  },
+  "settings": {
+    "title": "Configurações",
+    "subtitle": "Gerencie as preferências e opções do aplicativo",
+    "userInfo": {
+      "title": "Informações do usuário",
+      "email": "E-mail",
+      "role": "Função",
+      "admin": "Administrador",
+      "user": "Usuário",
+      "planType": "Tipo de plano",
+      "freePlan": "Plano gratuito"
+    },
+    "language": {
+      "title": "Idioma",
+      "description": "Selecione o idioma da interface"
+    },
+    "appInfo": {
+      "title": "Informações do aplicativo",
+      "version": "Versão",
+      "name": "Nome"
+    },
+    "subscription": {
+      "title": "Plano de assinatura",
+      "description": "Gerencie seus planos de pagamento e limites de uso na sua conta.",
+      "manageBtn": "Gerenciar assinatura"
+    }
+  },
+  "sidebar": {
+    "title": "StockTrack",
+    "menu": {
+      "home": "Início",
+      "inventory": "Estoque",
+      "providers": "Fornecedores",
+      "sales": "Vendas",
+      "reports": "Relatórios",
+      "more": "Mais",
+      "aria": {
+        "home": "Ir para o início",
+        "inventory": "Ir para o estoque",
+        "providers": "Ir para os fornecedores",
+        "sales": "Ir para as vendas",
+        "reports": "Ir para os relatórios",
+        "more": "Abrir menu de mais opções",
+        "language": "Seletor de idioma",
+        "navigation": "Navegação principal"
+      }
+    },
+    "footer": {
+      "settings": "Configurações",
+      "personal": "Administração de pessoal",
+      "logout": "Sair",
+      "aria": {
+        "settings": "Ir para as configurações",
+        "personal": "Ir para a administração de pessoal",
+        "logout": "Sair"
+      }
+    }
+  },
+  "home": {
+    "title": "Bem-vindo ao StockTrack",
+    "subtitle": "Sistema de gestão de estoque"
+  },
+  "kits": {
+    "validationQuantityInteger": "A quantidade deve ser um número inteiro positivo"
+  },
+  "inventory": {
+    "title": "Gestão de estoque",
+    "subtitle": "Gerencie seus produtos e seu estoque",
+    "emptyState": {
+      "title": "Estoque",
+      "description": "Esta é a tela de estoque",
+      "message": "Em breve você poderá gerenciar todos os seus produtos aqui"
+    },
+    "header": "Estoque",
+    "invalidPrice": "Preço inválido",
+    "products": "Produtos",
+    "name": "Nome",
+    "unitPrice": "Preço unitário",
+    "currentStock": "Estoque atual",
+    "minimumStock": "Estoque mínimo",
+    "informationProduct": "Informações",
+    "actions": "Ações",
+    "viewDetail": "Ver detalhes",
+    "edit": "Editar",
+    "delete": "Excluir",
+    "confirmDelete": "Tem certeza de que deseja excluir o produto {name}?",
+    "noProductsFound": "Nenhum produto encontrado",
+    "tryDifferentSearch": "Tente outros critérios de pesquisa ou filtros",
+    "filter": "Filtros",
+    "search": "Pesquisar",
+    "allCategories": "Todas as categorias",
+    "allProviders": "Todos os fornecedores",
+    "allLots": "Todos os lotes",
+    "allStatuses": "Todos os status",
+    "date": "Data",
+    "clearFilters": "Limpar filtros",
+    "removeFilter": "Remover filtro",
+    "loadingKits": "Carregando kits...",
+    "loadingProducts": "Carregando produtos...",
+    "retry": "Tentar novamente",
+    "product": "Produto",
+    "newReplacement": "Registrar reposição",
+    "noKits": "Não há kits disponíveis",
+    "startKits": "Comece criando seu primeiro kit clicando no botão",
+    "newKit": "Novo kit",
+    "priceKit": "Preço do kit",
+    "quantity": "Quantidade a selecionar",
+    "category": "Categoria",
+    "provider": "Fornecedor",
+    "select": "Selecionar",
+    "newProduct": "Novo produto",
+    "editProduct": "Editar produto",
+    "newCategory": "Nova categoria",
+    "description": "Descrição",
+    "categoryNamePlaceholder": "Ex.: Laticínios",
+    "categoryDescriptionPlaceholder": "Ex.: Produtos lácteos e derivados",
+    "productDescriptionPlaceholder": "Ex.: Leite integral em embalagem de 1 litro",
+    "isActive": "Status",
+    "activeProduct": "Produto ativo",
+    "lot": "Lote",
+    "receiptDate": "Data de recebimento",
+    "expirationDate": "Data de validade",
+    "amountEntering": "Quantidade de entrada",
+    "lastReception": "Último recebimento",
+    "lowStock": "Estoque baixo",
+    "status": "Status",
+    "outOfStock": "Sem estoque",
+    "normalStock": "Normal",
+    "kits": "Kits",
+    "price": "Preço",
+    "kitProductUnitPrice": "Preço unitário",
+    "kitProductTotal": "Total",
+    "batchHistory": {
+      "viewHistory": "Ver histórico de movimentações",
+      "title": "Histórico de movimentações",
+      "lot": "Lote",
+      "type": "Tipo",
+      "quantity": "Quantidade",
+      "date": "Data",
+      "entrada": "Entrada",
+      "salida": "Saída",
+      "noMovements": "Este produto não possui movimentações registradas",
+      "loadError": "Não foi possível carregar o histórico de movimentações",
+      "viewOnExpiring": "Ver lote no relatório de próximos ao vencimento",
+      "from": "De",
+      "to": "Até",
+      "allTypes": "Todos",
+      "allLots": "Todos",
+      "clearFilters": "Limpar filtros",
+      "noFilteredMovements": "Nenhuma movimentação corresponde aos filtros",
+      "filteredCount": "{{count}} de {{total}} movimentações"
+    },
+    "expirationAlerts": {
+      "title": "Gestão de vencimentos",
+      "intro": "Esses alertas exigem uma ação sua: liquidar ou devolver os lotes próximos do vencimento (7 dias). Diferentemente dos avisos informativos do painel, aqui você deve registrar uma decisão. Os casos já resolvidos permanecem como histórico consultável.",
+      "pendingBadge": "{{count}} pendente(s)",
+      "loadError": "Não foi possível carregar os alertas de vencimento",
+      "noAlerts": "Não há alertas de vencimento registrados",
+      "noFilteredAlerts": "Nenhum alerta corresponde aos filtros",
+      "filterStatus": "Status",
+      "allStatuses": "Todos",
+      "filterSearch": "Buscar",
+      "filterSearchPlaceholder": "Produto ou lote",
+      "clearFilters": "Limpar filtros",
+      "filteredCount": "{{count}} de {{total}} alertas",
+      "product": "Produto",
+      "unknownProduct": "Produto não encontrado",
+      "lot": "Lote",
+      "expirationDate": "Vence",
+      "triggeredAt": "Detectado",
+      "statusColumn": "Status",
+      "actionColumn": "Ação",
+      "registerAction": "Registrar ação",
+      "handled": "Resolvido",
+      "unitsCount": "{{count}} unidades",
+      "viewMovement": "Ver movimentação",
+      "actionRegistered": "Ação registrada com sucesso",
+      "alreadyResolved": "Este alerta já havia sido resolvido",
+      "scanNow": "Escanear agora",
+      "scanning": "Escaneando...",
+      "scanCreated": "{{count}} novos alertas",
+      "scanNoNew": "Sem novidades",
+      "scanError": "Não foi possível executar a verificação. Tente novamente.",
+      "status": {
+        "pending": "Pendente",
+        "resolved": "Resolvido"
+      },
+      "action": {
+        "liquidation": "Liquidação",
+        "return": "Devolução"
+      },
+      "dialog": {
+        "title": "Registrar ação de mitigação",
+        "remainingQuantity": "Quantidade restante do lote",
+        "actionType": "Tipo de ação",
+        "quantity": "Quantidade",
+        "quantityHint": "Deixe em branco para dar baixa no lote inteiro",
+        "quantityPositive": "A quantidade deve ser maior que 0",
+        "quantityExceedsBatch": "A quantidade não pode exceder {{max}}",
+        "invalidQuantityError": "Quantidade inválida. Verifique o valor informado.",
+        "genericError": "Não foi possível registrar a ação. Tente novamente.",
+        "confirm": "Confirmar"
+      }
+    }
+  },
+  "providers-view": {
+    "providers": "Fornecedores",
+    "providers-table": {
+      "name": "Nome",
+      "contact": "Contato",
+      "phone": "Celular",
+      "email": "E-mail",
+      "ruc": "RUC",
+      "address": "Endereço",
+      "actions": "Ações",
+      "edit": "Editar",
+      "delete": "Excluir"
+    },
+    "providers-toolbar": {
+      "search": "Pesquisar",
+      "filter": "Filtrar",
+      "add-provider": "Adicionar fornecedor"
+    },
+    "form-dialog": {
+      "add": "Adicionar fornecedor",
+      "edit": "Editar fornecedor",
+      "first-name": "Nome",
+      "last-name": "Sobrenome",
+      "phone-number": "Celular",
+      "email": "E-mail",
+      "ruc": "RUC",
+      "cancel": "Cancelar",
+      "save": "Salvar",
+      "first-name-required": "O nome é obrigatório",
+      "first-name-minlength": "O nome deve ter pelo menos 2 caracteres",
+      "last-name-required": "O sobrenome é obrigatório",
+      "last-name-minlength": "O sobrenome deve ter pelo menos 2 caracteres",
+      "phone-number-required": "O telefone é obrigatório",
+      "phone-number-invalid": "Formato de telefone inválido",
+      "email-required": "O e-mail é obrigatório",
+      "email-invalid": "Formato de e-mail inválido",
+      "ruc-required": "O RUC é obrigatório",
+      "ruc-invalid": "O RUC deve ter exatamente 11 dígitos"
+    }
+  },
+  "sales": {
+    "title": "Gestão de vendas",
+    "subtitle": "Gerencie suas vendas e transações",
+    "search": "Pesquisar produtos",
+    "filter": "Filtro",
+    "emptyState": {
+      "title": "Vendas",
+      "description": "Esta é a tela de vendas",
+      "message": "Em breve você poderá gerenciar todas as suas vendas aqui"
+    },
+    "products": "Produtos",
+    "salesDraft": "Rascunho de saída de produtos",
+    "table": {
+      "name": "Nome",
+      "unitPrice": "Preço unitário",
+      "stock": "Estoque",
+      "quantity": "Quantidade",
+      "totalPrice": "Preço total",
+      "actions": "Ações",
+      "edit": "Editar",
+      "delete": "Excluir",
+      "cancel": "Cancelar",
+      "save": "Salvar"
+    },
+    "kits": "Kits",
+    "noKitsAvailable": "Não há kits disponíveis",
+    "total": "Total",
+    "kit": "Kit",
+    "emptyCart": "O rascunho está vazio. Adicione produtos ou kits para começar.",
+    "noStockAvailable": "Não há estoque disponível para {{product}}",
+    "stockInsufficient": "Estoque insuficiente. Há apenas {{stock}} unidades disponíveis de {{product}}",
+    "saleSaved": "Venda salva com sucesso",
+    "saleSaveError": "Erro ao salvar a venda. Tente novamente",
+    "userNotIdentified": "Erro: não foi possível identificar o usuário"
+  },
+  "auth": {
+    "login": {
+      "title": "Entrar",
+      "email": "E-mail",
+      "password": "Senha",
+      "forgotPassword": "Esqueceu sua senha?",
+      "submit": "Entrar",
+      "noAccount": "Não tem uma conta?",
+      "createAccount": "Criar uma"
+    },
+    "register": {
+      "title": "Cadastre-se",
+      "name": "Nome",
+      "email": "E-mail",
+      "password": "Senha",
+      "confirmPassword": "Confirmar senha",
+      "submit": "Cadastrar-se",
+      "hasAccount": "Já tem uma conta?",
+      "login": "Entrar"
+    },
+    "tagline": "Um controle de estoque criado para ajudar você a vender mais e se preocupar menos",
+    "errors": {
+      "loginFailed": "Falha ao entrar. Verifique suas credenciais.",
+      "registerFailed": "Falha ao se cadastrar. Tente novamente.",
+      "passwordMismatch": "As senhas não coincidem"
+    },
+    "validation": {
+      "required": "é obrigatório",
+      "emailInvalid": "E-mail inválido",
+      "minLength": "Mínimo de {{min}} caracteres",
+      "passwordRequired": "é obrigatória",
+      "confirmRequired": "A confirmação é obrigatória",
+      "passwordMismatch": "As senhas não coincidem"
+    }
+  },
+  "dashboard": {
+    "title": "Painel",
+    "greeting": "Bom dia",
+    "notifications": {
+      "title": "Notificações",
+      "button": "Abrir notificações",
+      "icon": "notifications",
+      "empty": "Não há notificações",
+      "types": {
+        "warning": "Aviso",
+        "alert": "Alerta",
+        "info": "Informação"
+      }
+    },
+    "stats": {
+      "productsInInventory": "Produtos em estoque",
+      "monthlyIncome": "Receita do mês",
+      "salesThisMonth": "Vendas realizadas neste mês",
+      "productsWithAlerts": "Produtos com alertas",
+      "savingsThisMonth": "Economia com alertas resolvidos"
+    },
+    "charts": {
+      "topProducts": "Produtos mais vendidos",
+      "monthlyIncome": "Receita mensal"
+    },
+    "notificationMessages": {
+      "expiringProduct": "O produto \"{{product}}\" vencerá em {{date}}",
+      "lowStock": "O produto \"{{product}}\" possui apenas {{quantity}} unidades em estoque"
+    },
+    "notificationTitles": {
+      "expiringProduct": "Produto próximo do vencimento",
+      "lowStock": "Produto quase sem estoque"
+    }
+  },
+  "personal": {
+    "title": "Administração de pessoal"
+  },
+  "personalAdministration": {
+    "title": "Administração de pessoal",
+    "subtitle": "Gerencie os usuários da sua empresa",
+    "search": "Pesquisar...",
+    "filter": "Filtro",
+    "status": "Status",
+    "role": "Função",
+    "all": "Todos",
+    "active": "Ativo",
+    "inactive": "Inativo",
+    "apply": "Aplicar",
+    "clear": "Limpar",
+    "clearFilters": "Limpar filtros",
+    "newRole": "Nova função",
+    "newUser": "Novo usuário",
+    "addUser": "Adicionar usuário",
+    "name": "Nome",
+    "account": "Conta",
+    "actions": "Ações",
+    "newUserTitle": "Novo funcionário",
+    "nameLabel": "Nome(s)",
+    "lastnameLabel": "Sobrenome(s)",
+    "phoneLabel": "Número de telefone",
+    "emailLabel": "E-mail",
+    "passwordLabel": "Senha",
+    "roleLabel": "Função",
+    "editUserTitle": "Editar usuário",
+    "fullNameLabel": "Nome completo",
+    "accountLabel": "Conta (e-mail)",
+    "statusLabel": "Status",
+    "confirmDeleteTitle": "Confirmar exclusão",
+    "confirmDeleteMessage": "Tem certeza de que deseja excluir {{name}}?",
+    "newRoleTitle": "Nova função",
+    "roleNameLabel": "Nome da função",
+    "rolePlaceholder": "Ex.: Supervisor",
+    "permissionsTitle": "Permissões",
+    "permissionsHint": "Selecione os módulos aos quais este usuário terá acesso",
+    "permissionsSelected": "{{count}} permissão(ões) selecionada(s)",
+    "permissionDashboard": "Painel",
+    "permissionInventory": "Estoque",
+    "permissionSales": "Vendas",
+    "permissionProviders": "Fornecedores",
+    "permissionReports": "Relatórios",
+    "permissionUserManagement": "Gestão de usuários",
+    "permissionProducts": "Gestão de produtos",
+    "permissionPurchases": "Processo de compra",
+    "permissionStats": "Estatísticas",
+    "permissionUsers": "Gestão de usuários",
+    "loadingUsers": "Carregando usuários...",
+    "noUsers": "Não há usuários",
+    "noUsersFiltered": "Nenhum usuário foi encontrado com os filtros aplicados",
+    "noUsersYet": "Você ainda não adicionou usuários à sua empresa",
+    "admin": "Administrador",
+    "user": "Usuário",
+    "admins": "Administradores",
+    "users": "Usuários",
+    "cannotDeleteSelf": "Você não pode excluir a si mesmo",
+    "cannotDeleteOwner": "Não é possível excluir o usuário principal",
+    "deleteUser": "Excluir usuário",
+    "emailPlaceholder": "usuario@exemplo.com",
+    "passwordPlaceholder": "Mínimo de 6 caracteres",
+    "passwordPlaceholderOptional": "Deixe em branco para não alterar",
+    "passwordHintOptional": "Deixe em branco se não quiser alterar a senha",
+    "emailRequired": "O e-mail é obrigatório",
+    "emailInvalid": "Insira um e-mail válido",
+    "passwordRequired": "A senha é obrigatória",
+    "passwordMinLength": "Mínimo de 6 caracteres",
+    "editUser": "Editar usuário",
+    "aria": {
+      "search": "Pesquisar usuários",
+      "filterRole": "Filtrar por função",
+      "createUser": "Criar novo usuário",
+      "deleteUser": "Excluir usuário",
+      "clearFilters": "Limpar filtros aplicados"
+    }
+  },
+  "common": {
+    "cancel": "Cancelar",
+    "save": "Salvar",
+    "saveChanges": "Salvar alterações",
+    "delete": "Excluir",
+    "loading": "Carregando...",
+    "validationNumber": "Insira um número inteiro positivo menor que 100",
+    "validationExpirationDate": "Insira uma data de validade válida, igual ou posterior à data de recebimento",
+    "validateNumberCart": "Há quantidades inválidas no carrinho. Corrija-as antes de salvar"
+  },
+  "notFound": {
+    "title": "Página não encontrada",
+    "message": "Ops! A página que você procura não existe.",
+    "description": "A URL pode estar digitada incorretamente ou a página pode ter sido movida. Verifique o endereço ou volte para a página principal.",
+    "goHome": "Ir para o início",
+    "goBack": "Voltar"
+  },
+  "reports": {
+    "title": "Relatórios",
+    "subtitle": "Visualize e analise informações importantes do seu estoque",
+    "refresh": "Atualizar",
+    "export": "Exportar para Excel",
+    "loading": "Carregando relatórios...",
+    "retry": "Tentar novamente",
+    "expired": "Vencido",
+    "expiresToday": "Vence hoje",
+    "expiresTomorrow": "Vence amanhã",
+    "daysLeft": "{days} dias restantes",
+    "dayLeft": "{days} dia restante",
+    "monthLeft": "{months} mês restante",
+    "monthsLeft": "{months} meses restantes",
+    "tabs": {
+      "providers": "Fornecedores",
+      "stock": "Estoque atual",
+      "expiring": "Próximos do vencimento",
+      "lowStock": "Estoque baixo",
+      "sales": "Vendas"
+    },
+    "providers": {
+      "title": "Lista de fornecedores",
+      "subtitle": "Informações completas de todos os seus fornecedores",
+      "empty": "Não há fornecedores cadastrados",
+      "filterByCategory": "Filtrar por categoria",
+      "allCategories": "Todas as categorias",
+      "columns": {
+        "name": "Nome",
+        "ruc": "RUC",
+        "email": "E-mail",
+        "phone": "Telefone",
+        "productCount": "Produtos",
+        "products": "Produtos"
+      }
+    },
+    "stock": {
+      "title": "Relatório de estoque atual",
+      "subtitle": "Situação atual do estoque de todos os produtos",
+      "empty": "Não há produtos em estoque",
+      "columns": {
+        "productName": "Produto",
+        "category": "Categoria",
+        "currentStock": "Estoque atual",
+        "minStock": "Estoque mínimo",
+        "unitPrice": "Preço unitário",
+        "totalValue": "Valor total",
+        "status": "Status"
+      },
+      "status": {
+        "normal": "Normal",
+        "low": "Baixo",
+        "critical": "Crítico"
+      }
+    },
+    "expiring": {
+      "title": "Produtos próximos do vencimento",
+      "subtitle": "Visualize os produtos por mês de vencimento",
+      "empty": "Não há produtos com data de validade",
+      "emptyFiltered": "Não há produtos que vencem no mês selecionado",
+      "emptyNext30Days": "Não há produtos próximos do vencimento nos próximos 30 dias",
+      "filterByMonth": "Filtrar por mês",
+      "next30Days": "Próximos 30 dias",
+      "showAll": "Mostrar todos",
+      "clearFilter": "Limpar filtro",
+      "columns": {
+        "productName": "Produto",
+        "category": "Categoria",
+        "expirationDate": "Data de validade",
+        "daysLeft": "Dias restantes",
+        "currentStock": "Estoque atual",
+        "lot": "Lote",
+        "status": "Status"
+      },
+      "status": {
+        "expired": "Vencido",
+        "critical": "Crítico",
+        "warning": "Aviso",
+        "normal": "Normal"
+      }
+    },
+    "lowStock": {
+      "title": "Produtos com estoque baixo",
+      "subtitle": "Produtos que estão abaixo do estoque mínimo",
+      "empty": "Não há produtos com estoque baixo",
+      "columns": {
+        "productName": "Produto",
+        "category": "Categoria",
+        "currentStock": "Estoque atual",
+        "minStock": "Estoque mínimo",
+        "difference": "Diferença",
+        "unitPrice": "Preço unitário",
+        "status": "Status"
+      },
+      "status": {
+        "critical": "Crítico",
+        "low": "Baixo",
+        "normal": "Normal"
+      }
+    },
+    "sales": {
+      "title": "Relatório de vendas",
+      "subtitle": "Histórico de todas as vendas realizadas",
+      "empty": "Não há vendas registradas",
+      "columns": {
+        "id": "ID",
+        "date": "Data",
+        "totalAmount": "Valor total",
+        "products": "Detalhes dos produtos"
+      }
+    }
+  },
+  "subscriptions": {
+    "plans": {
+      "backToSettings": "Voltar para as configurações",
+      "title": "Preços e planos",
+      "subtitle": "Escolha o plano adequado às necessidades da sua empresa. Faça upgrade ou cancele a qualquer momento.",
+      "titleOnboarding": "Escolha seu plano inicial",
+      "subtitleOnboarding": "Para começar a usar o Inventiapp, selecione o plano de assinatura que melhor se adapta à sua empresa.",
+      "loading": "Carregando detalhes do plano...",
+      "popular": "Recomendado",
+      "month": "mês",
+      "year": "ano",
+      "limitRecipes": "Até {{count}} produtos",
+      "limitKits": "Até {{count}} kits",
+      "limitDevices": "Até {{count}} fornecedores",
+      "realtimeAnalytics": "Controle de lotes e datas de validade",
+      "alertNotifications": "Alertas de estoque baixo e relatórios",
+      "choosePlan": "Assinar",
+      "currentPlan": "Seu plano atual",
+      "redirecting": "Redirecionando para o pagamento...",
+      "retry": "Tentar novamente",
+      "continueFree": "Continuar com o plano gratuito",
+      "descriptions": {
+        "starter": "Ideal para pequenos negócios e restaurantes. Controle ingredientes básicos de receitas, kits e balanças inteligentes.",
+        "pro": "Perfeito para empresas em crescimento. Gestão avançada de estoque, receitas complexas, kits de produção e balanças em tempo real.",
+        "enterprise": "Acesso ilimitado e suporte prioritário. Desenvolvido para grandes armazéns, várias unidades e operações em grande escala."
+      }
+    },
+    "success": {
+      "title": "Pagamento realizado com sucesso!",
+      "message": "Obrigado por assinar. Os limites da sua conta foram atualizados imediatamente.",
+      "redirectNotice": "Você será redirecionado para a tela de login em breve...",
+      "redirectNoticeSettings": "Você será redirecionado para a tela de configurações em breve...",
+      "continueButton": "Ir para o login",
+      "continueButtonSettings": "Voltar para as configurações"
+    },
+    "cancel": {
+      "title": "Pagamento cancelado",
+      "message": "O processo de pagamento foi cancelado. Nenhuma cobrança foi realizada no seu cartão.",
+      "tryAgainButton": "Ver planos e tentar novamente",
+      "backButton": "Cancelar e voltar para as configurações"
+    },
+    "savings": {
+      "title": "Seu Impacto Econômico",
+      "subtitle": "Veja como o Inventiapp ajuda você a evitar perdas e aumentar a rentabilidade do seu negócio.",
+      "realTitle": "Economia Real com Alertas Resolvidos",
+      "realSubtitle": "Este é o valor monetário dos produtos que você salvou do vencimento ao atender aos alertas da plataforma.",
+      "totalSaved": "Total Economizado neste Mês",
+      "roiText": "Sua economia equivale a {{multiplier}} vezes o custo da sua assinatura mensal Pro (S/. 108/mês). Seu plano já se pagou sozinho!",
+      "historyTitle": "Histórico de Alertas Resolvidos",
+      "product": "Produto",
+      "quantity": "Quantidade Resolvida",
+      "amount": "Economia",
+      "date": "Data de Resolução",
+      "status": "Status",
+      "resolved": "Resolvido",
+      "potentialTitle": "Simulador de Economia Potencial",
+      "potentialSubtitle": "Calcule quanto dinheiro você pode deixar de perder ao reduzir as perdas de estoque do seu negócio.",
+      "monthlyInventory": "Estoque Mensal Total (S/.)",
+      "mermaPercent": "Percentual Atual de Perdas (%)",
+      "lossWithout": "Perda Estimada sem o Inventiapp (Anual)",
+      "lossWith": "Perda Estimada com o Inventiapp (Anual)",
+      "potentialSavings": "Economia Anual Estimada",
+      "comparisonText": "Ao reduzir em 75% as perdas causadas por produtos vencidos, o Inventiapp Pro ($29/mês) gera um retorno líquido anual estimado de S/. {{netSavings}}."
+    }
+  }
+}
